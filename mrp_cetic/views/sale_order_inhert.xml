@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="account_list">-->
+<!--            <field name="name">production inherit</field>-->
+<!--            <field name="model">mrp.production</field>-->
+<!--            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--            </field>-->
+<!--        </record>-->
+        <record model="ir.ui.view" id="production_form">
+            <field name="name">production inherit</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_assign']" position="after">
+                    <button name="%(effectuer_achat_wizards)d" string ="Effectuer Achat" type="action" class="oe_highlight"
+                    attrs="{'invisible': ['|', ('availability', 'in', ('assigned', 'none')), ('is_locked', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//field[@name='move_raw_ids']//tree" position="inside">
+                    <field name="quantity_in_stock" string="Quantity Stock"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                        <button name="open_purchase_view"
+                                type="object" class="oe_stat_button" icon="fa-calendar"
+                                attrs="{'invisible': [('state', 'in', ['confirmed', 'planned'])]}">
+                            <field name="purchase_order_count" string="Achat" widget="statinfo"/>
+                        </button>
+            </xpath>
+            </field>  
+        </record>
+    </data>
+
+</odoo>
