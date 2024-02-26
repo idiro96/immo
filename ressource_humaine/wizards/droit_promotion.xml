@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="droit_promotion_wizard">
+            <field name="name">droit aux promotions</field>
+            <field name="model">droit.promotion</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_promotion"/>
+                            <field name="duree_promotion" required="1"/>
+                        </group>
+                        <group>
+                            <field name="boul" string="كامل قائمة الاستحقاقات"/>
+                        </group>
+                         <group>
+                            <field name="sauvegarde"/>
+                        </group>
+
+                    </group>
+                    <footer>
+                        <button name="actualiser_droit_promotion" string="تحديث إستحقاق الترقية" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

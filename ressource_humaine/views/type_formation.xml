@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_rh_type_formation_tree" model="ir.ui.view">
+        <field name="name">rh.type.formation.tree</field>
+        <field name="model">rh.type.formation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="description_type_formation"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_type_formation_form" model="ir.ui.view">
+        <field name="name">rh.type.formation.form</field>
+        <field name="model">rh.type.formation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="description_type_formation"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_type_formation" model="ir.actions.act_window">
+        <field name="name">Type formation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.type.formation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'un type de formation</p>
+        </field>
+    </record>
+            <menuitem name="Type formation" id="ressource_humaine_type_formation" parent="referentiel_id" sequence="3"
+           action="action_rh_type_formation"/>
+</odoo>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="rh_type_file_employe_demande" model="rh.type.file">
+            <field name="intitule">طلب خطي</field>
+            <field name="intitule_fr">Demande Manuscrite</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_residense" model="rh.type.file">
+            <field name="intitule">بطاقة إقامة</field>
+            <field name="intitule_fr">Résidence</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_fiche_familiale" model="rh.type.file">
+            <field name="intitule">شهادة عائلية</field>
+            <field name="intitule_fr">Fiche Familiale</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_extrait_naissance" model="rh.type.file">
+            <field name="intitule">شهادة الميلاد</field>
+            <field name="intitule_fr">Extrait de Naissance</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_diplome" model="rh.type.file">
+            <field name="intitule">شهادة</field>
+            <field name="intitule_fr">Diplôme</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_carte_millitaire" model="rh.type.file">
+            <field name="intitule">بطاقة إعفاء من الخدمة الوطنية</field>
+            <field name="intitule_fr">Carte Millitaire</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_carte_nationale" model="rh.type.file">
+            <field name="intitule">بطاقة التعريف الوطنية</field>
+            <field name="intitule_fr">Carte Nationale</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_carte_chifa" model="rh.type.file">
+            <field name="intitule">الضمان الإجتماعي</field>
+            <field name="intitule_fr">Carte Chifa</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_photo" model="rh.type.file">
+            <field name="intitule">صورة</field>
+            <field name="intitule_fr">Photo</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_cheque_cpp" model="rh.type.file">
+            <field name="intitule">فحص CPP</field>
+            <field name="intitule_fr">Chèque CPP</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_enveloppe" model="rh.type.file">
+            <field name="intitule">ظرف</field>
+            <field name="intitule_fr">Enveloppe</field>
+            <field name="type_file">employe</field>
+        </record>
+        <record id="rh_type_file_employe_act_marriage" model="rh.type.file">
+            <field name="intitule">شهادة الزواج</field>
+            <field name="intitule_fr">Acte de Marriage</field>
+            <field name="type_file">employe</field>
+        </record>
+
+        <record id="rh_type_file_finrelation_photo" model="rh.type.file">
+            <field name="intitule">صورة</field>
+            <field name="intitule_fr">Photo</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_extrait_naissance" model="rh.type.file">
+            <field name="intitule">شهادة الميلاد</field>
+            <field name="intitule_fr">Extrait de Naissance</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_carte_nationale" model="rh.type.file">
+            <field name="intitule">بطاقة التعريف الوطنية</field>
+            <field name="intitule_fr">Carte Nationale</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_carte_chifa" model="rh.type.file">
+            <field name="intitule">الضمان الإجتماعي</field>
+            <field name="intitule_fr">Carte Chifa</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_carte_millitaire" model="rh.type.file">
+            <field name="intitule">بطاقة إعفاء من الخدمة الوطنية</field>
+            <field name="intitule_fr">Carte Millitaire</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_fiche_familiale" model="rh.type.file">
+            <field name="intitule">شهادة عائلية</field>
+            <field name="intitule_fr">Fiche Familiale</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_ats_cnas" model="rh.type.file">
+            <field name="intitule">شهادة العمل و الأجر</field>
+            <field name="intitule_fr">Attestation de Travail et de Salaire</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_acas" model="rh.type.file">
+            <field name="intitule">شهادة التوقف عن النشاط بأجر</field>
+            <field name="intitule_fr">Attestation de Cessation d'Activité Salariee</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_retraite" model="rh.type.file">
+            <field name="intitule">قرار التقاعد</field>
+            <field name="intitule_fr">Décision de Mise à la Retraite</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_fin_contrat" model="rh.type.file">
+            <field name="intitule">قرار إنهاء العقد</field>
+            <field name="intitule_fr">Décision de la Résiliation du Contrat</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_finrelation_demission" model="rh.type.file">
+            <field name="intitule">استقالة</field>
+            <field name="intitule_fr">Lettre de démission</field>
+            <field name="type_file">finrelation</field>
+        </record>
+        <record id="rh_type_file_accident_travail" model="rh.type.file">
+            <field name="intitule">حوادث مهنية</field>
+            <field name="intitule_fr">Accident de Travail</field>
+            <field name="type_file">accidenttravail</field>
+        </record>
+
+    </data>
+</odoo>

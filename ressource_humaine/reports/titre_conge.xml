@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="titre_conge">
+        <t t-call="web.basic_layout">
+            <t t-call="ressource_humaine.report_header_custom"/>
+            <div class="page">
+                <div class="row">
+                    <div style="float:left;font-size : 20px;">
+                        <p>
+                            <strong>
+                                <!--                                <span t-field="docs.company_id.name"/>-->
+                            </strong>
+                        </p>
+                    </div>
+                    <br/>
+                    <br/>
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
+                            <span style="display: inline-block;">
+                                الجزائر في
+                            </span>
+                            <span style="display: inline-block;margin-left: 400px;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                الأمانة العامة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                مصلحة تسيير الموارد البشرية
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                رقم ................... /م.و.إ/أ.ع/م.ت.م.ب/
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                            </span>
+                        </div>
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div style="text-align:center;font-size: 40px">
+                    <strong>
+                        سند عطلة
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div class="text-right" style="text-align:center;font-size:23px;text-align: right;">
+                    <p>
+                        <br/>
+                        ـ يقتضى الأمر رقم 06-03 المؤرخ في 19 جمادى الثانية عام 1427 الموافق ل 15 يوليو سنة
+                        2006 المتضمن القانون الأساسي العام العمومية لاسيما المادتين 194 و 196
+                        <br/>
+                        ـ ويقتضى المرسوم التنفيذي رقم 08-315 المؤرخ في 11 شوال عام 1429 الموافق 11 اكتوبر سنة 2008
+                        والمتضمن القانون
+                        الأساسي الخاص بالموظفين المنتمين للأسلاك الخاص بالموظفين المنتمين للأسلاك الخاصة بالتربية
+                        الوطنية
+                        <br/>
+                        <br/>
+                        <br/>
+                        ،
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                        ـ بناء على جدول العطلة السنوية لمستخدمي المدرسة الوطنية للإدارة بعنوان سنة
+                        <br/>
+                        <br/>
+                        <br/>
+                    </p>
+                </div>
+                <div style="text-align:right;font-size:23px;">
+                    <strong>
+                        <u>:المادة الأولى</u>
+                    </strong>
+                </div>
+                <br/>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                        تمنح مخلف عطلة سنوية بعنوان 2021 مدتها
+                        <t t-esc="arabic_number_of_days_words"/>
+                        (<t t-esc="conge.number_of_days_temp" t-options='{"widget": "float", "precision": 0}'/>)
+                        <t t-if="not conge.employee_id.gender or conge.employee_id.gender == 'male'">
+                            يوما / للسيد
+                        </t>
+                        <t t-if="conge.employee_id.gender == 'female'">
+                            يوما / للسيدة
+                        </t>
+                    </span>
+                    <br/>
+                    <span>
+                        الاسم و اللقب :
+                        <t t-esc="conge.employee_id.name"/>
+                    </span>
+                    <br/>
+                    <span>
+                        الرتبة :
+                        <t t-esc="conge.employee_id.grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+                    <span>
+                        المنصب :
+                        <t t-esc="conge.employee_id.job_id.name"/>
+                    </span>
+                    <br/>
+                    <span>
+                        ابتداء من :
+                        <t t-esc="conge_date_from"/>&#160;
+                        <t t-if="not conge.employee_id.gender or conge.employee_id.gender == 'male'">
+                            و يستأنف عمله يوم :
+                        </t>
+                        <t t-if="conge.employee_id.gender == 'female'">
+                            و تستأنف عملها يوم :
+                        </t>
+                        <t t-esc="conge_date_to"/>
+                    </span>
+                    <br/>
+                    <span>
+                        <u>المادة 02 :</u>
+                        <t t-if="not conge.employee_id.gender or conge.employee_id.gender == 'male'">
+                            يحتفظ المعنى بمخلف عطلة قدره
+                        </t>
+                        <t t-if="conge.employee_id.gender == 'female'">
+                            تحتفظ المعنىة بمخلف عطلة قدره
+                        </t>
+                        <t t-esc="conge.employee_id.days_off"/>
+                        يوم
+                    </span>
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

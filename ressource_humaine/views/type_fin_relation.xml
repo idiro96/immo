@@ -1,0 +1,46 @@
+<odoo>
+    <record id="view_rh_type_fin_relation_tree" model="ir.ui.view">
+        <field name="name">rh.type.fin.relation.tree</field>
+        <field name="model">rh.type.fin.relation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="description"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_type_fin_relation_form" model="ir.ui.view">
+        <field name="name">rh.type.fin.relation.form</field>
+        <field name="model">rh.type.fin.relation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="description"/>
+                        <field name="description_fr" invisible="1"/>
+                        <field name="age_male"
+                               string="الحد الأدنى للعمر (ذكر)"
+                               attrs="{'invisible': [('description_fr', '!=', 'Départ en Retraite')], 'required': [('description_fr', '=', 'Départ en Retraite')]}"/>
+                        <field name="age_female"
+                               string="الحد الأدنى للعمر (أنثى)"
+                               attrs="{'invisible': [('description_fr', '!=', 'Départ en Retraite')], 'required': [('description_fr', '=', 'Départ en Retraite')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_type_fin_relation" model="ir.actions.act_window">
+        <field name="name">Type fin relation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.type.fin.relation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'un type fin de relation</p>
+        </field>
+    </record>
+    <menuitem name="Type fin relation" id="ressource_humaine_type_fin_relation" parent="referentiel_id" sequence="4"
+              action="action_rh_type_fin_relation"/>
+</odoo>

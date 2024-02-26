@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="formation_detail_liste">
+            <field name="name">Formation detail</field>
+            <field name="model">formation.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                       <field name="date_debut_formation_line"/>
+                       <field name="date_fin_formation_line"/>
+                       <field name="groupe"/>
+                    </group>
+                    <field name="employee_id_lines">
+                           <tree editable="bottom">
+                             <field name="selection_employe"/>
+                             <field name="name"/>
+                             <field name="work_phone"/>
+                           </tree>
+                    </field>
+                    <footer>
+                        <button name="detail_formation" string="تأكيد" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="formation_detail_action" model="ir.actions.act_window">
+            <field name="name">Formation detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">formation.detail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="formation_detail_liste"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

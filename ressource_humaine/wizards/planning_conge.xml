@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <record id="view_planning_conge" model="ir.ui.view">
+            <field name="name">planning.conge.form</field>
+            <field name="model">planning.conge</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <p>اختر المصلحة الذي تريد طباعة جدول الإجازات</p>
+                            </group>
+                            <group>
+                                <field name="department_id" string="المصلحة"
+                                       widget='selection'
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="تجاهل" class="oe_link" special="cancel"/>
+                        <button name="print_report" string="طباعة" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="planning_conge_action" model="ir.actions.act_window">
+            <field name="name">Planning des Congés</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">planning.conge</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_planning_conge"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Planning Congé" id="menu_planning_conge" parent="conge_id" sequence="4"
+                  action="planning_conge_action"/>
+
+    </data>
+</odoo>

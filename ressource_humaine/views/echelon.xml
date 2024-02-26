@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_rh_echelon_tree" model="ir.ui.view">
+        <field name="name">rh.echelon.tree</field>
+        <field name="model">rh.echelon</field>
+        <field name="arch" type="xml">
+
+
+            <tree>
+                <field name="intitule"/>
+                <field name="type_fonction"/>
+                <field name="categorie_id"/>
+                <field name="section"/>
+                <field name="indice_echelon"/>
+                <field name="groupe_id"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_echelon_form" model="ir.ui.view">
+        <field name="name">rh.echelon.form</field>
+        <field name="model">rh.echelon</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code_type_fonction" invisible="1"/>
+                            <field name="intitule"/>
+                            <field name="type_fonction"/>
+                            <field name="categorie_id"/>
+                            <field name="section" attrs="{'invisible': ['|', ('code_type_fonction', '=', 'postesuperieure'),
+                                                         ('code_type_fonction', '=', 'fonction')]}"/>
+                            <field name="indice_echelon"/>
+                            <field name="groupe_id" readonly="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_echelon" model="ir.actions.act_window">
+        <field name="name">echelon</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.echelon</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Creation echelon!</p>
+        </field>
+    </record>
+    <menuitem name="Echelon" id="ressource_humaine_echelon" parent="promotion_id" sequence="17"
+              action="action_rh_echelon"/>
+</odoo>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_type_contrat" model="ir.sequence">
+            <field name="name">Type Contrat Sequence</field>
+            <field name="code">rh.type.contrat.sequence</field>
+            <field name="prefix">TC</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_formation" model="ir.sequence">
+            <field name="name">Formation Sequence</field>
+            <field name="code">rh.formation.sequence</field>
+            <field name="prefix">FR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_fin_relation" model="ir.sequence">
+            <field name="name">Type Fin Relation Sequence</field>
+            <field name="code">rh.type.fin.relation.sequence</field>
+            <field name="prefix">TFR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_visite_medicale" model="ir.sequence">
+            <field name="name">Type Visite Medicale Sequence</field>
+            <field name="code">rh.visite.medicale.sequence</field>
+            <field name="prefix">VM</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_cabinet_medical" model="ir.sequence">
+            <field name="name">Cabinet Medicale Sequence</field>
+            <field name="code">rh.cabinet.medical.sequence</field>
+            <field name="prefix">CM</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_sanction" model="ir.sequence">
+            <field name="name">Sanction Sequence</field>
+            <field name="code">rh.sanction.sequence</field>
+            <field name="prefix">SA</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_faute" model="ir.sequence">
+            <field name="name">Type Faute Sequence</field>
+            <field name="code">rh.type.faute.sequence</field>
+            <field name="prefix">TF</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_sanction" model="ir.sequence">
+            <field name="name">Type Sanction Sequence</field>
+            <field name="code">rh.type.sanction.sequence</field>
+            <field name="prefix">TS</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+        <record id="seq_type_conge" model="ir.sequence">
+            <field name="name">Type Conge Sequence</field>
+            <field name="code">rh.type.conge.sequence</field>
+            <field name="prefix">TC</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_formation" model="ir.sequence">
+            <field name="name">Formation Sequence</field>
+            <field name="code">rh.formation.sequence</field>
+            <field name="prefix">FR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_loi" model="ir.sequence">
+            <field name="name">Loi Sequence</field>
+            <field name="code">rh.loi.sequence</field>
+            <field name="prefix">LO</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_filiere" model="ir.sequence">
+            <field name="name">filiere Sequence</field>
+            <field name="code">rh.filiere.sequence</field>
+            <field name="prefix">FI</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_corps" model="ir.sequence">
+            <field name="name">Corps Sequence</field>
+            <field name="code">rh.corps.sequence</field>
+            <field name="prefix">CR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_grade" model="ir.sequence">
+            <field name="name">grade Sequence</field>
+            <field name="code">rh.grade.sequence</field>
+            <field name="prefix">GR</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_contract" model="ir.sequence">
+            <field name="name">contract Sequence</field>
+            <field name="code">hr.contract.inhert</field>
+            <field name="prefix">RC</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <!--        <record id="seq_avancement" model="ir.sequence">-->
+        <!--            <field name="name">Avancement</field>-->
+        <!--            <field name="code">rh.avancement.sequence</field>-->
+        <!--            <field name="prefix">AV</field>-->
+        <!--            <field name="padding">3</field>-->
+        <!--            <field name="company_id" eval="False"/>-->
+        <!--        </record>-->
+        <record id="seq_avancement_line" model="ir.sequence">
+            <field name="name">Avancement Line</field>
+            <field name="code">rh.avancement.line.sequence</field>
+            <field name="prefix">AL</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_formation_line" model="ir.sequence">
+            <field name="name">formation Line</field>
+            <field name="code">rh.type.formation.sequence</field>
+            <field name="prefix">TF</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_emphy_line" model="ir.sequence">
+            <field name="name">Emphy</field>
+            <field name="code">rh.emphy.sequence</field>
+            <field name="prefix">EM</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_type_file" model="ir.sequence">
+            <field name="name">Type File Sequence</field>
+            <field name="code">rh.type.file.sequence</field>
+            <field name="prefix">ملف</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

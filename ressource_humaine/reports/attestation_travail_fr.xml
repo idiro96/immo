@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="attestation_travail_fr_report">
+            <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom"/>
+                <div class="page">
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span style="display: inline-block;">
+                                ALGER LE
+                            </span>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: left;">
+                            <span>
+                                Ecole Nationale d'Administration
+                            </span>
+                        </div>
+                        <div style="font-size: 20px;text-align: left;">
+                            <t t-if="attestation_travail.signataire == 'sg'">
+                                <span>
+                                    Secrétariat Général
+                                </span>
+                            </t>
+                            <t t-if="attestation_travail.signataire == 'dg'">
+                                <span>
+                                    Directeur Général
+                                </span>
+                            </t>
+                            <t t-if="attestation_travail.signataire == 'rl'">
+                                <span>
+                                    Responsable de lecture
+                                </span>
+                            </t>
+                        </div>
+                        <div style="font-size: 20px;text-align: left;">
+                            <span>
+                                Service de la Gestion des Ressources Humaines
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: left;">
+                            <t t-if="attestation_travail.signataire == 'sg'">
+                                <span>
+                                    N°:.................E.N.A/S.G/S.G.R.H/
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                                </span>
+                            </t>
+                            <t t-if="attestation_travail.signataire == 'dg'">
+                                <span>
+                                    N°:.................E.N.A/D.G/S.G.R.H/
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                                </span>
+                            </t>
+                            <t t-if="attestation_travail.signataire == 'rl'">
+                                <span>
+                                    N°:.................E.N.A/R.L/S.G.R.H/
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                                </span>
+                            </t>
+                        </div>
+                    </strong>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div style="font-size: 40px;text-align: center;">
+                        <strong>
+                            <span style="border-bottom: 5px double;">
+                                ATTESTATION DE TRAVAIL
+                            </span>
+                        </strong>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div style="font-size: 20px;text-align: left;">
+                        <span>
+                            Le Directeur Général de l'Ecole Nationale d'Administration, atteste que:
+                        </span>
+                        <br/>
+                        <br/>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span style="display: inline-block">
+                                Monsieur,
+                                <strong>
+                                    <t t-esc="employee.nom_fr"/>
+                                </strong>&#160;
+                                né le
+                                <strong>
+                                    <t t-esc="formatted_birthday"/>
+                                </strong>&#160;
+                            </span>
+                        </t>
+                        <t t-if="employee.gender == 'female'">
+                            <span style="display: inline-block">
+                                Madame,
+                                <strong>
+                                    <t t-esc="employee.nom_fr"/>
+                                </strong>&#160;
+                                née le
+                                <strong>
+                                    <t t-esc="formatted_birthday"/>
+                                </strong>&#160;
+                            </span>
+                        </t>
+                        <span>
+                            à
+                            <strong>
+                                <t t-esc="employee.place_of_birth_fr"/>
+                            </strong>
+                            <br/>
+                            <br/>
+                            <t t-if="employee.gender == 'female'">
+                                <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    est employée au sein de notre établissement depuis le:
+                                </t>
+                                <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    est fonctionnaire au sein de notre établissement depuis le:
+                                </t>
+                            </t>
+                            <t t-if="employee.gender == 'male'">
+                                <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    est employé au sein de notre établissement depuis le:
+                                </t>
+                                <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    est fonctionnaire au sein de notre établissement depuis le:
+                                </t>
+                            </t>
+                            <strong>
+                                <t t-esc="formatted_date_entrer"/>
+                            </strong>&#160;
+                        </span>
+                        <span style="display: inline-block;">
+                        </span>
+                        <br/>
+                        <br/>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                Il, exerce ses fonctions en sa qualité de :
+                                <br/>
+                                <strong>
+                                    <t t-esc="employee.grade_id.intitule_grade_fr"/>
+                                </strong>
+                            </span>
+                        </t>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                Elle, exerce ses fonctions en sa qualité de :
+                                <br/>
+                                <strong>
+                                    <t t-esc="employee.grade_id.intitule_grade_fr"/>
+                                </strong>
+                            </span>
+                        </t>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                    <br/>
+                    <div style="font-size: 20px;text-align: left;">
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                Cette attestation est délivrée à l'intéressé pour servir et valoir ce que de
+                                droit
+                            </span>
+                        </t>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                Cette attestation est délivrée à l'intéressée pour servir et valoir ce que de
+                                droit
+                            </span>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<odoo>
+    <record id="view_rh_fin_relation_tree" model="ir.ui.view">
+        <field name="name">rh.fin.relation.tree</field>
+        <field name="model">rh.fin.relation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="num_decision_fin_relation"/>
+                <field name="date_fin_relation"/>
+                <field name="type_fin_relation_id"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_fin_relation_form" model="ir.ui.view">
+        <field name="name">rh.fin.relation.form</field>
+        <field name="model">rh.fin.relation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"
+                                   options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                            <field name="num_decision_fin_relation"/>
+                            <field name="date_fin_relation"/>
+                            <field name="description" invisible="1"/>
+                            <field name="type_fin_relation_id"
+                                   options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                            <field name="date_cnas" attrs="{'invisible': [('description', '!=', 'إحالة التقاعد')]}"
+                            string="CNAS تاريخ"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="قائمة الملفات">
+                            <field name="fin_relation_file_lines">
+                                <tree editable="bottom">
+                                    <field name="type_file_id" domain="[('type_file', '=', 'finrelation')]"/>
+                                    <field name="description_fichier"/>
+                                    <field name="fichier"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_fin_relation" model="ir.actions.act_window">
+        <field name="name">Fin relation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.fin.relation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'une nouvelle décision de fin de relation</p>
+        </field>
+    </record>
+    <menuitem name="Fin relation" id="ressource_humaine_fin_relation" parent="suivi_personnel_id" sequence="4"
+              action="action_rh_fin_relation"/>
+</odoo>

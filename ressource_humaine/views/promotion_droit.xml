@@ -1,0 +1,61 @@
+<odoo>
+    <record id="view_rh_promotion_droit_tree" model="ir.ui.view">
+        <field name="name">Droit Promotion Tree</field>
+        <field name="model">rh.promotion.droit</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="employee_id" readonly="1"/>
+                <field name="birthday" readonly="1"/>
+                <field name="marital" readonly="1"/>
+                <field name="grade_id" readonly="1"/>
+                <field name="categorie_id" readonly="1"/>
+                <field name="job_id" readonly="1"/>
+                <field name="date_grade" readonly="1"/>
+                <field name="grade_new_id"/>
+                <field name="duree"/>
+                <field name="date_new_grade"/>
+                <field name="time_difference" readonly="1"/>
+                <field name="date_promotion" readonly="1"/>
+                <field name="sauvegarde" widget="toggle_button"/>
+                <field name="retenue" widget="toggle_button"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_promotion_droit_form" model="ir.ui.view">
+        <field name="name">Droit Promotion Form</field>
+        <field name="model">rh.promotion.droit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="employee_id" readonly="1"/>
+                    <field name="birthday" readonly="1"/>
+                    <field name="marital" readonly="1"/>
+                    <field name="grade_id" readonly="1"/>
+                    <field name="categorie_id" readonly="1"/>
+                    <field name="job_id" readonly="1"/>
+                    <field name="date_grade" readonly="1"/>
+                    <field name="grade_new_id"/>
+                    <field name="duree"/>
+                    <field name="date_new_grade"/>
+                    <field name="time_difference" readonly="1"/>
+                    <field name="date_promotion" readonly="1"/>
+                    <field name="sauvegarde" widget="toggle_button"/>
+                    <field name="retenue" widget="toggle_button"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_promotion_droit_wizard" model="ir.actions.act_window">
+        <field name="name">Droit Promotion</field>
+        <field name="res_model">droit.promotion</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="ressource_humaine.droit_promotion_wizard"/>
+        <field name="target">new</field>
+    </record>
+    <menuitem name="Droit Promotion" id="ressource_humaine_droit_promotion" parent="promotion_de_grade" sequence="2"
+              action="action_rh_promotion_droit_wizard"/>
+</odoo>
+
+

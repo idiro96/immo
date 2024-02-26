@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="holidays_list">
+            <field name="name">holidays inherit</field>
+            <field name="model">hr.holidays</field>
+            <field name="inherit_id" ref="hr_holidays.view_holiday_allocation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='holiday_type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='number_of_days']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='number_of_days']" position="after">
+                    <field name="number_of_days_temp" invisible="0"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='number_of_days_temp']" position="after">
+                    <field name="state" invisible="0"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='category_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//tree//field[@name='state']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='name']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="holidays_form">
+            <field name="name">holidays inherit</field>
+            <field name="model">hr.holidays</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_new"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='action_refuse']" position="before">
+                    <button name="print_conge" type="object" string="Imprimer titre de congé" class="oe_highlight"
+                            invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='holiday_status_id']" position="before">
+                    <field name="code"/>
+                </xpath>
+                <xpath expr="//field[@name='number_of_days_temp']" position="attributes">
+                    <attribute name="string">المدة</attribute>
+                </xpath>
+                <xpath expr="//field[@name='department_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+                <xpath expr="//header/button[@name='print_conge']" position="before">
+                    <button name="note_conge" type="object" string="Imprimer Note de congé" class="oe_highlight"
+                            invisible="1"/>
+                </xpath>
+                <xpath expr="//header/button[@name='note_conge']" position="before">
+                    <button name="planning_conge" type="object" string="Imprimer Planning Congé" class="oe_highlight"
+                            invisible="1"/>
+                </xpath>
+                <xpath expr="//form//field[@name='holiday_type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//div" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_hr_holidays_dashboard">
+            <field name="name">holidays</field>
+            <field name="res_model">hr.holidays</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <field name="view_id" ref="hr_holidays.view_holiday_new_calendar"/>
+        </record>
+
+        <record id="view_note_conge" model="ir.ui.view">
+            <field name="name">note.conge.form</field>
+            <field name="model">hr.holidays</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                        <p>هل تريد طباعة مذكـرة مصلحية ؟</p>
+                    </sheet>
+                    <footer>
+                        <button string="تجاهل" class="oe_link" special="cancel"/>
+                        <button name="note_conge" string="طباعة" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="note_conge_action" model="ir.actions.act_window">
+            <field name="name">Note de Congé</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.holidays</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_note_conge"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem name="Congé" id="conge_id" parent="ressource_humaine.menu_root" sequence="4"/>
+        <menuitem name="Congé" id="menu_hr_holidays_root" parent="conge_id" sequence="2"
+                  action="action_hr_holidays_dashboard"/>
+        <menuitem name="Note Congé" id="menu_note_conge" parent="conge_id" sequence="3"
+                  action="note_conge_action"/>
+
+    </data>
+
+</odoo>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="fiche_renseignement_report">
+            <t t-call="web.basic_layout">
+                <div class="page"
+                     t-attf-style="background-image: url('/ressource_humaine/static/src/img/doc02632620240129151154.jpg'); background-size: cover;">
+                    <strong>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="margin-left: 53px;">
+                            <img t-if="employee.image"
+                                 t-att-src="'data:image/png;base64,%s' % to_text(employee.image)"
+                                 height="188" width="188"
+                                 t-att-style="'border-radius: 30%;'"/>
+                        </span>
+                        <t t-if="not employee.image">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </t>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="line-height: 1.5;">&#160;</span>
+                        <span style="display: inline-block; font-size: 14px; margin-left: 170px;">
+                            <t t-if="employee.nom_fr">
+                                <t t-esc="employee.nom_fr"/>
+                            </t>
+                            <t t-if="not employee.nom_fr">
+                                &#160;
+                            </t>
+                        </span>
+                        <span style="display: inline-block; font-size: 14px; margin-right: 170px;float: right;">
+                            <t t-if="employee.name">
+                                <t t-esc="employee.name"/>
+                            </t>
+                            <t t-if="not employee.name">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="font-size: 14px; margin-right: 580px;float: right;">
+                            <t t-if="employee.place_of_birth">
+                                <t t-esc="employee.place_of_birth"/>
+                            </t>
+                            <t t-if="not employee.place_of_birth">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <span style="display: inline-block; font-size: 20px; margin-right: 210px;float: right;">
+                            <t t-if="employee.birthday">
+                                <t t-esc="employee.birthday"/>
+                            </t>
+                            <t t-if="not employee.birthday">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="display: inline-block; font-size: 14px; margin-right: 170px;float: right;">
+                            <t t-if="employee.prenom_pere">
+                                <t t-esc="employee.prenom_pere"/>
+                            </t>
+                            <t t-if="not employee.prenom_pere">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <span style="display: inline-block; font-size: 14px; margin-right: 200px;float: right;">
+                            <t t-if="employee.nom_mere">
+                                <t t-esc="employee.nom_mere"/>
+                            </t>
+                            <t t-if="not employee.nom_mere">
+                                &#160;
+                            </t>
+                            <t t-if="employee.prenom_mere">
+                                <t t-esc="employee.prenom_mere"/>
+                            </t>
+                            <t t-if="not employee.prenom_mere">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <span style="font-size: 14px; margin-right: 210px;float: right;">
+                            <t t-if="employee.address_home_id.street">
+                                <t t-esc="employee.address_home_id.street"/>,
+                            </t>
+                            <t t-if="not employee.address_home_id.street">
+                                &#160;
+                            </t>
+                            <t t-if="employee.address_home_id.street2">
+                                <t t-esc="employee.address_home_id.street2"/>,
+                            </t>
+                            <t t-if="not employee.address_home_id.street2">
+                                &#160;
+                            </t>
+                            <t t-if="employee.address_home_id.city">
+                                <t t-esc="employee.address_home_id.city"/>
+                            </t>
+                            <t t-if="not employee.address_home_id.city">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="font-size: 14px; margin-right: 300px;float: right;">
+                            <t t-if="employee.service_militaire">
+                                حر
+                            </t>
+                            <t t-if="not employee.service_militaire">
+                                ليس حر
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <span style="display: inline-block; font-size: 14px; margin-right: 260px;float: right;">
+                            <t t-if="employee.numero_securite_social">
+                                <t t-esc="employee.numero_securite_social"/>
+                            </t>
+                            <t t-if="not employee.numero_securite_social">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br style="line-height: 2;"/>
+                        <span style="font-size: 14px; margin-right: 370px;float: right;">
+                            <t t-if="employee.bank_account_id.acc_number">
+                                <t t-esc="employee.bank_account_id.acc_number"/>
+                            </t>
+                            <t t-if="not employee.bank_account_id.acc_number">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br style="line-height: 2;"/>
+                        <span style="display: inline-block; font-size: 14px; margin-right: 230px;float: right;">
+                            <t t-if="employee.address_home_id.phone">
+                                <t t-esc="employee.address_home_id.phone"/>
+                            </t>
+                            <t t-if="not employee.address_home_id.phone">
+                                &#160;
+                            </t>
+                        </span>
+                        <span style="display: inline-block; font-size: 14px; margin-left: 120px;">
+                            <t t-if="employee.address_home_id.email">
+                                <t t-esc="employee.address_home_id.email"/>
+                            </t>
+                            <t t-if="not employee.address_home_id.email">
+                                &#160;
+                            </t>
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </strong>
+                </div>
+                <div class="page"
+                     t-attf-style="background-image: url('/ressource_humaine/static/src/img/doc02632720240129151246 (2).jpg'); background-size: cover;">
+                    <strong>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </strong>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

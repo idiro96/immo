@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="rh_type_fin_relation_demission" model="rh.type.fin.relation">
+            <field name="description">استقالة</field>
+            <field name="description_fr">Démission</field>
+        </record>
+        <record id="rh_type_fin_relation_licenciement" model="rh.type.fin.relation">
+            <field name="description">الفصل</field>
+            <field name="description_fr">Licenciement</field>
+        </record>
+        <record id="rh_type_fin_relation_deces" model="rh.type.fin.relation">
+            <field name="description">وفاة</field>
+            <field name="description_fr">Décès</field>
+        </record>
+        <record id="rh_type_fin_relation_retraite" model="rh.type.fin.relation">
+            <field name="description">إحالة التقاعد</field>
+            <field name="description_fr">Départ en Retraite</field>
+        </record>
+        <record id="rh_type_fin_relation_depart" model="rh.type.fin.relation">
+            <field name="description">المغادرة الطوعية</field>
+            <field name="description_fr">Départ Volontaire</field>
+        </record>
+        <record id="rh_type_fin_relation_abandonnement" model="rh.type.fin.relation">
+            <field name="description">التخلي عن المنصب</field>
+            <field name="description_fr">Abandonnement de Poste</field>
+        </record>
+
+    </data>
+</odoo>

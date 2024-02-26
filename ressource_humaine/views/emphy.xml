@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_rh_emphy_tree" model="ir.ui.view">
+        <field name="name">emphy tree</field>
+        <field name="model">rh.emphy</field>
+        <field name="arch" type="xml">
+
+
+            <tree>
+                <field name="code"/>
+                <field name="intitule_emphy"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_emphy_form" model="ir.ui.view">
+        <field name="name">emphy.form</field>
+        <field name="model">rh.emphy</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="intitule_emphy"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_emphy" model="ir.actions.act_window">
+        <field name="name">emphy</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.emphy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Creation emphy!</p>
+        </field>
+    </record>
+    <menuitem name="Emphy" id="ressource_humaine_emphy" parent="referentiel_id" sequence="10"
+              action="action_rh_emphy"/>
+</odoo>

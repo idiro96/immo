@@ -1,0 +1,54 @@
+<odoo>
+    <record id="view_rh_organisme_tree" model="ir.ui.view">
+        <field name="name">rh.organisme.tree</field>
+        <field name="model">rh.organisme</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_organisme"/>
+                <field name="rs_organisme"/>
+                <field name="adresse_organisme"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_organisme_form" model="ir.ui.view">
+        <field name="name">rh.organisme.form</field>
+        <field name="model">rh.organisme</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code_organisme"/>
+                            <field name="rs_organisme"/>
+                            <field name="adresse_organisme"/>
+                        </group>
+                    </group>
+                     <notebook>
+                         <page string="قائمة الملفات">
+                             <field name="organisme_file_lines">
+                                 <tree editable="bottom">
+                                     <field name="type_file_id" domain="[('type_file', '=', 'formation')]"/>
+                                     <field name="description_fichier"/>
+                                     <field name="fichier"/>
+                                 </tree>
+                             </field>
+                         </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_organisme" model="ir.actions.act_window">
+        <field name="name">Organisme</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.organisme</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création de l'organisme</p>
+        </field>
+    </record>
+    <menuitem name="Organisme" id="ressource_humaine_organisme" parent="formation_id"
+              action="action_rh_organisme"/>
+</odoo>

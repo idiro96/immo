@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_rh_type_faute_tree" model="ir.ui.view">
+        <field name="name">Type Faute tree</field>
+        <field name="model">rh.type.faute</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_type_faute"/>
+                <field name="intitule_type_faute"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_type_faute_form" model="ir.ui.view">
+        <field name="name">rh.type.contrat.form</field>
+        <field name="model">rh.type.faute</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code_type_faute"/>
+                        </group>
+                        <group>
+                            <field name="intitule_type_faute"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_type_faute" model="ir.actions.act_window">
+        <field name="name">Type Faute</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.type.faute</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'un type de faute</p>
+        </field>
+    </record>
+            <menuitem name="Type Faute" id="ressource_humaine_type_faute" parent="referentiel_id"
+           action="action_rh_type_faute"/>
+</odoo>

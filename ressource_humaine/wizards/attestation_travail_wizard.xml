@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <record id="view_attestation_travail" model="ir.ui.view">
+            <field name="name">attestation.travail.form</field>
+            <field name="model">attestation.travail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" string="الموظف"
+                                       options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                                <field name="signataire" string="الممضي"/>
+                            </group>
+                            <group>
+                                <field name="language" string="اللّغة"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="تجاهل" class="oe_link" special="cancel"/>
+                        <button name="print_report" string="طباعة" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="attestation_travail_action" model="ir.actions.act_window">
+            <field name="name">شهادة عمل</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attestation.travail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_attestation_travail"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="شهادة عمل" id="attestation_travail_menu" parent="ressource_humaine.reporting_id"
+                  action="attestation_travail_action"/>
+
+    </data>
+</odoo>

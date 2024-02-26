@@ -1,0 +1,75 @@
+<odoo>
+    <record id="view_rh_absence_tree" model="ir.ui.view">
+        <field name="name">rh.absence.tree</field>
+        <field name="model">rh.absence</field>
+        <field name="arch" type="xml">
+
+
+            <tree>
+                <field name="num_reference_absence"/>
+                <field name="employee_id"/>
+                <field name="date_debut_absence" context="{'lang': 'fr_FR'}"/>
+                <field name="date_fin_absence"/>
+                <field name="nbr_jours_absence"/>
+                <field name="nbre_heure_absence"/>
+                <field name="type_absence_id"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_absence_form" model="ir.ui.view">
+        <field name="name">absence form</field>
+        <field name="model">rh.absence</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" class="oe_highlight" string="تأكيد الغياب"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" type="object" class="oe_highlight" string=" رفض الغياب"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,refuse"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"
+                                   options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                            <field name="num_reference_absence"/>
+                            <field name="date_debut_absence"/>
+                            <field name="date_fin_absence"/>
+                        </group>
+                        <group>
+                            <field name="nbr_jours_absence"/>
+                            <field name="nbre_heure_absence"/>
+                            <field name="type_absence_id"
+                                   options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="قائمة الملفات">
+                            <field name="absence_file_lines" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="type_file_id" domain="[('type_file', '=', 'indisponibilite')]"/>
+                                    <field name="description_fichier"/>
+                                    <field name="fichier"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_absence" model="ir.actions.act_window">
+        <field name="name">Absence</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.absence</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Creation Absence!</p>
+        </field>
+    </record>
+    <menuitem name="Indisponibilité/Absence" id="ressource_humaine_absence" parent="suivi_personnel_id" sequence="1"
+              action="action_rh_absence"/>
+</odoo>

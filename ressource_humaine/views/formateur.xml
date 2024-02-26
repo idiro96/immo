@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_rh_formateur_tree" model="ir.ui.view">
+        <field name="name">rh.contrat.tree</field>
+        <field name="model">rh.contrat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_formateur"/>
+                <field name="nom_formateur"/>
+                <field name="prenom_formateur"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_formateur_form" model="ir.ui.view">
+        <field name="name">rh.formateur.form</field>
+        <field name="model">rh.formateur</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                         <group>
+                             <field name="code_formateur"/>
+                             <field name="nom_formateur"/>
+                             <field name="prenom_formateur"/>
+                         </group>
+                         <group>
+                             <field name="adresse_formateur"/>
+                             <field name="tel_formateur"/>
+                             <field name="email_formateur"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_formateur" model="ir.actions.act_window">
+        <field name="name">Formateur</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.formateur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création du formateur</p>
+        </field>
+    </record>
+            <menuitem name="Formateur" id="ressource_humaine_formateur" parent="ressource_humaine.menu_root"
+           action="action_rh_formateur"/>
+</odoo>

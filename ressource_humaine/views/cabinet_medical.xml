@@ -1,0 +1,63 @@
+<odoo>
+    <record id="view_cabinet_medical_tree" model="ir.ui.view">
+        <field name="name">Cabinet Medical tree</field>
+        <field name="model">rh.cabinet.medical</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="raison_social"/>
+                <field name="contact"/>
+                <field name="adress"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_cabinet_medical_form" model="ir.ui.view">
+        <field name="name">Cabinet Medical form</field>
+        <field name="model">rh.cabinet.medical</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="raison_social"/>
+                            <field name="contact"/>
+                            <field name="adress"/>
+                        </group>
+                        <group>
+                            <field name="rc"/>
+                            <field name="nif_cabinet"/>
+                            <field name="nis_cabinet"/>
+                            <field name="num_article"/>
+                        </group>
+
+                    </group>
+                     <notebook>
+                            <page string="قائمة الملفات">
+                         <field name="cabinet_medicale_file_lines">
+                           <tree editable="bottom">
+                             <field name="type_file_id" domain="[('type_file', '=', 'controlemedicale')]"/>
+                             <field name="description_fichier"/>
+                             <field name="fichier"/>
+                           </tree>
+                         </field>
+                       </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_cabinet_medical" model="ir.actions.act_window">
+        <field name="name">Cabinet Medical</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.cabinet.medical</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your Cabinet Medical!</p>
+        </field>
+    </record>
+            <menuitem name="Cabinet Medical" id="ressource_humaine_cabinet_medical" parent="medecine_travai_id"
+           action="action_cabinet_medical"/>
+</odoo>

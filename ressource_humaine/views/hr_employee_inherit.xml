@@ -1,0 +1,426 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="employee_list">
+            <field name="name">employee inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='name']" position="after">
+                    <field name="prenom" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='name']" position="after">
+                    <field name="birthday"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='birthday']" position="after">
+                    <field name="place_of_birth"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='place_of_birth']" position="after">
+                    <field name="grade_id"/>
+                </xpath>
+
+                <xpath expr="//tree//field[@name='job_id']" position="after">
+                    <field name="date_entrer"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='date_entrer']" position="before">
+                    <field name="job_id"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='date_entrer']" position="after">
+                    <field name="date_grade"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='date_grade']" position="after">
+                    <field name="date_job_id"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='date_job_id']" position="after">
+                    <field name="nom_fr"/>
+                </xpath>
+                <!--                <xpath expr="//tree//field[@name='nom_fr']" position="after">-->
+                <!--                    <field name="prenom_fr"/>-->
+                <!--                </xpath>-->
+                <xpath expr="//tree//field[@name='nom_fr']" position="after">
+                    <field name="numero_securite_social"/>
+                </xpath>
+                <xpath expr="//tree//field[@name='work_phone']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='work_email']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='department_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='job_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//tree//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="employee_form">
+            <field name="name">employee inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='place_of_birth']"
+                       position="after">
+                    <field name="handicape"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='handicape']" position="after">
+                    <field name="nature_handicap"
+                           attrs="{'invisible': [('handicape', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nature_handicap']"
+                       position="after">
+                    <field name="taux_handicap"
+                           attrs="{'invisible': [('handicape', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='bank_account_id']"
+                       position="after">
+                    <field name="service_militaire"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='resource_calendar_id']"
+                       position="after">
+                    <field name="fin_relation"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='fin_relation']" position="after">
+                    <field name="date_fin_relation"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_fin_relation']"
+                       position="after">
+                    <field name="date_reintegration"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group[2]//field[@name='job_id']" position="after">
+                    <field name="corps_id" required="True"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group[2]//field[@name='corps_id']" position="after">
+                    <field name="grade_id" required="True"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group[2]//field[@name='grade_id']" position="after">
+                    <field name="date_grade" required="True" context="{'lang':'fr_FR'}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_grade']" position="after">
+                    <field name="position_statutaire"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='department_id']"
+                       position="before">
+                    <field name="date_entrer" required="True"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_entrer']" position="before">
+                    <field name="date_ancien_grade" attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_ancien_grade']"
+                       position="before">
+                    <field name="ancien_grade_id" attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='ancien_grade_id']"
+                       position="before">
+                    <field name="ancien_corps_id" attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='ancien_corps_id']"
+                       attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}" position="before">
+                    <field name="date_debut_emploi" attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_debut_emploi']"
+                       position="before">
+                    <field name="ancienne_etablissement"
+                           attrs="{'invisible': [('methode_embauche', '=', 'recrutement')]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='ancienne_etablissement']"
+                       position="before">
+                    <field name="methode_embauche" required="True"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='methode_embauche']"
+                       position="before">
+                    <field name="nature_travail_id" required="True"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" widget='selection'/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nature_travail_id']"
+                       position="before">
+                    <field name="code_type_fonction" invisible="1"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nature_travail_id']"
+                       position="after">
+                    <field name="type_id"
+                           attrs="{'invisible': [('code_type_fonction', '!=', 'contractuel')],
+                                                  'required': [('code_type_fonction', '=', 'contractuel')]}"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" widget='selection'
+                           string="نوع العقد"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='type_id']"
+                       position="after">
+                    <field name="annee_travail" string="سنوات العمل"
+                           attrs="{'invisible': [('code_type_fonction', '!=', 'contractuel')]}"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='marital']" position="after">
+                    <field name="activite_conjoint"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='activite_conjoint']"
+                       position="after">
+                    <field name="prenom_pere"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='prenom_pere']" position="after">
+                    <field name="nom_mere"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nom_mere']" position="after">
+                    <field name="prenom_mere"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='children']" position="after">
+                    <field name="nom_fr" required="True"/>
+                </xpath>
+                <!--                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nom_fr']" position="after">-->
+                <!--                    <field name="prenom_fr" required="True"/>-->
+                <!--                </xpath>-->
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='birthday']"
+                       position="attributes">
+                    <attribute name="required">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='place_of_birth']"
+                       position="attributes">
+                    <attribute name="required">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='handicape']"
+                       position="before">
+                    <field name="place_of_birth_fr"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='gender']" position="attributes">
+                    <attribute name="required">True</attribute>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='date_entrer']" position="after">
+                    <field name="nomination"/>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nomination']" position="after">
+                    <field name="days_off"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='days_off']" position="after">
+                    <field name="jour_sup"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//field[@name='country_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form//field[@name='manager']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='bank_account_id']"
+                       position="after">
+                    <field name="numero_securite_social"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page[@name='hr_settings']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page[@name='personal_information']//group//group[@name='work_permit']"
+                       position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='passport_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='parent_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='coach_id']"
+                       position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='public']" position="attributes">
+                    <attribute name="string">معلومات العمل</attribute>
+                </xpath>
+                <xpath expr="//page[@name='personal_information']" position="attributes">
+                    <attribute name="string">معلومات خاصة</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='address_id']]" position="attributes">
+                    <attribute name="string">معلومات شخصية</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='department_id']]" position="attributes">
+                    <attribute name="string">المنصب</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='country_id']]" position="attributes">
+                    <attribute name="string">معلومات أخرى</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='address_home_id']]" position="attributes">
+                    <attribute name="string">عنوان الموظف</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='birthday']]" position="attributes">
+                    <attribute name="string">الميلاد</attribute>
+                </xpath>
+                <xpath expr="//group[field[@name='gender']]" position="attributes">
+                    <attribute name="string">الحالة</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='address_id']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='address_home_id']"
+                       position="after">
+                    <field name="address_perso"/>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group//field[@name='address_home_id']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook" position="inside">
+                    <page name="الترقيات في الدرجة" string="الترقيات في الرتبة">
+                        <tree>
+                            <field name="promotion_lines">
+                                <tree create="false" delete="false">
+                                    <field name="date_promotion"/>
+                                    <field name="grade_id"/>
+                                    <field name="date_grade"/>
+                                    <field name="duree"/>
+                                    <field name="grade_new_id"/>
+                                    <field name="date_new_grade"/>
+                                </tree>
+
+                            </field>
+                        </tree>
+                    </page>
+                </xpath>
+                <xpath expr="//form//sheet//notebook" position="inside">
+                    <page name="الترقيات في الرتبة" string="الترقيات في الدرجة">
+                        <tree>
+                            <field name="avancement_lines">
+                                <tree create="false" delete="false">
+                                    <field name="date_old_avancement"/>
+                                    <field name="ref"/>
+                                    <field name="groupe_old_id"/>
+                                    <field name="categorie_old_id"/>
+                                    <field name="echelon_old_id"/>
+                                    <field name="date_avancement"/>
+                                    <field name="duree"/>
+                                    <field name="groupe_new_id"/>
+                                    <field name="categorie_new_id"/>
+                                    <field name="echelon_new_id"/>
+                                </tree>
+
+                            </field>
+                        </tree>
+                    </page>
+                </xpath>
+
+                <xpath expr="//form//sheet//notebook" position="inside">
+
+                    <page name="Information Salariale" string="معلومات حول الراتب">
+                    </page>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page[@name='Information Salariale']" position="inside">
+
+                    <page name="معلومات حول الراتب" string="معلومات حول الراتب">
+
+                    </page>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page[@name='معلومات حول الراتب']" position="inside">
+                    <group>
+                        <group>
+                            <field name="date_avancement"/>
+                            <field name="ref"/>
+                            <field name="date_ref"/>
+                            <field name="code_type_fonction" invisible="1"/>
+                            <field name="grille_id"/>
+                            <field name="groupe_id"
+                                   attrs="{'invisible': ['|', ('code_type_fonction', '=', 'fonctionsuperieure'), ('code_type_fonction', '=', 'contractuel')]}"/>
+                            <field name="categorie_id"/>
+                            <field name="section_id"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'fonctionsuperieure')]}"/>
+                            <field name="indice_base"
+                                   attrs="{'invisible': ['|',('code_type_fonction', '!=', 'fonctionsuperieure'),('code_type_fonction', '!=', 'fonctionsuperieure')]}"/>
+                            <field name="indice_minimal"
+                                   attrs="{'invisible': ['|',('code_type_fonction', '=', 'fonctionsuperieure'),('code_type_fonction', '=', 'fonction')]}"/>
+                            <field name="echelon_id"
+                                   attrs="{'invisible': [('code_type_fonction', '=', 'contractuel')]}"/>
+                            <field name="point_indiciare"
+                                   attrs="{'invisible': [('code_type_fonction', '=', 'contractuel')]}"/>
+                            <field name="categorie_superieure_id"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'postesuperieure')]}"/>
+                            <field name="section_superieure_id"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'postesuperieure')]}"/>
+                            <field name="niveau_hierarchique_id"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'postesuperieure')]}"/>
+                            <field name="bonification_indiciaire"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'postesuperieure')]}"/>
+                             <field name="chef_bureau"
+                                   attrs="{'invisible': [('code_type_fonction', '!=', 'fonctionsuperieure')]}"/>
+                            <field name="niveau_hirerachique_chef_Bureau"
+                                   attrs="{'invisible': [('chef_bureau', '!=', True)]}"/>
+                            <field name="wage" readonly="1"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//form//sheet//notebook" position="inside">
+                    <page string="قائمة الملفات">
+                        <field name="formation_file_lines">
+                            <tree editable="bottom">
+                                <field name="type_file_id" domain="[('type_file', '=', 'employe')]"/>
+                                <field name="description_fichier"/>
+                                <field name="fichier"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+
+            </field>
+
+        </record>
+
+
+        <!--        <record model="ir.actions.act_window" id="action_ressource_humaine">-->
+        <!--            <field name="name">employee</field>-->
+        <!--            <field name="res_model">hr.employee</field>-->
+        <!--            <field name="view_type">form</field>-->
+        <!--            <field name="view_mode">tree,form</field>-->
+        <!--            <field name="view_id" ref="hr.view_employee_tree"/>-->
+        <!--        </record>-->
+
+        <record id="action_ressource_humaine" model="ir.actions.act_window">
+            <field name="name">emloyee</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem name="Ressource Humaine" id="ressource_humaine.menu_root"
+                  web_icon="ressource_humaine,description/icon.png"
+                  action="action_employee_dashboard"/>
+        <menuitem name="Personnel" id="employee_gestion" parent="ressource_humaine.menu_root" sequence="1"/>
+        <menuitem name="Suivi Personnel" id="suivi_personnel_id" parent="ressource_humaine.menu_root" sequence="2"/>
+        <menuitem name="Promotion" id="promotion_id" parent="ressource_humaine.menu_root" sequence="3"/>
+        <menuitem name="Formation" id="formation_id" parent="ressource_humaine.menu_root" sequence="5"/>
+        <menuitem name="Médecine Travail" id="medecine_travai_id" parent="ressource_humaine.menu_root" sequence="6"/>
+        <menuitem name="Recrutement" id="recrutement_id" parent="ressource_humaine.menu_root" sequence="7"/>
+        <menuitem name="Reporting" id="reporting_id" parent="ressource_humaine.menu_root" sequence="10"/>
+        <menuitem name="Référentiels" id="referentiel_id" parent="ressource_humaine.menu_root" sequence="20"/>
+
+        <menuitem name="Information Employee" id="ressource_humaine_employee_info" parent="employee_gestion"/>
+
+        <menuitem name="Employee" id="ressource_humaine_employee" parent="ressource_humaine_employee_info"
+                  action="action_ressource_humaine"/>
+
+
+        <menuitem
+                name="Tableau de bord"
+                parent="ressource_humaine.menu_root"
+                action="action_employee_dashboard"
+                sequence="15"
+                id="menu_tableau_de_bord"/>
+
+    </data>
+
+</odoo>

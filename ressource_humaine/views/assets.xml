@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Reference the custom CSS file -->
+        <template id="assets_backend" name="web_responsive RTL assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="application/javascript"
+                    src="/ressource_humaine\static\lib\moment\locale\ar-sa.js"
+                    />
+            </xpath>
+        </template>
+    </data>
+</odoo>

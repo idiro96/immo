@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <template id="web_assets_backend_ext" name="test_new_api backend assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                    src="/static/src/js/ar-dz.js"/>
+        </xpath>
+        </template>
+</odoo>

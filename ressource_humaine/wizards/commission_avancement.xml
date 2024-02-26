@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="commission_avancement_liste">
+            <field name="name">commission avancement</field>
+            <field name="model">commission.avancement</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="employee_id_lines">
+                           <tree editable="bottom">
+                             <field name="selection_employe"/>
+                             <field name="name"/>
+                             <field name="department_id"/>
+                             <field name="job_id"/>
+                           </tree>
+                    </field>
+                    <footer>
+                        <button name="valider_commission" string="تأكيد" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

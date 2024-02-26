@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_rh_prime_tree" model="ir.ui.view">
+        <field name="name">rh.prime.tree</field>
+        <field name="model">rh.prime</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_prime"/>
+                <field name="description_prime"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_prime_form" model="ir.ui.view">
+        <field name="name">rh.prime.form</field>
+        <field name="model">rh.prime</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code_prime"/>
+                        <field name="description_prime"/>
+                        <field name="montant_prime"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_prime" model="ir.actions.act_window">
+        <field name="name">Prime</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.prime</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création de la prime</p>
+        </field>
+    </record>
+            <menuitem name="Prime" id="ressource_humaine_prime" parent="ressource_humaine.menu_root"
+           action="action_rh_prime"/>
+</odoo>

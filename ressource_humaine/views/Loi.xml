@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_rh_loi_tree" model="ir.ui.view">
+        <field name="name">rh.loi.tree</field>
+        <field name="model">rh.loi</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="intitule_loi"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_loi_form" model="ir.ui.view">
+        <field name="name">rh.loi.form</field>
+        <field name="model">rh.loi</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="intitule_loi"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_loi" model="ir.actions.act_window">
+        <field name="name">LOI</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.loi</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'une loi</p>
+        </field>
+    </record>
+    <menuitem name="Loi" id="ressource_humaine_loi" parent="promotion_de_grade" sequence="4"
+           action="action_rh_loi"/>
+</odoo>

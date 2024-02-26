@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="droit_conge_liste">
+            <field name="name">droit aux conge</field>
+            <field name="model">droit.conge</field>
+            <field name="arch" type="xml">
+                <form>
+                      <group>
+                            <field name="boul" string="قائمة الاستحقاقات بدون تحديث"/>
+                        </group>
+
+                    <footer>
+                        <button name="actualiserDroitConge" string="تحديث إستحقاق العطلة" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

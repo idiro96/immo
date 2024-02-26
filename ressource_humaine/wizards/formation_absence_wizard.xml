@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="absence_formation_liste">
+            <field name="name">Formation Absence</field>
+            <field name="model">absence.formation</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <group>
+                       <field name="employee_name"/>
+                       <field name="date_absence"/>
+                    </group>
+                    <footer>
+                        <button name="absence_formation" string="تأكيد" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="absence_formation_action" model="ir.actions.act_window">
+            <field name="name">Formation absence</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">absence.formation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="absence_formation_liste"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

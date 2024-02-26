@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="planning_conge">
+        <t t-call="web.basic_layout">
+            <t t-call="ressource_humaine.report_header_custom"/>
+            <div class="page">
+                <div class="row">
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span style="display: inline-block;margin-left: 400px;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                الأمانة العامة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                مصلحة تسيير الموارد البشرية
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div style="text-align:center;font-size: 30px">
+                    <strong>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>/
+                        <span t-esc="context_timestamp(datetime.datetime.now() - relativedelta(years=1)).strftime('%Y')"/>
+                        جدول يتضمن رزنامة العطلة السنوية لسنة
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div style="text-align:center;font-size: 25px">
+                    <strong>
+                        الخاص بمصلحة
+                    <t t-esc="conge.department_id.name"/>
+                    </strong>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row" style="margin:30;">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>المستخلف في حالة ضرورة المصلحة</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>الملاحظة</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>تاريخ إستئناف العمل</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>المدة</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>تاريخ بداية العطلة</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>الإسم و اللقب</strong>
+                            </th>
+                            <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                <strong>الرقم</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-set="line_count" t-value="1"/>
+                    <tbody>
+                        <t t-foreach="employees" t-as="employee">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                    <span t-field="record.depreciation_date"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                    <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                    <span t-esc="'%.2f'%(record.amount)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+<!--                                    <span t-field="employee.days_off"/>-->
+                                </td>
+                                <td style="font-size:18px;text-align:right;border:2px solid black;">
+                                    <!--                                    <span t-esc="'%.2f'%(record.remaining_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="employee.name"/>
+                                </td>
+                                <td style="border:1px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>
+                                        <t t-esc="line_count"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <t t-set="line_count" t-value="line_count + 1"/>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>

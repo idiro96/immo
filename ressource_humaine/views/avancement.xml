@@ -1,0 +1,107 @@
+<odoo>
+    <record id="view_avancement_tree" model="ir.ui.view">
+        <field name="name">rh.avancement.tree</field>
+        <field name="model">rh.avancement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="date_avancement"/>
+
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_avancement_form" model="ir.ui.view">
+        <field name="name">rh.avancement.form</field>
+        <field name="model">rh.avancement</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight" attrs="{'invisible': [('id', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="date_avancement" required="1"/>
+                            <field name="date_comission" string="تاريخ إجتماع اللجنة"/>
+                            <field name="date_signature" string="تاريخ الامضاء"/>
+<!--                            <field name="avancement_wizard"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="قائمة الموظفين" attrs="{'invisible': [('id', '!=', False)]}">
+                            <field name="avancement_lines_wizard" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="employee_id" readonly="1"/>
+                                    <field name="birthday" readonly="1"/>
+                                    <field name="marital" readonly="1"/>
+                                    <field name="grade_id" readonly="1"/>
+                                    <field name="job_id" readonly="1"/>
+                                    <field name="echelon_old_id" readonly="1"/>
+                                    <field name="date_old_avancement" readonly="1"/>
+                                    <field name="echelon_new_id" readonly="1"/>
+                                    <field name="duree" readonly="1"/>
+                                    <field name="duree_lettre" readonly="1"/>
+                                    <field name="date_new_avancement" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page string="قائمة الموظفين" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="avancement_lines" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="employee_id" readonly="1"/>
+                                    <field name="birthday" readonly="1"/>
+                                    <field name="marital" readonly="1"/>
+                                    <field name="grade_id" readonly="1"/>
+                                    <field name="job_id" readonly="1"/>
+                                    <field name="echelon_old_id" readonly="1"/>
+                                    <field name="date_old_avancement" readonly="1"/>
+                                    <field name="echelon_new_id" readonly="1"/>
+                                    <field name="duree" readonly="1"/>
+                                    <field name="date_new_avancement" readonly="1"/>
+                                    <field name="code"/>
+                                    <field name="avancement_line_file_line"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="أعضاء اللجنة" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="choisir_commission_lines">
+                                <tree editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="department_id"/>
+                                    <field name="job_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                          <page string="قائمة الملفات" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="avancement_file_lines">
+                                <tree editable="bottom">
+                                    <field name="type_file_id" domain="[('type_file', '=', 'avancement')]"/>
+                                    <field name="description_fichier"/>
+                                    <field name="fichier"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_avancement" model="ir.actions.act_window">
+        <field name="name">avancement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.avancement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Creation avancement!</p>
+        </field>
+    </record>
+    <menuitem name="Avancement" id="avancement_id" parent="promotion_id" sequence="8"/>
+    <menuitem name="avancement" id="ressource_humaine_avancement" parent="avancement_id" sequence="10"
+              action="action_rh_avancement"/>
+</odoo>

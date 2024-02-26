@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="liste_nominatife_employee">
+        <t t-call="web.basic_layout">
+            <t t-call="ressource_humaine.report_header_custom"/>
+            <div class="page">
+                <div class="row">
+                    <div style="float:left;font-size : 20px;">
+                        <p>
+                            <strong>
+                                <!--                                <span t-field="docs.company_id.name"/>-->
+                            </strong>
+                        </p>
+                    </div>
+                    <br/>
+                    <br/>
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span style="display: inline-block;margin-left: 400px;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                الأمانة العامة
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                مصلحة تسيير الموارد البشرية
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div style="text-align:center;font-size: 25px">
+                    <strong>
+                        القائمة الإسمية للموظفين و العمال المهنيين
+                        و الأعوان المتعاقدين الموقوفة
+                        ........إلى غاية ...../12/
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;الوظائف العليا&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الوظيفة العليا
+                        :<span t-esc="employee_sup.job_id.name"/>
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_sup.categorie_superieure_id.intitule"/>
+                        : الصنف
+                        <span t-esc="employee_sup.section_superieure_id.intitule"/>
+                        : القسم
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_sup.job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_sup.job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_sup.job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في الرتبة الحالية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_sup" t-as="line">
+                                <tr>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <!--                                                                            <span t-field="line.employee_id"/>-->
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                        <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <span t-field="line.date_grade"/>
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <span t-esc="line.grade_id.intitule_grade"/>
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                        <span t-esc="line.date_entrer"/>
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <span t-field="line.birthday"/>
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                        <span t-esc="line.name"/>
+                                    </td>
+                                    <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                        <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                    </td>
+                                </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;المناصب العليا&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         المنصب
+                        :<span t-esc="employee_post_sup[0].job_id.name"/>
+                    </span>
+                    <br/>
+                        <span t-esc="employee_post_sup[0].categorie_superieure_id.intitule"/>
+                        : الصنف
+                        <span t-esc="employee_post_sup[0].section_superieure_id.intitule"/>
+                        : القسم
+                    <br/>
+                    <span>
+                        <span t-esc="employee_post_sup[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_post_sup[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_post_sup[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في الرتبة الحالية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_post_sup" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;الأساتذة&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+
+                        <t t-if="employee_enseignant and employee_enseignant[0].grade_id">
+                            :<span t-esc="employee_enseignant[0].grade_id.intitule_grade"/>
+                            الرتبة
+                        </t>
+                    </span>
+                    <br/>
+
+                        <t t-if="employee_enseignant and employee_enseignant[0].grade_id.categorie_id.intitule">
+                            :<span t-esc="employee_enseignant[0].grade_id.categorie_id.intitule"/>
+                            الصنف
+                        </t>
+                    <br/>
+                    <span>
+                        <t t-if="employee_enseignant and employee_enseignant[0].job_id.max_employee">
+                            <span t-esc="employee_enseignant[0].job_id.max_employee"/>
+                            : عدد المناصب المالية
+                        </t>
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_enseignant[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_enseignant[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في الرتبة الحالية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_enseignant" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;مظوفو التأطير&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+<!--                <div style="text-align: right;font-size:23px;">-->
+<!--                    <span>-->
+<!--                         الرتبة-->
+<!--                        :<span t-esc="employee_grade_a_excluded[0].grade_id.intitule_grade"/>-->
+<!--                    </span>-->
+<!--                    <br/>-->
+
+<!--                         الصنف-->
+<!--                        :<span t-esc="employee_grade_a_excluded[0].grade_id.categorie_id.intitule"/>-->
+<!--                    <br/>-->
+<!--                    <span>-->
+<!--                        <span t-esc="employee_grade_a_excluded[0].job_id.max_employee"/>-->
+<!--                        : عدد المناصب المالية-->
+
+<!--                    </span>-->
+<!--                    <br/>-->
+<!--                    <span>-->
+<!--                        <span t-esc="employee_grade_a_excluded[0].job_id.no_of_employee"/>-->
+<!--                        : عدد المناصب الحقيقة-->
+<!--                    </span>-->
+<!--                    <br/>-->
+<!--                    <span>-->
+<!--                        <span t-esc="employee_grade_a_excluded[0].job_id.nombre_de_postes_vacants"/>-->
+<!--                        : عدد المناصب الشاغرة-->
+<!--                    </span>-->
+<!--                    <br/>-->
+<!--                    <br/>-->
+<!--                </div>-->
+<!--                <div class="row" style="margin:30;">-->
+<!--                    <table style="width: 100%;">-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>الملاحظات</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>الوضعية الإدارية</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>الرتبة الأصلية</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>تاريخ أول توظيف بالمدرسة</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>تاريخ الميلاد</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>الإسم و اللقب</strong>-->
+<!--                                </th>-->
+<!--                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">-->
+<!--                                    <strong>الرقم التسلسلي</strong>-->
+<!--                                </th>-->
+
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            <tr t-foreach="employee_grade_a_excluded" t-as="line">-->
+<!--                            <tr>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    &lt;!&ndash;                                        <span t-field="line.employee_id"/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    &lt;!&ndash;                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">-->
+<!--                                    &lt;!&ndash;                                        <span t-esc="line.emphy_id.intitule_emphy"/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    <span t-field="line.date_grade"/>-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    <span t-esc="line.grade_id.intitule_grade"/>-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">-->
+<!--                                    <span t-esc="line.date_entrer"/>-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    <span t-field="line.birthday"/>-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">-->
+<!--                                    <span t-esc="line.name"/>-->
+<!--                                </td>-->
+<!--                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">-->
+<!--                                    &lt;!&ndash;                                        <span t-esc="line.emphy_id.intitule_emphy"/>&ndash;&gt;-->
+<!--                                </td>-->
+<!--                            </tr>-->
+
+<!--                            </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </div>-->
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;مظوفو التأطبيق&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_grade_b[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_grade_b[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_b[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_b[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_b[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_grade_b" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;مظوفو التحكيم&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_grade_c[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_grade_c[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_c[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_c[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_c[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_grade_c" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;مظوفو التنفيذ&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_grade_d[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_grade_d[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_grade_d" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;العمال المهنين&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_grade_d[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_grade_d[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_grade_d[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_grade_d" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;الأعوان المتعاقدين بالتوقيت الكامل (عقد غير محدد المدة)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_pleintemps_indeterminee[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_pleintemps_indeterminee[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_indeterminee[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_indeterminee[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_indeterminee[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_pleintemps_indeterminee" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;الأعوان المتعاقدين بالتوقيت الكامل (بعقد محدد المدة)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_pleintemps_determinee[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_pleintemps_determinee[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_determinee[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_determinee[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_pleintemps_determinee[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_pleintemps_determinee" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;العمال المتعاقدين بالتوقيت الجزئي(عقد غير محدد المدة)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_partiel_indeterminee[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_partiel_indeterminee[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_indeterminee[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_indeterminee[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_indeterminee[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الملاحظات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ آخر تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الوضعية الإدارية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ التعيين في منصب الشغل الحالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة الأصلية</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ أول توظيف بالمدرسة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="employee_partiel_indeterminee" t-as="line">
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.date_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.grade_id.intitule_grade"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <span t-esc="line.date_entrer"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-field="line.birthday"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;العمال المتعاقدين بالتوقيت الجزئي(عقد محدد المدة)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                         الرتبة
+                        :<span t-esc="employee_partiel_determinee[0].grade_id.intitule_grade"/>
+                    </span>
+                    <br/>
+
+                         الصنف
+                        :<span t-esc="employee_partiel_determinee[0].grade_id.categorie_id.intitule"/>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_determinee[0].job_id.max_employee"/>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_determinee[0].job_id.no_of_employee"/>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        <span t-esc="employee_partiel_determinee[0].job_id.nombre_de_postes_vacants"/>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;القائمة الإسمية للوضعيات القانونية (حالات الإستيداع)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                        : الوظيفة العليا
+                    </span>
+                    <br/>
+                    <span>
+                        : الصنف : القسم
+
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>السبب و عدد المرات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الإياب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الذهاب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>المدة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--                            <tr t-foreach="planning_surveillance_line" t-as="line">-->
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            <!--                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;">
+                    <strong>
+                        <span style="border: 1px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:20px">
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;القائمة الإسمية للوضعيات القانونية (حالات الإنتداب)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </span>
+                    </strong>
+                </div>
+                <div style="text-align: right;font-size:23px;">
+                    <span>
+                        : الوظيفة العليا
+                    </span>
+                    <br/>
+                    <span>
+                        : الصنف : القسم
+
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب المالية
+
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب الحقيقة
+                    </span>
+                    <br/>
+                    <span>
+                        : عدد المناصب الشاغرة
+                    </span>
+                    <br/>
+                    <br/>
+                </div>
+                <div class="row" style="margin:30;">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>السبب و عدد المرات</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الإياب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الذهاب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>رقم و تاريخ تأشيرة للمراقب المالي</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>المدة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرتبة</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>تاريخ الميلاد</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الإسم و اللقب</strong>
+                                </th>
+                                <th style="border:2px solid black;vertical-align:middle;text-align:center;background-color:#D3D3D3;font-size:18px;">
+                                    <strong>الرقم التسلسلي</strong>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--                            <tr t-foreach="planning_surveillance_line" t-as="line">-->
+                            <tr>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-field="line.employee_id"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:18px;">
+                                    <!--                                        <span t-esc="'%.2f'%(record.depreciated_value)"/>-->
+                                </td>
+                                <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
+                                    <!--                                        <span t-esc="line.emphy_id.intitule_emphy"/>-->
+                                </td>
+                            </tr>
+
+                            <!--                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="choisir_planning_liste">
+            <field name="name">Choisir Planning</field>
+            <field name="model">choisir.planning</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="employee_id_lines">
+                           <tree editable="bottom">
+                               <field name="selection_employe"/>
+                               <field name="name"/>
+                               <field name="emphy_id"/>
+                           </tree>
+                    </field>
+                    <footer>
+                        <button name="valider_planning" string="تأكيد الجدول" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

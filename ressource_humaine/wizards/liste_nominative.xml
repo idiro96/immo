@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+
+        <record id="view_liste_nominative" model="ir.ui.view">
+            <field name="name">liste.nominative.form</field>
+            <field name="model">liste.nominative</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <p>هل تريد طباعة وضعية التعداد النظري و الحقيقي ؟</p>
+                    </sheet>
+                    <footer>
+                        <button string="تجاهل" class="oe_link" special="cancel"/>
+                        <button name="print_report" string="طباعة" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="liste_nominative_action" model="ir.actions.act_window">
+            <field name="name">Liste Nominative</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">liste.nominative</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_liste_nominative"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Liste Nominative" id="liste_nominative_menu" parent="ressource_humaine.reporting_id"
+                  action="liste_nominative_action"/>
+
+    </data>
+</odoo>

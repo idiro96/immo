@@ -1,0 +1,85 @@
+<odoo>
+    <record id="view_rh_sanction_tree" model="ir.ui.view">
+        <field name="name">rh.sanction.tree</field>
+        <field name="model">rh.sanction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_sanction"/>
+                <field name="ref_pv_sanction"/>
+                <field name="date_pv_sanction"/>
+                <field name="num_decision_sanction"/>
+                <field name="date_decision_sanction"/>
+                <field name="type_faute_id"/>
+                <field name="type_sanction_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_rh_sanction_form" model="ir.ui.view">
+        <field name="name">rh.sanction.form</field>
+        <field name="model">rh.sanction</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight"/>
+                    <button name="action_confirm" type="object" string="تأكيد العقوبة" class="oe_highlight"
+                    attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" type="object" string="إلغاء العقوبة" class="oe_highlight"
+                    attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,refuse"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="code_sanction"/>
+                            <field name="ref_pv_sanction"/>
+                            <field name="date_pv_sanction"/>
+                            <field name="type_sanction_id" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="num_decision_sanction"/>
+                            <field name="date_decision_sanction"/>
+                            <field name="type_faute_id" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                       <page string="أعضاء اللجنة">
+                         <field name="choisir_commission_lines">
+                           <tree editable="bottom">
+                             <field name="employee_id"/>
+                             <field name="department_id"/>
+                             <field name="job_id"/>
+                           </tree>
+                         </field>
+                       </page>
+                        <page string="قائمة الملفات">
+                         <field name="sanction_file_lines">
+                           <tree editable="bottom">
+                             <field name="type_file_id" domain="[('type_file', '=', 'sanction')]"/>
+                             <field name="description_fichier"/>
+                             <field name="fichier"/>
+                           </tree>
+                         </field>
+                       </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_sanction" model="ir.actions.act_window">
+        <field name="name">Sanction</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.sanction</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first Sanction!</p>
+        </field>
+    </record>
+            <menuitem name="Sanction" id="ressource_humaine_sanction" parent="suivi_personnel_id" sequence="2"
+           action="action_rh_sanction"/>
+</odoo>

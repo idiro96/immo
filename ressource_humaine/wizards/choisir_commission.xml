@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="choisir_commission_liste">
+            <field name="name">Choisir Commission</field>
+            <field name="model">choisir.commission</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="employee_id_lines">
+                           <tree editable="bottom">
+                             <field name="selection_employe"/>
+                             <field name="name"/>
+                             <field name="department_id"/>
+                             <field name="job_id"/>
+                           </tree>
+                    </field>
+                    <footer>
+                        <button name="valider_commission" string="تأكيد اللجنة" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

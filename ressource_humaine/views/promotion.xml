@@ -1,0 +1,108 @@
+<odoo>
+    <record id="view_promotion_tree" model="ir.ui.view">
+        <field name="name">rh.promotion.tree</field>
+        <field name="model">rh.promotion</field>
+        <field name="arch" type="xml">
+
+
+            <tree>
+                <field name="code"/>
+                <field name="date_promotion" required="1"/>
+                <field name="date_examin_professionnel"/>
+
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_promotion_form" model="ir.ui.view">
+        <field name="name">rh.promotion.form</field>
+        <field name="model">rh.promotion</field>
+        <field name="arch" type="xml">
+            <form>
+                 <header>
+                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight" attrs="{'invisible': [('id', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="date_promotion" required="1"/>
+                            <field name="date_examin_professionnel"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="قائمة الموظفين" attrs="{'invisible': [('id', '!=', False)]}">
+                            <field name="promotion_lines_wizard">
+                                <tree editable="bottom">
+                                    <field name="employee_id" readonly="1"/>
+                                    <field name="birthday" readonly="1"/>
+                                    <field name="marital" readonly="1"/>
+                                    <field name="grade_id" readonly="1"/>
+                                    <field name="job_id" readonly="1"/>
+                                    <field name="date_grade" readonly="1"/>
+                                    <field name="grade_new_id" required="1"/>
+                                    <field name="duree" required="1"/>
+                                    <field name="date_new_grade" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="قائمة الموظفين" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="promotion_lines">
+                                <tree editable="bottom">
+                                    <field name="employee_id" readonly="1"/>
+                                    <field name="birthday" readonly="1"/>
+                                    <field name="marital" readonly="1"/>
+                                    <field name="grade_id" readonly="1"/>
+                                    <field name="job_id" readonly="1"/>
+                                    <field name="date_grade" readonly="1"/>
+                                    <field name="grade_new_id" readonly="1"/>
+                                    <field name="duree" readonly="1"/>
+                                    <field name="date_new_grade" readonly="1"/>
+                                    <field name="code_line"/>
+                                    <field name="promotion_line_file_line"/>
+<!--                                    <field name="imprimer" widget="toggle_button"/>-->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="قائمة الملفات" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="promotion_file_lines">
+                                <tree editable="bottom">
+                                    <field name="type_file_id" domain="[('type_file', '=', 'promotion')]"/>
+                                    <field name="description_fichier"/>
+                                    <field name="fichier"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="أعضاء اللجنة" attrs="{'invisible': [('id', '=', False)]}">
+                            <field name="choisir_commission_lines">
+                                <tree editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="department_id"/>
+                                    <field name="job_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_promotion" model="ir.actions.act_window">
+        <field name="name">promotion</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.promotion</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Creation promotion!</p>
+        </field>
+    </record>
+
+    <menuitem name="Promotion De Grade" id="promotion_de_grade" parent="promotion_id" sequence="1"/>
+
+
+    <menuitem name="promotion" id="ressource_humaine_promotion" parent="promotion_de_grade" sequence="3"
+              action="action_rh_promotion"/>
+</odoo>

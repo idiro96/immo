@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_cnas_header">
+            <div class="header">
+                <div class="row">
+                    <table class="" style="width:100%;">
+                        <tr class="text-center" style="background-color: #000099; color: white;">
+                            <td style="width:30%;" rowspan="3">
+                                <img src="/ressource_humaine/static/description/CNAS_logo.png"
+                                     style="width: 100px; height: auto;"/>
+                            </td>
+                            <td style="width:70%;">
+                                <strong>
+                                    وزارة العمل و التشغيل و الضمان الإجتماعي
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr class="text-center" style="background-color: #000099; color: white;">
+                            <td style="width:70%; font-size:18px">
+                                <strong>
+                                    الصندوق الوطني للتأمينات الإجتماعية للعمال الأجراء
+                                </strong>
+                            </td>
+                        </tr>
+                        <tr class="text-center" style="background-color: #000099; color: white;">
+                            <td style="width:70%;">
+                                <strong>
+                                    <spans>
+                                        Assurances Sociales
+                                    </spans>
+                                    <spans>
+                                        التأمينات الإجتماعية ـ
+                                    </spans>
+                                </strong>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

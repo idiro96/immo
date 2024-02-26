@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+
+<!--        &lt;!&ndash; Report Actions &ndash;&gt;-->
+<!--        <record id="action_liste_nominatife_employee" model="ir.actions.report">-->
+<!--            <field name="name">liste nominatife employee</field>-->
+<!--            <field name="report_type">qweb-html</field>-->
+<!--            <field name="model">hr.employee</field>-->
+<!--            <field name="report_name">ressource_humaine.liste_nominatife_employee</field>-->
+<!--            <field name="print_report_name">Report 1</field>-->
+<!--        </record>-->
+
+        <menuitem id="liste_nominatife_employee2" name="liste nominatife employee" parent="ressource_humaine.reporting_id"
+                  action="action_liste_nominatife_employee"/>
+
+    </data>
+</odoo>

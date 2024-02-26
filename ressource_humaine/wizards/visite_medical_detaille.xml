@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="visite_medical_detaille_liste">
+            <field name="name">Visite Medical Detaille</field>
+            <field name="model">visite.medical.detaille</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                       <field name="date_visite_medicale"/>
+                    </group>
+
+                    <field name="employee_id_lines">
+                           <tree editable="bottom">
+                             <field name="selection_employe"/>
+                             <field name="name"/>
+                             <field name="work_phone"/>
+                           </tree>
+                    </field>
+                    <footer>
+                        <button name="detaille_viste_medical" string="تأكيد" type="object"
+                                class="btn-danger text-uppercase"/>
+                        <button string="إلغاء" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="visite_medical_detaille_action" model="ir.actions.act_window">
+            <field name="name">Visite Medical Detaille_</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">visite.medical.detaille</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="visite_medical_detaille_liste"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

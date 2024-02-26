@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_rh_type_fonction_tree" model="ir.ui.view">
+        <field name="name">Type Fonction tree</field>
+        <field name="model">rh.type.fonction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code_type_fonction"/>
+                <field name="intitule_type_fonction"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_rh_type_fonction_form" model="ir.ui.view">
+        <field name="name">rh.type.fonction.form</field>
+        <field name="model">rh.type.fonction</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                        <group>
+                               <field name="code_type_fonction"/>
+                            <field name="intitule_type_fonction"/>
+                        </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_rh_type_fonction" model="ir.actions.act_window">
+        <field name="name">Type fonction</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rh.type.fonction</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Création d'un type dun fonction</p>
+        </field>
+    </record>
+            <menuitem name="Type Fonction" id="ressource_humaine_type_fonction" parent="recrutement_id"
+           action="action_rh_type_fonction"/>
+</odoo>

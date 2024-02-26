@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+            id="report_titre_conge"
+            string="Titre Conge"
+            model="hr.holidays"
+            report_type="qweb-html"
+            name="ressource_humaine.titre_conge"
+            file="ressource_humaine.titre_conge"/>
+
+    <report
+            id="action_attestation_travail_report"
+            string="Attestation de Travail"
+            model="attestation.travail"
+            report_type="qweb-html"
+            name="ressource_humaine.attestation_travail_report"
+            file="ressource_humaine.attestation_travail_report"/>
+
+    <report
+            id="report_note_conge"
+            string="Note Conge"
+            model="droit.avencement"
+            report_type="qweb-html"
+            name="ressource_humaine.note_conge"
+            file="ressource_humaine.note_conge"/>
+
+    <report
+            id="report_pv_instalation"
+            string="PV Instalation"
+            model="hr.contract"
+            report_type="qweb-html"
+            name="ressource_humaine.pv_instalation"
+            file="ressource_humaine.pv_instalation"/>
+
+    <report
+            id="report_planning_conge"
+            string="Planning Conge"
+            model="planning.conge"
+            report_type="qweb-html"
+            name="ressource_humaine.planning_conge"
+            file="ressource_humaine.planning_conge"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_basic"/>
+
+    <report
+            id="action_renew_contract_report"
+            string="Renouvellement Contrat"
+            model="hr.contract"
+            report_type="qweb-html"
+            name="ressource_humaine.renew_contract_report"
+            file="ressource_humaine.renew_contract_report"/>
+
+    <report
+            id="action_attestation_travail_fr_report"
+            model="attestation.travail"
+            string="Attestation de Travail En Français"
+            report_type="qweb-html"
+            name="ressource_humaine.attestation_travail_fr_report"
+            file="ressource_humaine.attestation_travail_fr_report"
+    />
+
+    <report
+            id="action_cont_indete_tem_part_report"
+            model="hr.contract"
+            string="Contrat Indéterminé à Temps Partiel"
+            report_type="qweb-html"
+            name="ressource_humaine.cont_indete_tem_part_report"
+            file="ressource_humaine.cont_indete_tem_part_report"
+    />
+    <report
+            id="action_hr_contract_report"
+            model="hr.employee"
+            string="Attestation de Travail et de Salaire"
+            report_type="qweb-pdf"
+            name="ressource_humaine.hr_contract_report"
+            file="ressource_humaine.hr_contract_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait"
+    />
+    <report
+            id="action_droit_avancement_report"
+            string="Extrait du siège approuvant le calendrier des promotions de grade"
+            model="rh.avancement"
+            report_type="qweb-html"
+            name="ressource_humaine.droit_avancement_report"
+            file="ressource_humaine.droit_avancementt_report"/>
+
+    <report
+            id="action_hr_tableau_promotion"
+            model="rh.avencement.droit"
+            string="جدول ترقية في الدرجة"
+            report_type="qweb-html"
+            name="ressource_humaine.tableau_promotion"
+            file="جدول ترقية في الرتبة"
+            paperformat="ressource_humaine.paperformat_european_a4_landscape"
+    />
+
+    <report
+            id="action_hr_tableau_des_promotions"
+            model="rh.promotion.droit"
+            string="جدول ترقية في الرتبة"
+            report_type="qweb-html"
+            name="ressource_humaine.tableau_des_promotions"
+            file="جدول ترقية في الدرجة"
+            paperformat="ressource_humaine.paperformat_european_a4_landscape"
+    />
+
+    <report
+            id="action_liste_employee"
+            model="hr.employee"
+            string="العمال و الموظفين"
+            report_type="qweb-html"
+            name="ressource_humaine.liste_employee"
+            file="العمال و الموظفين"
+            paperformat="ressource_humaine.paperformat_european_a4_landscape"
+    />
+
+    <report
+            id="action_liste_employee_xlsx"
+            model="hr.employee"
+            string="العمال و الموظفين Excel"
+            report_type="xlsx"
+            name="ressource_humaine.liste_employee_xlsx"
+            file="العمال و الموظفين"
+    />
+    <report
+            id="action_planning_surveillance"
+            model="rh.planning"
+            string="جدول المراقبة"
+            report_type="qweb-html"
+            name="ressource_humaine.planning_surveillance_report"
+            file="ressource_humaine.planning_surveillance_report"
+    />
+    <report
+            id="action_liste_nominatife"
+            model="liste.nominatifs"
+            string="                        القائمة الإسمية للموظفين و العمال المهنيين
+                        و الأعوان المتعاقدين الموقوفة"
+            report_type="qweb-html"
+            name="ressource_humaine.liste_nominatife_employee"
+            file="ressource_humaine.liste_nominatife_employee"
+    />
+
+    <report
+            id="action_fiche_renseignement_report"
+            string="Fiche de renseignement"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            name="ressource_humaine.fiche_renseignement_report"
+            file="ressource_humaine.fiche_renseignement_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait"/>
+
+    <report
+            id="action_tableau_des_promotions_xlsx"
+            model="rh.promotion.droit"
+            string="جدول ترقية في الرتبة Excel"
+            report_type="xlsx"
+            name="ressource_humaine.tableau_des_promotions_xlsx"
+            file="جدول ترقية"/>
+
+    <report
+            id="action_liste_nominative"
+            string="وضعية التعداد النظري و الحقيقي"
+            model="liste.nominative"
+            report_type="qweb-html"
+            name="ressource_humaine.liste_nominative"
+            file="وضعية التعداد النظري و الحقيقي"/>
+
+    <report
+            id="retraite_report"
+            model="rh.fin.relation"
+            string="retraite"
+            report_type="qweb-html"
+            name="ressource_humaine.rapport_retraite"
+            file="ressource_humaine.rapport_retraite"/>
+
+    <report
+            id="action_attestation_cessation"
+            model="hr.employee"
+            string="Attestation de cessation d'activité salariée"
+            report_type="qweb-pdf"
+            name="ressource_humaine.attestation_cessation"
+            file="ressource_humaine.attestation_cessation"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait"/>
+
+    <report
+            id="action_notice_planning_surveillance"
+            string="تسخيرة"
+            model="programme.employee"
+            report_type="qweb-html"
+            name="ressource_humaine.notice_planning_surveillance_report"
+            file="ressource_humaine.notice_planning_surveillance_report"/>
+    <!--            file="تسخيرة"/>-->
+
+    <report
+            id="action_tableau_promotion_xlsx"
+            model="rh.avencement.droit"
+            string="جدول ترقية في الدرجة Excel"
+            report_type="xlsx"
+            name="ressource_humaine.tableau_promotion_xlsx"
+            file="جدول ترقية في الدرجة"/>
+</odoo>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="renew_contract_report">
+            <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom"/>
+                <div class="page">
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>
+                                المدرسة الوطنية للإدارة
+                            </span>
+                            <br/>
+                            <span>
+                                المدير العام
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>&#160;
+                            <span style="display: inline-block;">
+                                مؤرخ في
+                            </span>&#160;
+                            <span>
+                                ...............&#160;مقرر رقم
+                            </span>
+                            <br/>
+                            <span>
+                                المتضمن تجـديد عقد عمل
+                            </span>
+                        </div>
+                        <br/>
+                        <br/>
+                    </strong>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>
+                            ،إن الـسيد المدير العام للمدرسة الوطنية للإدارة
+                        </span>
+                        <br/>
+                        <span>
+                            ـ بمقتضى الأمر رقم 06ـ03 المؤرخ في 19 جمادى الثانية عام 1427
+                            الموافق ل 15 يوليو سنة 2006 المتضمن القانون الأساسي العام للوظيفة العمومية
+                        </span>
+                        <br/>
+                        <span>
+                            ـ و بمقتضى المرسوم رقم 64ـ155 المؤرخ في 8 يوليو 1964، المتضمن إنشاء المدرسة الوطنية للإدارة،
+                            المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span>
+                            ـ و بمقتضى المرسوم الرئاسي رقم 07ـ308 المؤرخ في 29 سبتمبر 2007 المحدد لكيفيات توظيف الأعوان
+                            المتعاقدين و حقوقهم
+                            وواجباتهم و العناصر المشكلة لرواتبهم و القواعد المتعلقة بتسييرهم و كذا النظام المطبق عليهم
+                        </span>
+                        <br/>
+                        <span>
+                            ـ و بمقتضى المرسوم التنفذي رقم 90ـ99 المؤرخ في أول رمضان عام 1410
+                            الموافق 27 مارس سنة 1990 المتعلق بسلطة التعيين و التسيير الإداري بالنسبة للموظفيين
+                            و أعوان الإدارة المركزية و الولايات و البلديات و المؤسسات العمومية ذات الطابع الإداري
+                        </span>
+                        <br/>
+                        <t t-if="contract.employee_id.gender == 'female'">
+                            <span>
+                                  &#160;ـ و بناء على
+                            <t t-esc="contract.type_id.name"/>
+                                رقم .......... المؤرخ في
+<!--                            <t t-esc="contract.name"/>&#160;-->
+                            <t t-esc="contract.date_start"/>&#160;
+                                &#160;الخاص بالسيدة
+                            <t t-esc="contract.employee_id.name"/>
+                                بصفتها
+                            <t t-esc="contract.employee_id.grade_id.intitule_grade"/>
+                                ، لمدة محددة بسنة واحدة ، إبتداأ من تاريخ
+                            <t t-esc="contract.date_end"/>&#160;
+                            </span>
+                        </t>
+                        <t t-if="not contract.employee_id.gender or contract.employee_id.gender == 'male'">
+                            <span>
+                                  &#160;ـ و بناء على
+                            <t t-esc="contract.type_id.name"/>
+                                رقم .......... المؤرخ في
+<!--                            <t t-esc="contract.name"/>&#160;-->
+                            <t t-esc="contract.date_start"/>&#160;
+                                &#160;الخاص بالسيد
+                            <t t-esc="contract.employee_id.name"/>
+                                بصفته
+                            <t t-esc="contract.employee_id.grade_id.intitule_grade"/>
+                                ، لمدة محددة بسنة واحدة ، إبتداأ من تاريخ
+                            <t t-esc="contract.date_end"/>&#160;
+                            </span>
+                        </t>
+                        <br/>
+                        <br/>
+                        <span>
+                            ،ـو بإقتراح من السـيد الأمين العام للمدرسة الوطنية للإدارة
+                        </span>
+                    </div>
+                    <br/>
+                    <strong>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span>
+                                يقـــــــرر
+                            </span>
+                        </div>
+                    </strong>
+                    <br/>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span style="display: inline-block;">
+                            <strong>
+                                <u>
+                                    المادة الأولى:
+                                </u>
+                            </strong>
+                            <t t-if="contract.employee_id.gender == 'female'">
+                                <span>
+                                    يجدد عقد عمل السيدة لشغل منصب عاملة مهنية من المستوى الأول بالتوقيت الكامل لمدة سنة
+                                    واحدة،
+                                    إبتداءا من تاريخ ................
+                                </span>
+                            </t>
+                            <t t-if="not contract.employee_id.gender or contract.employee_id.gender == 'male'">
+                                <span>
+                                    يجدد عقد عمل السيد لشغل منصب عامل مهني من المستوى الأول بالتوقيت الكامل لمدة سنة
+                                    واحدة،
+                                    إبتداءا من تاريخ ................
+                                </span>
+                            </t>
+                        </span>
+                        <br/>
+                        <span style="display: inline-block;">
+                            <strong>
+                                <u>
+                                    المادة 02:
+                                </u>
+                            </strong>
+                            يكلف السـيد الأمين العام للمدرسة بتنفيذ هذا المقرر الذي سينشر في سجل المقررات الإدارية
+                            للمدرسة الوطنية للإدارة
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="recruitment_graph" model="ir.ui.view">
+        <field name="name">graph des Recrutements</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <graph string="Recrutement par an" type="line">
+                <field name="date_entrer" interval="year"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="distribution_graph" model="ir.ui.view">
+        <field name="name">Graph de Distribution</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <graph string="Graph de Distribution" type="pie">
+                <field name="gender" string="Genre"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="wage_graph" model="ir.ui.view">
+        <field name="name">Coût des salaires</field>
+        <field name="model">hr.contract</field>
+        <field name="arch" type="xml">
+            <graph string="Coût des Salaires" type="pie">
+                <field name="department_id" string="Département" group="1"/>
+                <field name="wage" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="employee_count_pie_chart" model="ir.ui.view">
+        <field name="name">Nombre d'employés par tranche des salaire</field>
+        <field name="model">hr.contract</field>
+        <field name="arch" type="xml">
+            <graph string="Nombre d'employés par tranche des salaires" type="bar">
+                <field name="wage_range" string="Tranche de Salaire"/>
+                <field name="id" type="measure" operator="count"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="employee_age_bar_chart" model="ir.ui.view">
+        <field name="name">Nombre d'employés par tranche d'âge</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <graph string="عدد الموظفين حسب الفئة العمرية" type="bar">
+                <field name="age_range" string="الفئة العمرية"/>
+                <field name="id" type="measure" operator="count"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="absence_graph" model="ir.ui.view">
+        <field name="name">graph des Absences</field>
+        <field name="model">rh.absence</field>
+        <field name="arch" type="xml">
+            <graph string="Absences par mois" type="bar">
+                <field name="date_debut_absence" type="row" interval="month"/>
+                <field name="nbr_jours_absence" type="measure" operator="+"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="employee_absence_graph" model="ir.ui.view">
+        <field name="name">graph des Absences par Employee</field>
+        <field name="model">rh.absence</field>
+        <field name="arch" type="xml">
+            <graph string="Absences des employés" type="pie">
+                <field name="employee_id" string="Employés"/>
+                <field name="nbr_jours_absence" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!--    <record id="act_conge" model="ir.actions.act_window">-->
+<!--        <field name="name">Planning des Congés</field>-->
+<!--        <field name="res_model">hr.holidays</field>-->
+<!--        <field name="view_mode">calendar,tree,form</field>-->
+<!--    </record>-->
+
+    <record id="act_male_employees" model="ir.actions.act_window">
+        <field name="name">Liste des Employés (Hommes)</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('gender', '=', 'male')]</field>
+    </record>
+
+    <record id="act_female_employees" model="ir.actions.act_window">
+        <field name="name">Liste des Employées (Femmes)</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('gender', '=', 'female')]</field>
+    </record>
+
+    <record id="act_employee_distribution" model="ir.actions.act_window">
+        <field name="name">Distribution des Employées</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.distribution_graph"/>
+    </record>
+
+    <record id="act_employee_recruitment" model="ir.actions.act_window">
+        <field name="name">Recruitment des Employées</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.recruitment_graph"/>
+    </record>
+
+    <record id="act_wage_graph" model="ir.actions.act_window">
+        <field name="name">Coût des Salaires</field>
+        <field name="res_model">hr.contract</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.wage_graph"/>
+    </record>
+
+    <record id="act_employee_count_pie_chart" model="ir.actions.act_window">
+        <field name="name">Nobmbre d'employés par tranche des salaire</field>
+        <field name="res_model">hr.contract</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.employee_count_pie_chart"/>
+    </record>
+
+    <record id="act_employee_age_bar_chart" model="ir.actions.act_window">
+        <field name="name">Nombre d'employés par tranche d'âge</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.employee_age_bar_chart"/>
+    </record>
+
+    <record id="act_absence" model="ir.actions.act_window">
+        <field name="name">Absences</field>
+        <field name="res_model">rh.absence</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.absence_graph"/>
+    </record>
+
+    <record id="act_employee_absence" model="ir.actions.act_window">
+        <field name="name">Absence des Employées</field>
+        <field name="res_model">rh.absence</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="ressource_humaine.employee_absence_graph"/>
+    </record>
+
+    <record id="dashboard_form_view" model="ir.ui.view">
+        <field name="name">Formulaire du Tableau de Bord</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tableau de bord">
+                <board style="1-1-1">
+                    <column>
+                        <action
+                                string="قائمة الموظفين (رجال)"
+                                name="%(ressource_humaine.act_male_employees)d"/>
+                        <action
+                                string="قائمة الموظفين (نساء)"
+                                name="%(ressource_humaine.act_female_employees)d"/>
+                    </column>
+                    <column>
+                        <action
+                                string="توزيع الموظفين"
+                                name="%(ressource_humaine.act_employee_distribution)d"/>
+                        <action
+                            string="عدد الموظفين حسب الفئة العمرية"
+                            name="%(ressource_humaine.act_employee_age_bar_chart)d"/>
+                        <action
+                            string="الغيابات"
+                            name="%(ressource_humaine.act_absence)d"/>
+                        <action
+                            string="تكلفة الاجور"
+                            name="%(ressource_humaine.act_wage_graph)d"/>
+                    </column>
+                    <column>
+                        <action
+                            string="التوظيف سنويا"
+                            name="%(ressource_humaine.act_employee_recruitment)d"/>
+                        <action
+                            string="عدد الموظفين لكل شريحة الاجور"
+                            name="%(ressource_humaine.act_employee_count_pie_chart)d"/>
+                        <action
+                            string="غيابات الموظفين"
+                            name="%(ressource_humaine.act_employee_absence)d"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_dashboard" model="ir.actions.act_window">
+        <field name="name">Tableau de Bord</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="dashboard_form_view"/>
+    </record>
+
+</odoo>

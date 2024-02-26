@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pv_instalation">
+        <t t-call="web.basic_layout">
+            <t t-call="ressource_humaine.report_header_custom"/>
+            <div class="page">
+                <div class="row">
+                    <div style="float:left;font-size : 20px;">
+                        <p>
+                            <strong>
+                                <!--                                <span t-field="docs.company_id.name"/>-->
+                            </strong>
+                        </p>
+                    </div>
+                    <br/>
+                    <br/>
+                    <strong style="width: 250px; font-size: 20px; float: right; line-height: 3;">
+                        <div class="text-right">
+                            <t t-esc="company.name"/>
+                        </div>
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style="text-align:center;font-size: 40px">
+                    <strong>
+                        محضر تنصيب
+                    </strong>
+                </div>
+                <br/>
+                <br/>
+                <div class="text-right" style="text-align:center;font-size:23px;text-align: right;">
+                    <p>
+                        <br/>
+                        <br/>
+                        <t t-esc="arabic_date"/>
+                        ، نحـن السـيد المدير
+                        العـام للمـدرسة
+                        <span>
+                            <t t-if="not superior_employee.name">.....................................</t>
+                            <t t-esc="superior_employee.name" t-if="superior_employee.name"/>
+                        </span>
+                        <t t-if="not pv_insta.employee_id.gender or pv_insta.employee_id.gender == 'male'">
+                        قـد نصـبنا السـيد
+                        </t>
+                        <t t-if="pv_insta.employee_id.gender == 'female'">
+                        قـد نصـبنا السـيدة
+                        </t>
+                        <span>
+                            <t t-esc="pv_insta.employee_id.name"/>
+                        </span>
+                       <t t-if="not pv_insta.employee_id.gender or pv_insta.employee_id.gender == 'male'">
+                            بصفتـه
+                            <span>
+                                <t t-esc="pv_insta.employee_id.grade_id.intitule_grade"/>
+                            </span>
+                            بالمدرسة الوطنية للإدارة، وقد أمض معنا هذا المحضر في
+                            اليوم و الشهر و السنة المشار إليهم أعلاه
+                        </t>
+                        <t t-if="pv_insta.employee_id.gender == 'female'">
+                            بصفتـها
+                            <span>
+                                <t t-esc="pv_insta.employee_id.grade_id.intitule_grade"/>
+                            </span>
+                            بالمدرسة الوطنية للإدارة، وقد أمضت معنا هذا المحضر في
+                            اليوم و الشهر و السنة المشار إليها أعلاه
+                        </t>
+                        <br/>
+                        <br/>
+                    </p>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <t t-if="pv_insta.employee_id.gender == 'female'">
+                        <div style="float:left;font-size:20px;">
+                            <p>
+                                <strong>المعنية بالأمر</strong>
+                            </p>
+                        </div>
+                    </t>
+                    <t t-if="not pv_insta.employee_id.gender or pv_insta.employee_id.gender == 'male'">
+                        <div style="float:left;font-size:20px;">
+                            <p>
+                                <strong>المعني بالأمر</strong>
+                            </p>
+                        </div>
+                    </t>
+                    <div style="float:right;font-size:20px;">
+                        <p>
+                            <strong>المدير العام</strong>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="rapport_retraite">
+            <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom"/>
+                <div>
+                    <strong>
+                        <!--                         <div style="font-size: 20px;text-align: left;"> -->
+                        <!--                             &lt;!&ndash;                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>&ndash;&gt; -->
+                        <!--                             <span style="display: inline-block;"> -->
+                        <!--                                 الجزائر في -->
+                        <!--                             </span> -->
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>المدرسة الوطنية للإدارة</span>
+                        </div>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>المدير العام</span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span>مقرر رقم</span>
+                            <span>
+                                <t t-esc="nom_employee.num_decision_fin_relation"/>
+                            </span>
+                            <span>مؤرخ في</span>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        </div>
+                        <br/>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span>يتضمن الاحالة على التقاعد</span>
+                            <br/>
+                            <br/>
+                        </div>
+                    </strong>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>،ان السيد المدير العام للمدرسة الوطنية للادارة</span>
+                    </div>
+                    <br/>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span style="display: inline-block;">ـ بمقتضى القانون رقم 83ـ12 المؤرخ في 21 رمضان عام 1403
+                            الموافق ل 02 يوليو سنة 1983 ، المتعلق بالتقاعد المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span style="display: inline-block;">ـ بمقتضى الأمر رقم 06ـ03 المؤرخ في 19 جمادى الثانية عام
+                            1427 الموافق ل 15 يوليو سنة 2006 و المتضمن القانون الأساسي العام للوظيفة العمومية، المتمم
+                        </span>
+                        <br/>
+                        <span>ـ و بمقتضى المرسوم رقم 64ـ155 المؤرخ في 27 محرم عام 1384 الموافق 8 يونيو 1964، المتضمن
+                            إنشاء المدرسة الوطنية للإدارة المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span>ـ بمقتضى المرسوم الرئاسي رقم 07ـ304 المؤرخ في 17 رمضان عام 1428 الموافق 29 سبتمبر سنة
+                            2007، الذي يحدد الشبكة الإستدلالية لمرتبات الموظفين و نظام دفع رواتبهم المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span>ـ و بمقتضى المرسوم التنفذي رقم 90ـ99 المؤرخ في أول رمضان عام 1410 الموافق 27 مارس سنة 1990
+                            المتعلق بسلطة التعيين و التسيير الإداري، بالنسبة للموظفيين و أعوان الإدارة المركزية
+                            والولايات و البلديات و المؤسسات العمومية ذات الطابع الإداري
+                        </span>
+                        <br/>
+                        <span style="display: inline-block;">
+                             - و بمقتضى
+                            <t t-esc="nom_employee.employee_id.grade_id.loi_id.intitule_loi"/>
+                        </span>
+                        <br/>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>ـ و بناء على المقرر رقم</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="promotion.code_line"/>
+                        </span>
+                        <span>مؤرخ في</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="promotion.date_creation"/>
+                        </span>
+                        <t t-if="nom_employee.employee_id.gender== 'male' ">
+                            <span>المتضمن ترقية السيد</span>
+                        </t>
+                        <t t-if="nom_employee.employee_id.gender== 'female' ">
+                            <span>المتضمن ترقية السيدة</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.name"/>
+                        </span>
+                        <span>عن طريق الامتحان المهني في رتبة</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.grade_id.intitule_grade"/>
+                        </span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.categorie_id.intitule"/>
+                        </span>
+                        <span>بالمدرسة إبتداء من تاريخ</span>
+                        <span style="display: inline;">
+                            <t t-esc="date_grade"/>
+                        </span>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>ـ و بناء على مقرر جماعي رقم</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.code_promotion"/>
+                        </span>
+                        <span>مؤرخ في</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="promo.date_creation"/>
+                        </span>
+                        <t t-if="nom_employee.employee_id.gender== 'male' ">
+                            <span>المتعلق باعادة ترتيب الموظفين، و المتضمن ترتيب المعني</span>
+                        </t>
+                        <t t-if="nom_employee.employee_id.gender== 'female' ">
+                            <span>المتعلق باعادة ترتيب الموظفين، و المتضمن ترتيب المعنية</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.name"/>
+                        </span>
+                        <span>في رتبة</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.grade_id.intitule_grade"/>
+                        </span>
+                        <span>
+                            من
+                        </span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.categorie_id.intitule"/>
+                        </span>
+                        <span>الرقم الاستدلالي</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.point_indiciare"/>
+                        </span>
+                        <span>إبتداء من تاريخ</span>
+                        <span style="display: inline;">
+                            <t t-esc="nom_employee.date_promotion"/>
+                        </span>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <t t-if="nom_employee.employee_id.gender== 'male' ">
+                            <span>ـ و بناء على بطاقة التبليغ المسبق للصندوق الوطني للتقاعد الخاص بالمعني</span>
+                        </t>
+                        <t t-if="nom_employee.employee_id.gender== 'female' ">
+                            <span>ـ و بناء على بطاقة التبليغ المسبق للصندوق الوطني للتقاعد الخاص بالمعنية</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.name"/>
+                            <!-- disctionnaire.field_dictionnaire.field_relation -->
+                        </span>
+                        <span>المؤرخة في</span>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        <span>
+                            <t t-esc="nom_employee.date_cnas"/>
+                        </span>
+                        <span>رقم المنحة</span>
+                        <br/>
+                        <span>ـ باقتراح من السيد الامين العام للمدرسة الوطنية للادارة</span>
+                        <br/>
+                        <br/>
+                    </div>
+                    <strong>
+                        <div style="font-size: 20px;text-align:center;">
+                            <span>يقرر</span>
+                            <br/>
+                            <br/>
+                        </div>
+                    </strong>
+                    <div style="font-size: 20px;text-align: right;">
+                        <t t-if="nom_employee.employee_id.gender== 'male' ">
+                            <span>المادة الأولى : يحال السيد</span>
+                        </t>
+                        <t t-if="nom_employee.employee_id.gender== 'female' ">
+                            <span>المادة الأولى : يحال السيدة</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.name"/>
+                            <!-- disctionnaire.field_dictionnaire.field_relation -->
+                        </span>
+                        <t t-if="nom_employee.employee_id.gender== 'male' ">
+                            <span>بصفته</span>
+                        </t>
+                        <t t-if="nom_employee.employee_id.gender== 'female' ">
+                            <span>بصفتها</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.grade_id.intitule_grade"/>
+                        </span>
+                        <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.categorie_id.intitule"/>
+                        </span>
+                        <span>على التقاعد ابتداء من اليوم الموالي لتاريخ تبليغه بمقرر الاستفادة من معاش التقاعد</span>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>المادة الثانية : يكلف السيد الامين العام للمدرسة بتنفيذ هذا المقرر الذي سينشر في سجل
+                            المقرارات الإدارية للمدرسة الوطنية للإدارة
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

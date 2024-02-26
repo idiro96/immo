@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="hr_contract_report">
+            <t t-foreach="employees" t-as="employee">
+                <t t-call="web.basic_layout">
+                    <div class="page"
+                         t-attf-style="background-image: url('/ressource_humaine/static/src/img/doc02622320240124135400.JPG'); background-size: cover;">
+                        <strong>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span style="display: inline-block; font-size: 14px; margin-left: 160px;">
+                                Econle Nationale d'Administration
+                            </span>
+                            <span style="display: inline-block; font-size: 15px; margin-right: 150px; float: right;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center;">
+                                <t t-if="company.num_adh">
+                                    <span>
+                                        <t t-esc="company.num_adh"/>
+                                    </span>
+                                </t>
+                                <t t-if="not company.num_adh">
+                                    <span>
+                                        &#160;
+                                    </span>
+                                </t>
+                            </div>
+                            <t t-if="company.raison_sociale_fr">
+                                <span style="display: inline-block; font-size: 14px; margin-left: 160px;">
+                                    <t t-esc="company.raison_sociale_fr"/>
+                                </span>
+                            </t>
+                            <t t-if="not company.raison_sociale_fr">
+                                <span style="display: inline-block; font-size: 14px; margin-left: 160px;">
+                                    &#160;
+                                </span>
+                            </t>
+                            <t t-if="company.raison_sociale">
+                                <span style="display: inline-block; font-size: 15px; margin-right: 170px; float: right;">
+                                    <t t-esc="company.raison_sociale"/>
+                                </span>
+                            </t>
+                            <t t-if="not company.raison_sociale">
+                                <span style="display: inline-block; font-size: 15px; margin-right: 170px; float: right;">
+                                    &#160;
+                                </span>
+                            </t>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center; font-size: 15px;">
+                                <t t-if="company.street">
+                                    <t t-esc="company.street"/>,
+                                </t>
+                                <t t-if="not company.street">
+                                    &#160;
+                                </t>
+                                <t t-if="company.city">
+                                    <t t-esc="company.city"/>
+                                </t>
+                                <t t-if="not company.city">
+                                    &#160;
+                                </t>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="font-size: 14px; text-align: center;">
+                                <t t-if="employee.nom_fr">
+                                    <span style="margin-right: 100px;">
+                                        <t t-esc="employee.nom_fr"/>
+                                    </span>
+                                </t>
+                                <t t-if="not employee.nom_fr">
+                                    &#160;
+                                </t>
+                                <t t-if="employee.name">
+                                    <t t-esc="employee.name"/>
+                                </t>
+                                <t t-if="not employee.name">
+                                    &#160;
+                                </t>
+                            </div>
+                            <br/>
+                            <div style="text-align: center;">
+                                <t t-if="employee.numero_securite_social">
+                                    <t t-esc="employee.numero_securite_social"/>
+                                </t>
+                                <t t-if="not employee.numero_securite_social">
+                                    &#160;
+                                </t>
+                            </div>
+                            <span style="display: inline-block; font-size: 20px; margin-right: 150px; float: right;">
+                                <t t-if="employee.birthday">
+                                    <t t-esc="employee.birthday"/>
+                                </t>
+                                <t t-if="not employee.birthday">
+                                    &#160;
+                                </t>
+                            </span>
+                            <span style="display: inline-block; font-size: 20px; margin-left: 135px; float: left;">
+                                <t t-if="employee_birthday.get(employee.id, '')">
+                                    <t t-esc="employee_birthday.get(employee.id, '')"/>
+                                </t>
+                                <t t-if="not employee_birthday.get(employee.id, '')">
+                                    &#160;
+                                </t>
+                            </span>
+                            <span style="display: inline-block; font-size: 20px; margin-right: 80px; float: right;">
+                                <t t-if="employee.place_of_birth">
+                                    <t t-esc="employee.place_of_birth"/>
+                                </t>
+                                <t t-if="not employee.place_of_birth">
+                                    &#160;
+                                </t>
+                            </span>
+                            <span style="display: inline-block; font-size: 20px; margin-left: 80px; float: left;">
+                                <t t-if="employee.place_of_birth_fr">
+                                    <t t-esc="employee.place_of_birth_fr"/>
+                                </t>
+                                <t t-if="not employee.place_of_birth_fr">
+                                    &#160;
+                                </t>
+                            </span>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center; font-size: 15px;">
+                                <t t-if="employee.address_perso">
+                                    <t t-esc="employee.address_perso"/>
+                                </t>
+                                <t t-if="not employee.address_perso">
+                                    &#160;
+                                </t>
+                            </div>
+                            <div style="text-align: center; font-size: 15px;">
+                                <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    <t t-if="employee.grade_id.intitule_grade_fr">
+                                        <span style="margin-right: 130px;">
+                                            <t t-esc="employee.grade_id.intitule_grade_fr"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="not employee.grade_id.intitule_grade_fr">
+                                        <span style="margin-right: 130px;">
+                                            &#160;
+                                        </span>
+                                    </t>
+                                    <t t-if="employee.job_id.name">
+                                        <span>
+                                            <t t-esc="employee.job_id.name"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="not employee.job_id.name">
+                                        <span>
+                                            &#160;
+                                        </span>
+                                    </t>
+                                </t>
+                                <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                    <t t-if="employee.grade_id.intitule_grade_fr">
+                                        <span style="margin-right: 130px;">
+                                            <t t-esc="employee.grade_id.intitule_grade_fr"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="not employee.grade_id.intitule_grade_fr">
+                                        <span>
+                                            &#160;
+                                        </span>
+                                    </t>
+                                    <t t-if="employee.grade_id.intitule_grade">
+                                        <span>
+                                            <t t-esc="employee.grade_id.intitule_grade"/>
+                                        </span>
+                                    </t>
+                                    <t t-if="not employee.grade_id.intitule_grade">
+                                        <span>
+                                            &#160;
+                                        </span>
+                                    </t>
+                                </t>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center;line-height: 0.6;font-size: 20px;margin-bottom:5px;">
+                                <span>
+                                    <t t-if="employee_date_entrer.get(employee.id, '')">
+                                        <t t-esc="employee_date_entrer.get(employee.id, '')"/>
+                                    </t>
+                                    <t t-if="not employee_date_entrer.get(employee.id, '')">
+                                        &#160;
+                                    </t>
+                                </span>
+                            </div>
+                            <div style="text-align: center;font-size: 20px;">
+                                <span>
+                                    <t t-if="employee_date_fin_relation.get(employee.id, '')">
+                                        <t t-esc="employee_date_fin_relation.get(employee.id, '')"/>
+                                    </t>
+                                    <t t-if="not employee_date_fin_relation.get(employee.id, '')">
+                                        &#160;
+                                    </t>
+                                </span>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </strong>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="page"
+                         t-attf-style="background-image: url('/ressource_humaine/static/src/img/doc02631020240129085045.jpg'); background-size: cover;">
+                        <strong>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </strong>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
