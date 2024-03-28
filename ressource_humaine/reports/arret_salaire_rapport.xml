@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="arret_salaire_rapport">
+            <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom"/>
+                <div>
+                    <strong>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>المدرسة الوطنية للإدارة</span>
+                        </div>
+                        <div style="font-size: 20px;text-align: right;">
+                            <span>المدير العام</span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span>مقرر رقم</span>
+                            <span>
+                                <t t-esc="decision.numero_decision_arret"/>
+                            </span>
+                            <span>مؤرخ في</span>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+                        </div>
+                        <br/>
+                        <div style="font-size: 20px;text-align: center;">
+                            <span>المتضمن توقيف الراتب الشهري</span>
+                            <br/>
+                            <br/>
+                        </div>
+                    </strong>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>،ان السيد المدير العام للمدرسة الوطنية للادارة</span>
+                    </div>
+                    <br/>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span style="display: inline-block;">ـ بمقتضى الأمر رقم 06ـ03 المؤرخ في 19 جمادى الثانية عام
+                            1427 الموافق ل 15 يوليو سنة 2006 و المتضمن القانون الأساسي العام للوظيفة العمومية، المتمم
+                        </span>
+                        <br/>
+                        <span>ـ بمقتضى المرسوم الرئاسي رقم 07ـ304 المؤرخ في 17 رمضان عام 1428 الموافق 29 سبتمبر سنة
+                            2007، الذي يحدد الشبكة الإستدلالية لمرتبات الموظفين و نظام دفع رواتبهم المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span>ـ و بمقتضى المرسوم التنفذي رقم 90ـ99 المؤرخ في أول رمضان عام 1410 الموافق 27 مارس سنة 1990
+                            المتعلق بسلطة التعيين و التسيير الإداري، بالنسبة للموظفيين و أعوان الإدارة المركزية
+                            والولايات و البلديات و المؤسسات العمومية ذات الطابع الإداري
+                        </span>
+                        <br/>
+                        <span style="display: inline-block;">ـ و بمقتضى المرسوم التنفذي رقم 06-419 المؤرخ في أول ذي
+                            القعدة عام 1427 الموافق 22 نوفمبر سنة 2006 المتضمن تنظيم المدرسة الوطنية للادارة و سيرها،
+                            المعدل و المتمم
+                        </span>
+                        <br/>
+                        <span style="display: inline-block;">
+                            ـ و بمقتضى
+                            <t t-esc="decision.employee_id.grade_id.loi_id.intitule_loi"/>
+                        </span>
+                        <br/>
+                    </div>
+
+                    <div style="font-size: 20px;text-align: right;">
+                        <t t-if="decision.numero_decision_titularisation">
+                            <t t-if="decision.date_decision_titularisation">
+                                <t t-if="decision.date_titularisation">
+                                    <span>ـ و بناء على المقرر رقم</span>
+                                    <span style="display: inline-block;">
+                                        <t t-esc="decision.numero_decision_titularisation"/>
+                                    </span>
+                                    <span>مؤرخ في</span>
+                                    <span style="display: inline-block;">
+                                        <t t-esc="decision.date_decision_titularisation"/>
+                                    </span>
+                                    <t t-if="decision.employee_id.gender == 'male' ">
+                                        <span>المتضمن ترسيم السيد</span>
+                                    </t>
+                                    <t t-if="decision.employee_id.gender == 'female' ">
+                                        <span>المتضمن ترسيم السيدة</span>
+                                    </t>
+                                    <span style="display: inline-block;">
+                                        <t t-esc="decision.employee_id.name"/>
+                                    </span>
+                                    <span>في رتبة</span>
+                                    <span style="display: inline-block;">
+                                        <t t-esc="decision.employee_id.grade_id.intitule_grade"/>
+                                    </span>
+                                    <span>بالمدرسة إبتداء من تاريخ</span>
+                                    <span style="display: inline;">
+                                        <t t-esc="decision.date_titularisation"/>
+                                    </span>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+
+
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>ـ و بناء على مقرر جماعي رقم</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.corps_id.filiere_id.code_group"/>
+                        </span>
+                        <span>مؤرخ في</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.corps_id.filiere_id.date_code"/>
+                        </span>
+                        <t t-if="decision.employee_id.gender== 'male' ">
+                            <span>المتعلق باعادة ترتيب الموظفين، و المتضمن ترتيب المعني</span>
+                        </t>
+                        <t t-if="decision.employee_id.gender== 'female' ">
+                            <span>المتعلق باعادة ترتيب الموظفين، و المتضمن ترتيب المعنية</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.name"/>
+                        </span>
+                        <span>في رتبة</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.grade_id.intitule_grade"/>
+                        </span>
+
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.categorie_id.intitule"/>
+                        </span>
+                        <span>,</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.echelon_id.intitule"/>
+                        </span>
+                        <span>الموافقة للرقم الاستدلالي</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.point_indiciare+decision.employee_id.categorie_id.Indice_minimal"/>
+                        </span>
+                        <span>إبتداء من تاريخ</span>
+                        <span style="display: inline; ">
+                            <t t-esc="decision.employee_id.date_avancement"/>
+                        </span>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <t t-if="decision.employee_id.gender== 'male' ">
+                            <span>ـ و بناء على الطلب المقدم من طرف المعني</span>
+                        </t>
+                        <t t-if="decision.employee_id.gender== 'female' ">
+                            <span>ـ و بناء على الطلب المقدم من طرف المعنية</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.name"/>
+                        </span>
+                        <span>
+                            المتضمن
+                        </span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.motif"/>
+                        </span>
+                        <span>مؤرخ في</span>
+                        <span style="display: inline;">
+                            <t t-esc="decision.date_motif"/>
+                        </span>
+                        <br/>
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>ـ و بناء على موافقة ادارة المدرسة الوطنية للادارة</span>
+                        <br/>
+                        <span>ـ و باقتراح من السيد الامين العام للمدرسة الوطنية للادارة</span>
+                        <br/>
+                        <br/>
+                    </div>
+                    <strong>
+                        <div style="font-size: 20px;text-align:center;">
+                            <span>يقرر</span>
+                            <br/>
+                            <br/>
+                        </div>
+                    </strong>
+                    <div style="font-size: 20px;text-align: right;">
+                        <t t-if="decision.employee_id.gender== 'male' ">
+                            <span>المادة الأولى : يوقف دفع الراتب الشهري للسيد</span>
+                        </t>
+                        <t t-if="decision.employee_id.gender== 'female' ">
+                            <span>المادة الأولى : يوقف دفع الراتب الشهري للسيدة</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.name"/>
+                        </span>
+                        <t t-if="decision.employee_id.gender== 'male' ">
+                            <span>بصفته</span>
+                        </t>
+                        <t t-if="decision.employee_id.gender== 'female' ">
+                            <span>بصفتها</span>
+                        </t>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.employee_id.grade_id.intitule_grade"/>
+                        </span>
+                        <span>إبتداء من تاريخ</span>
+                        <span style="display: inline-block;">
+                            <t t-esc="decision.date_arret_salaire"/>
+                        </span>
+                        <span>
+                            بسبب
+                        </span>
+                        <span style="display: inline;">
+                            <t t-esc="decision.motif"/>
+                        </span>
+                        <t t-if="decision.motif== 'الاحالة على الاستيداع لاغراض شخصية' ">
+                            <span>لمدة سنة واحدة (1)</span>
+                        </t>
+
+                    </div>
+                    <div style="font-size: 20px;text-align: right;">
+                        <span>المادة الثانية : يكلف السيد الامين العام للمدرسة بتنفيذ هذا المقرر الذي سينشر في سجل
+                            المقرارات الإدارية للمدرسة الوطنية للإدارة
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

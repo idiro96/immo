@@ -10,7 +10,7 @@
         </record>
         <record id="rh_type_fonction" model="rh.type.fonction">
             <field name="code_type_fonction">fonction</field>
-            <field name="intitule_type_fonction">وظيفة</field>
+            <field name="intitule_type_fonction">رتبة</field>
         </record>
         <record id="rh_type_Poste_superieur" model="rh.type.fonction">
             <field name="code_type_fonction">postesuperieure</field>

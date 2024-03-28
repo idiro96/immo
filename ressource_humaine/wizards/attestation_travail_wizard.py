@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from mock.mock import self
+# from mock.mock import self
 from odoo import models, fields, api, _
 from itertools import groupby
 
@@ -10,6 +10,7 @@ class AttestationTravail(models.TransientModel):
 
     signataire = fields.Selection([('sg', 'الأمانة العامة'), ('dg', 'المدير العام'), ('rl', 'المكلف بالإملاء')], default='sg')
     language = fields.Selection([('ar', 'العربية'), ('fr', 'الفرنسية')], default='ar')
+    input = fields.Char(placeholder='مزهوده عبد المليك')
 
     @api.model
     def _domain_employee_id(self):
@@ -33,10 +34,13 @@ class AttestationTravailReport(models.AbstractModel):
     def get_report_values(self, docids, data=None):
         attestation_travail = self.env['attestation.travail'].browse(docids[0])
         birthday = attestation_travail.employee_id.birthday
-        formatted_date = datetime.strptime(birthday, "%Y-%m-%d").strftime("%d-%m-%Y")
+        formatted_date = datetime.strptime(birthday, "%Y-%m-%d").strftime("%Y/%m/%d")
+        date_entrer = attestation_travail.employee_id.date_entrer
+        formatted_date_entrer = datetime.strptime(date_entrer, "%Y-%m-%d").strftime("%Y/%m/%d")
 
         report_data = {
             'formatted_date': formatted_date,
+            'date_entrer': formatted_date_entrer,
             'attestation_travail': attestation_travail,
             'employee': attestation_travail.employee_id,
             'company': self.env.user.company_id,
@@ -53,8 +57,8 @@ class AttestationTravailFrReport(models.AbstractModel):
         attestation_travail = self.env['attestation.travail'].browse(docids[0])
         birthday = attestation_travail.employee_id.birthday
         date_entrer = attestation_travail.employee_id.date_entrer
-        formatted_birthday = datetime.strptime(birthday, "%Y-%m-%d").strftime("%d-%m-%Y")
-        formatted_date_entrer = datetime.strptime(date_entrer, "%Y-%m-%d").strftime("%d-%m-%Y")
+        formatted_birthday = datetime.strptime(birthday, "%Y-%m-%d").strftime("%d/%m/%Y")
+        formatted_date_entrer = datetime.strptime(date_entrer, "%Y-%m-%d").strftime("%d/%m/%Y")
 
         report_data = {
             'attestation_travail': attestation_travail,

@@ -9,3 +9,5 @@ class CompanyInherited(models.Model):
     num_adh = fields.Char(string='N° Adhérent')
     raison_sociale = fields.Char()
     raison_sociale_fr = fields.Char()
+
+

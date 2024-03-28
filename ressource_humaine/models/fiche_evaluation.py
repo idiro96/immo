@@ -20,10 +20,9 @@ class RHFicheEvaluation(models.Model):
     fiche_evaluation_file = fields.Binary()
     exercice = fields.Integer()
 
+
     @api.model
     def create(self, vals):
-
-
         evaluation = self.env['rh.fiche.evaluation'].search([('employee_id', '=', vals['employee_id']),('exercice', '=', vals['exercice'])])
         print(evaluation)
         if evaluation:

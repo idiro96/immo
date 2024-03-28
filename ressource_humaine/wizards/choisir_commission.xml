@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record model="ir.ui.view" id="choisir_commission_liste">
             <field name="name">Choisir Commission</field>
             <field name="model">choisir.commission</field>

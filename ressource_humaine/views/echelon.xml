@@ -6,12 +6,13 @@
 
 
             <tree>
-                <field name="intitule"/>
-                <field name="type_fonction"/>
-                <field name="categorie_id"/>
+                <field name="intitule" required="1"/>
+                <field name="type_fonction" required="1"/>
+                <field name="categorie_id" required="1"/>
                 <field name="section"/>
-                <field name="indice_echelon"/>
+                <field name="indice_echelon" required="1"/>
                 <field name="groupe_id"/>
+                <field name="grille_id"/>
             </tree>
         </field>
 
@@ -25,13 +26,14 @@
                     <group>
                         <group>
                             <field name="code_type_fonction" invisible="1"/>
-                            <field name="intitule"/>
-                            <field name="type_fonction"/>
-                            <field name="categorie_id"/>
+                            <field name="intitule" required="1"/>
+                            <field name="type_fonction" required="1"/>
+                            <field name="categorie_id" required="1"/>
                             <field name="section" attrs="{'invisible': ['|', ('code_type_fonction', '=', 'postesuperieure'),
-                                                         ('code_type_fonction', '=', 'fonction')]}"/>
-                            <field name="indice_echelon"/>
+                                                         ('code_type_fonction', '=', 'fonction')],'required': ['|',('code_type_fonction', '=', 'fonctionsuperieure')]}"/>
+                            <field name="indice_echelon" required="1"/>
                             <field name="groupe_id" readonly="True"/>
+                            <field name="grille_id" readonly="True"/>
                         </group>
                     </group>
                 </sheet>

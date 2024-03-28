@@ -1,3 +1,26 @@
-body{
-        direction: rtl;
-    }
+.nv-legendWrap.nvd3-svg {
+    transform: translate(260px, 0);
+}
+.nv-legend-text {
+    transform: translateX(-13px);
+}
+.tick.zero text {
+    transform: rotate(20deg);
+}
+.tick text {
+    transform: translateX(-33px);
+}
+.nv-axisMaxMin text,
+.nv-axisMaxMin-y text,
+.nv-axisMax-y text {
+    transform: translateX(-33px);
+}
+.nv-bar.positive {
+    fill: #018749 !important;
+    stroke: #018749 !important;
+}
+/*.nv-group.nv-series-0 path,
+.nv-group.nv-series-0 rect,
+.nv-group.nv-series-0 circle {
+    stroke: #018749 !important;
+}*/

@@ -19,9 +19,11 @@ class HrJobInherited(models.Model):
     poste_organique = fields.Selection(selection=[('organique', 'منصب هيكلي'), ('squelaire', 'منصب عضوي')],
                                        readonly=False)
     max_employee = fields.Integer(default=1, store=True)
-    nombre_de_postes_vacants = fields.Integer(compute='_compute_nombre_de_postes_vacants', store=True,)
+    nombre_de_postes_vacants = fields.Integer(compute='_compute_nombre_de_postes_vacants', store=True, )
     code_type_fonction = fields.Char(related='nature_travail_id.code_type_fonction',
                                      string='Code Type Fonction', store=True)
+    methode_embauche = fields.Selection([('recrutement', 'Recrutement'), ('transfert', 'Transfert'),
+                                         ('detachement', 'Detachement'), ], related='employee_ids.methode_embauche')
 
     # @api.constrains('no_of_employee', 'max_employee')
     # def _check_max_employee_limit(self):
@@ -37,5 +39,11 @@ class HrJobInherited(models.Model):
     @api.multi
     def unlink(self):
         raise UserError(
-                    "Vous ne pouvez pas supprimer cet enregistrement")
+            "Vous ne pouvez pas supprimer cet enregistrement")
         return super(HrJobInherited, self).unlink()
+
+
+class CustomDepartment(models.Model):
+    _inherit = 'hr.department'
+
+    _rec_name = 'name'

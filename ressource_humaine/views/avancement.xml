@@ -6,10 +6,8 @@
             <tree>
                 <field name="code"/>
                 <field name="date_avancement"/>
-
             </tree>
         </field>
-
     </record>
     <record id="view_avancement_form" model="ir.ui.view">
         <field name="name">rh.avancement.form</field>
@@ -26,7 +24,11 @@
                             <field name="date_avancement" required="1"/>
                             <field name="date_comission" string="تاريخ إجتماع اللجنة"/>
                             <field name="date_signature" string="تاريخ الامضاء"/>
-<!--                            <field name="avancement_wizard"/>-->
+                        </group>
+                        <group>
+                            <field name="code_decision_groupe"/>
+                            <field name="date_decision_groupe"/>
+                            <field name="date_effet_decision_groupe"/>
                         </group>
                     </group>
                     <notebook>

@@ -1,6 +1,9 @@
 from odoo import fields, models, api
 from datetime import datetime
 
+
+
+
 class AttestationCessationReport(models.AbstractModel):
     _name = 'report.ressource_humaine.attestation_cessation'
 

@@ -19,7 +19,3 @@ class RHTypeFinRelation(models.Model):
             vals['code'] = self.env['ir.sequence'].next_by_code('rh.type.fin.relation.sequence') or _('New')
         result = super(RHTypeFinRelation, self).create(vals)
         return result
-
-
-
-

@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <template id="header_assets_common_ar" name="header_arabic_font" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/ressource_humaine/static/src/css/arabic_font.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+        <template id="header_assets_common_fr" name="header_latin_font" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/ressource_humaine/static/src/css/latin_font.css" rel="stylesheet"/>
+            </xpath>
+        </template>
         <template id="attestation_travail_report">
             <t t-call="web.basic_layout">
-                <t t-call="ressource_humaine.report_header_custom"/>
-                <div class="page">
+                <t t-call="ressource_humaine.report_header_custom_bordered"/>
+                <div class="page"
+                     style="border-bottom: 10px double black;border-left: 10px double black;border-right: 10px double black;">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
                     <strong>
-                        <div style="font-size: 20px;text-align: left;">
-                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
-                            <span style="display: inline-block;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;">
+                            <span style="margin-right:15px;word-spacing: 9px;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                            <span style="margin-right:370px">
                                 الجزائر في
                             </span>
                         </div>
-                        <div style="font-size: 20px;text-align: right;">
-                            <span>
-                                المدرسة الوطنية للإدارة
-                            </span>
-                        </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
                             <t t-if="attestation_travail.signataire == 'sg'">
                                 <span>
                                     الأمانة العامة
@@ -32,35 +47,33 @@
                             </t>
                             <t t-if="attestation_travail.signataire == 'rl'">
                                 <span>
-                                    المكلف بالإملاء
+                                    <t t-esc="attestation_travail.input"/>
                                 </span>
                             </t>
                         </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
                             <span>
                                 مصلحة تسيير الموارد البشرية
                             </span>
                         </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
                             <t t-if="attestation_travail.signataire == 'sg'">
                                 <span>
-                                    رقم ................... /م.و.إ/أ.ع/م.ت.م.ب/
+                                    رقم ........... /م.و.إ/أ.ع/م.ت.م.ب/
                                     <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
                                 </span>
                             </t>
                             <t t-if="attestation_travail.signataire == 'dg'">
                                 <span>
-                                    رقم ................... /م.و.إ/م.ع/م.ت.م.ب/
+                                    رقم ........... /م.و.إ/م.ع/م.ت.م.ب/
                                     <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
                                 </span>
                             </t>
                             <t t-if="attestation_travail.signataire == 'rl'">
                                 <span>
-                                    رقم ................... /م.و.إ/م.إ/م.ت.م.ب/
+                                    رقم ........... /م.و.إ/م.إ/م.ت.م.ب/
                                     <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
                                 </span>
                             </t>
@@ -69,133 +82,313 @@
                     <br/>
                     <br/>
                     <br/>
-                    <div style="font-size: 40px;text-align: center;">
+                    <div class="texte-en-gras"
+                         style="font-size: 60px; text-align: center;">
                         <strong>
                             <span style="border-bottom: 5px double;">
-                                شهادة عمل
+                                شـــــهـــادة عــمـــــــــل
                             </span>
                         </strong>
                     </div>
                     <br/>
                     <br/>
-                    <br/>
-                    <br/>
-                    <div style="font-size: 20px;text-align: right;">
+                    <div class="arabic_typesetting"
+                         style="font-size: 37px;text-align: right;margin-right:15px;line-height: 1.6;word-spacing: 9px;">
                         <span>
-                            ،أنا الممضي أسفله، المدير العام للمدرسة الوطنية للإدارة
+                            أنا الممضي أسفله، المدير العام للمدرسة الوطنية للإدارة،
+                        </span>
+                        <span style="color: white;">
+                            أ
                         </span>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
-                            <span style="display: inline-block;">
-                                <strong>
-                                    <t t-esc="employee.name"/>
-                                </strong>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                أشهد أن السيدة:
                             </span>
-                            <t t-if="employee.gender == 'female'">
-                                <span style="display: inline-block">
-                                    :أشهد أن السيدة
-                                </span>
-                            </t>
-                            <t t-if="not employee.gender or employee.gender == 'male'">
-                                <span style="display: inline-block">
-                                    :أشهد أن السيد
-                                </span>
-                            </t>
-                        </div>
-                        <br/>
-                        <span style="font-size: 20px;text-align: right;">
-                            <t t-if="employee.gender == 'female'">
-                                <span>
-                                    :المولودة بتاريخ
-                                </span>
-                            </t>
-                            <t t-if="not employee.gender or employee.gender == 'male'">
-                                <span>
-                                    المولود بتاريخ :
-                                </span>
-                            </t>
+                        </t>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                أشهد أن السيد:
+                            </span>
+                        </t>
+                        <span class="texte-en-gras">
                             <strong>
-                                <t t-esc="formatted_date"/>
-                            </strong>
-                            في
-                            <strong>
-                                <t t-esc="employee.place_of_birth"/>
+                                <t t-esc="employee.name"/>.
                             </strong>
                         </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
                         <br/>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                المولودة بتاريخ :
+                            </span>
+                        </t>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                المولود بتاريخ :
+                            </span>
+                        </t>
+                        <strong class="texte-en-gras">
+                            <t t-esc="formatted_date"/>
+                        </strong>
+                        في
+                        <strong class="texte-en-gras">
+                            <t t-esc="employee.place_of_birth"/>.
+                        </strong>
+                        <span style="color: white;">
+                            أ
+                        </span>
                         <br/>
-                        <span style="display: inline-block;">
-                            .إلى غاية يومنا هذا
-                        </span>&#160;
-                        <strong><t t-esc="employee.date_entrer"/></strong>&#160;
                         <t t-if="employee.gender == 'female'">
                             <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                <span style="display: inline-block;">
-                                    :ـ عاملة بمؤسستنا منذ تاريخ
+                                <span>
+                                    ـ عاملة بمؤسستنا منذ تاريخ :
                                 </span>
                             </t>
                             <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                <span style="display: inline-block;">
-                                    :ـ موظفة بمؤسستنا منذ تاريخ
+                                <span>
+                                    ـ موظفة بمؤسستنا منذ تاريخ :
                                 </span>
                             </t>
                         </t>
                         <t t-if="employee.gender == 'male'">
                             <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                <span style="display: inline-block;">
-                                    :ـ عامل بمؤسستنا منذ تاريخ
+                                <span>
+                                    ـ عامل بمؤسستنا منذ تاريخ :
                                 </span>
                             </t>
                             <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                <span style="display: inline-block;">
-                                    :ـ موظف بمؤسستنا منذ تاريخ
+                                <span>
+                                    ـ موظف بمؤسستنا منذ تاريخ :
                                 </span>
                             </t>
                         </t>
+                        <strong class="texte-en-gras">
+                            <t t-esc="date_entrer"/>
+                        </strong>
+                        <span>
+                            إلى غاية يومنا هذا.
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
                         <br/>
-                        <br/>:
                         <t t-if="employee.gender == 'female'">
                             <span>
-                                ـ و تمارس مها مها بصفتها
+                                ـ و تمارس مهامها بصفتها :
                             </span>
                         </t>
                         <t t-if="not employee.gender or employee.gender == 'male'">
                             <span>
-                                ـ و يمارس مها مه بصفته
+                                ـ و يمارس مهامه بصفته :
+                            </span>
+                        </t>
+                        <span>
+                            <strong class="texte-en-gras">
+                                <t t-esc="employee.grade_id.intitule_grade"/>.
+                            </strong>
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                .تسلم هذه الشهادة للمعني للإدلاء بها في إطار ما يسمح به القانون
+                            </span>
+                        </t>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                .تسلم هذه الشهادة للمعنية للإدلاء بها في إطار ما يسمح به القانون
                             </span>
                         </t>
                         <br/>
                         <br/>
-                        <span>
-                            <strong><t t-esc="employee.grade_id.intitule_grade"/></strong>&#160;
-                        </span>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="employee_attestation_travail_report">
+            <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom_bordered"/>
+                <div class="page"
+                     style="border-bottom: 10px double black;border-left: 10px double black;border-right: 10px double black;">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <strong>
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;">
+                            <span style="margin-right:15px;word-spacing: 9px;">
+                                المدرسة الوطنية للإدارة
+                            </span>
+                            <span style="margin-right:370px">
+                                الجزائر في
+                            </span>
+                        </div>
+                        <br/>
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
+                            <span>
+                                الأمانة العامة
+                            </span>
+                        </div>
+                        <br/>
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
+                            <span>
+                                مصلحة تسيير الموارد البشرية
+                            </span>
+                        </div>
+                        <br/>
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;margin-right:15px;word-spacing: 9px;">
+                            <span>
+                                رقم ........... /م.و.إ/أ.ع/م.ت.م.ب/
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                            </span>
+                        </div>
+                    </strong>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="texte-en-gras"
+                         style="font-size: 60px; text-align: center;">
+                        <strong>
+                            <span style="border-bottom: 5px double;">
+                                شـــــهـــادة عــمـــــــــل
+                            </span>
+                        </strong>
                     </div>
                     <br/>
                     <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <t t-if="not employee.gender or employee.gender == 'male'">
-                        <div style="font-size: 20px;text-align: right;">
+                    <div class="arabic_typesetting"
+                         style="font-size: 37px;text-align: right;margin-right:15px;line-height: 1.6;word-spacing: 9px;">
+                        <span>
+                            أنا الممضي أسفله، المدير العام للمدرسة الوطنية للإدارة،
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                أشهد أن السيدة:
+                            </span>
+                        </t>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                أشهد أن السيد:
+                            </span>
+                        </t>
+                        <span class="texte-en-gras">
+                            <strong>
+                                <t t-esc="employee.name"/>.
+                            </strong>
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                المولودة بتاريخ :
+                            </span>
+                        </t>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                المولود بتاريخ :
+                            </span>
+                        </t>
+                        <strong class="texte-en-gras">
+                            <t t-esc="formatted_date"/>
+                        </strong>
+                        في
+                        <strong class="texte-en-gras">
+                            <t t-esc="employee.place_of_birth"/>.
+                        </strong>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <t t-if="employee.gender == 'female'">
+                            <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                <span>
+                                    ـ عاملة بمؤسستنا منذ تاريخ :
+                                </span>
+                            </t>
+                            <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                <span>
+                                    ـ موظفة بمؤسستنا منذ تاريخ :
+                                </span>
+                            </t>
+                        </t>
+                        <t t-if="employee.gender == 'male'">
+                            <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                <span>
+                                    ـ عامل بمؤسستنا منذ تاريخ :
+                                </span>
+                            </t>
+                            <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
+                                <span>
+                                    ـ موظف بمؤسستنا منذ تاريخ :
+                                </span>
+                            </t>
+                        </t>
+                        <strong class="texte-en-gras">
+                            <t t-esc="date_entrer"/>
+                        </strong>
+                        <span>
+                            إلى غاية يومنا هذا.
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <t t-if="employee.gender == 'female'">
+                            <span>
+                                ـ و تمارس مهامها بصفتها :
+                            </span>
+                        </t>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
+                            <span>
+                                ـ و يمارس مهامه بصفته :
+                            </span>
+                        </t>
+                        <span>
+                            <strong class="texte-en-gras">
+                                <t t-esc="employee.grade_id.intitule_grade"/>.
+                            </strong>
+                        </span>
+                        <span style="color: white;">
+                            أ
+                        </span>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <t t-if="not employee.gender or employee.gender == 'male'">
                             <span>
                                 .تسلم هذه الشهادة للمعني للإدلاء بها في إطار ما يسمح به القانون
                             </span>
-                        </div>
-                    </t>
-                    <t t-if="employee.gender == 'female'">
-                        <div style="font-size: 20px;text-align: right;">
+                        </t>
+                        <t t-if="employee.gender == 'female'">
                             <span>
                                 .تسلم هذه الشهادة للمعنية للإدلاء بها في إطار ما يسمح به القانون
                             </span>
-                        </div>
-                    </t>
+                        </t>
+                        <br/>
+                        <br/>
+                    </div>
                 </div>
             </t>
         </template>

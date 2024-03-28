@@ -9,7 +9,6 @@ class RHAccidentTravail(models.Model):
     _rec_name = 'employee_id'
 
 
-
     date_accident_travail = fields.Date()
     description_accident_travail = fields.Text()
     num_pv_accident_travail = fields.Integer()

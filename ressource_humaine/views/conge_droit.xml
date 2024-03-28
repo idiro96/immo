@@ -26,7 +26,7 @@
                         <group>
                             <field name="id_personnel" readonly="1"/>
                             <field name="exercice_conge" readonly="1"/>
-                            <field name="nbr_jour"/>
+                            <field name="nbr_jour" readonly="1"/>
                         </group>
                         <group>
                             <field name="nbr_jour_consomme"/>

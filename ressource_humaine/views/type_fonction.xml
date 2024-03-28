@@ -4,8 +4,8 @@
         <field name="model">rh.type.fonction</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="code_type_fonction"/>
-                <field name="intitule_type_fonction"/>
+                <field name="code_type_fonction" readonly="1"/>
+                <field name="intitule_type_fonction" readonly="1"/>
             </tree>
         </field>
 
@@ -18,8 +18,8 @@
                 <sheet>
 
                         <group>
-                               <field name="code_type_fonction"/>
-                            <field name="intitule_type_fonction"/>
+                               <field name="code_type_fonction" readonly="1"/>
+                            <field name="intitule_type_fonction" readonly="1"/>
                         </group>
 
                 </sheet>

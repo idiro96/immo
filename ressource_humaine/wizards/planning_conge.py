@@ -8,7 +8,6 @@ class PlanningConge(models.TransientModel):
 
     @api.multi
     def print_report(self):
-
         return self.env.ref('ressource_humaine.report_planning_conge').report_action(self)
 
 

@@ -30,7 +30,6 @@
                             <field name="lieu_naissance_conjoint"/>
                             <field name="date_mariage"/>
                         </group>
-
                     </group>
 
                     <notebook>

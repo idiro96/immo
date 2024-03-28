@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <odoo>
+    <template id="dashboard_css" name="dashboard_css_template" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/ressource_humaine/static/src/css/custom.css" rel="stylesheet"/>
+        </xpath>
+    </template>
 
     <record id="recruitment_graph" model="ir.ui.view">
         <field name="name">graph des Recrutements</field>
@@ -25,7 +30,7 @@
 
     <record id="wage_graph" model="ir.ui.view">
         <field name="name">Coût des salaires</field>
-        <field name="model">hr.contract</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <graph string="Coût des Salaires" type="pie">
                 <field name="department_id" string="Département" group="1"/>
@@ -36,7 +41,7 @@
 
     <record id="employee_count_pie_chart" model="ir.ui.view">
         <field name="name">Nombre d'employés par tranche des salaire</field>
-        <field name="model">hr.contract</field>
+        <field name="model">hr.employee</field>
         <field name="arch" type="xml">
             <graph string="Nombre d'employés par tranche des salaires" type="bar">
                 <field name="wage_range" string="Tranche de Salaire"/>
@@ -79,10 +84,10 @@
     </record>
 
     <!--    <record id="act_conge" model="ir.actions.act_window">-->
-<!--        <field name="name">Planning des Congés</field>-->
-<!--        <field name="res_model">hr.holidays</field>-->
-<!--        <field name="view_mode">calendar,tree,form</field>-->
-<!--    </record>-->
+    <!--        <field name="name">Planning des Congés</field>-->
+    <!--        <field name="res_model">hr.holidays</field>-->
+    <!--        <field name="view_mode">calendar,tree,form</field>-->
+    <!--    </record>-->
 
     <record id="act_male_employees" model="ir.actions.act_window">
         <field name="name">Liste des Employés (Hommes)</field>
@@ -114,14 +119,14 @@
 
     <record id="act_wage_graph" model="ir.actions.act_window">
         <field name="name">Coût des Salaires</field>
-        <field name="res_model">hr.contract</field>
+        <field name="res_model">hr.employee</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="ressource_humaine.wage_graph"/>
     </record>
 
     <record id="act_employee_count_pie_chart" model="ir.actions.act_window">
         <field name="name">Nobmbre d'employés par tranche des salaire</field>
-        <field name="res_model">hr.contract</field>
+        <field name="res_model">hr.employee</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="ressource_humaine.employee_count_pie_chart"/>
     </record>
@@ -167,25 +172,25 @@
                                 string="توزيع الموظفين"
                                 name="%(ressource_humaine.act_employee_distribution)d"/>
                         <action
-                            string="عدد الموظفين حسب الفئة العمرية"
-                            name="%(ressource_humaine.act_employee_age_bar_chart)d"/>
+                                string="عدد الموظفين حسب الفئة العمرية"
+                                name="%(ressource_humaine.act_employee_age_bar_chart)d"/>
                         <action
-                            string="الغيابات"
-                            name="%(ressource_humaine.act_absence)d"/>
+                                string="الغيابات"
+                                name="%(ressource_humaine.act_absence)d"/>
                         <action
-                            string="تكلفة الاجور"
-                            name="%(ressource_humaine.act_wage_graph)d"/>
+                                string="تكلفة الاجور"
+                                name="%(ressource_humaine.act_wage_graph)d"/>
                     </column>
                     <column>
                         <action
-                            string="التوظيف سنويا"
-                            name="%(ressource_humaine.act_employee_recruitment)d"/>
+                                string="التوظيف سنويا"
+                                name="%(ressource_humaine.act_employee_recruitment)d"/>
                         <action
-                            string="عدد الموظفين لكل شريحة الاجور"
-                            name="%(ressource_humaine.act_employee_count_pie_chart)d"/>
+                                string="عدد الموظفين لكل شريحة الاجور"
+                                name="%(ressource_humaine.act_employee_count_pie_chart)d"/>
                         <action
-                            string="غيابات الموظفين"
-                            name="%(ressource_humaine.act_employee_absence)d"/>
+                                string="غيابات الموظفين"
+                                name="%(ressource_humaine.act_employee_absence)d"/>
                     </column>
                 </board>
             </form>

@@ -14,7 +14,8 @@
             model="attestation.travail"
             report_type="qweb-html"
             name="ressource_humaine.attestation_travail_report"
-            file="ressource_humaine.attestation_travail_report"/>
+            file="ressource_humaine.attestation_travail_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
 
     <report
             id="report_note_conge"
@@ -56,7 +57,7 @@
             report_type="qweb-html"
             name="ressource_humaine.attestation_travail_fr_report"
             file="ressource_humaine.attestation_travail_fr_report"
-    />
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
 
     <report
             id="action_cont_indete_tem_part_report"
@@ -81,7 +82,14 @@
             model="rh.avancement"
             report_type="qweb-html"
             name="ressource_humaine.droit_avancement_report"
-            file="ressource_humaine.droit_avancementt_report"/>
+            file="مستخرج من مقرر المصادقة على جدول الترقية في الدرجات"/>
+    <report
+            id="action_droit_promotion_report"
+            string="Extrait du siège approuvant le calendrier des promotions de grade par examains professionnel"
+            model="rh.promotion"
+            report_type="qweb-html"
+            name="ressource_humaine.droit_promotion_report"
+            file="ressource_humaine.droit_promotiont_report"/>
 
     <report
             id="action_hr_tableau_promotion"
@@ -137,7 +145,7 @@
             report_type="qweb-html"
             name="ressource_humaine.liste_nominatife_employee"
             file="ressource_humaine.liste_nominatife_employee"
-    />
+            paperformat="ressource_humaine.paperformat_european_a4_landscape_basic"/>
 
     <report
             id="action_fiche_renseignement_report"
@@ -162,7 +170,8 @@
             model="liste.nominative"
             report_type="qweb-html"
             name="ressource_humaine.liste_nominative"
-            file="وضعية التعداد النظري و الحقيقي"/>
+            file="وضعية التعداد النظري و الحقيقي"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
 
     <report
             id="retraite_report"
@@ -187,8 +196,9 @@
             model="programme.employee"
             report_type="qweb-html"
             name="ressource_humaine.notice_planning_surveillance_report"
-            file="ressource_humaine.notice_planning_surveillance_report"/>
-    <!--            file="تسخيرة"/>-->
+            file="تسخيرة"/>
+    <!--            file="ressource_humaine.notice_planning_surveillance_report"/>-->
+
 
     <report
             id="action_tableau_promotion_xlsx"
@@ -197,4 +207,49 @@
             report_type="xlsx"
             name="ressource_humaine.tableau_promotion_xlsx"
             file="جدول ترقية في الدرجة"/>
+
+    <report
+            id="action_organization_chart"
+            model="organization.chart"
+            string="الهيكل التنظيمي"
+            report_type="qweb-html"
+            name="ressource_humaine.organization_chart_report"
+            file="الهيكل التنظيمي"
+            paperformat="ressource_humaine.paperformat_european_a4_landscape"/>
+
+    <report
+            id="action_no_background_cnas"
+            model="hr.employee"
+            string="Attestation de Travail et de Salaire (sans fond)"
+            report_type="qweb-pdf"
+            name="ressource_humaine.no_background_cnas_report"
+            file="ressource_humaine.no_background_cnas_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait"/>
+
+    <report
+            id="action_arret_retraite"
+            model="arret.salaire"
+            string=" مقرر توقيف الراتب الشهري"
+            report_type="qweb-html"
+            name="ressource_humaine.arret_salaire_rapport"
+            file="ressource_humaine.arret_salaire_rapport"/>
+
+    <report
+            id="action_employee_attestation_travail_report"
+            string="Attestation de Travail"
+            model="hr.employee"
+            report_type="qweb-html"
+            name="ressource_humaine.employee_attestation_travail_report"
+            file="ressource_humaine.employee_attestation_travail_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
+
+    <report
+            id="action_employee_attestation_travail_fr_report"
+            model="hr.employee"
+            string="Attestation de Travail En Français"
+            report_type="qweb-html"
+            name="ressource_humaine.employee_attestation_travail_fr_report"
+            file="ressource_humaine.employee_attestation_travail_fr_report"
+            paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
+
 </odoo>

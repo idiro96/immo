@@ -11,7 +11,6 @@
                 <field name="date_code"/>
             </tree>
         </field>
-
     </record>
     <record id="view_rh_filiere_form" model="ir.ui.view">
         <field name="name">rh.filiere.form</field>

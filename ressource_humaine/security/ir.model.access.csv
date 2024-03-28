@@ -36,6 +36,7 @@ access_hr_holidays,access.hr.holidays,model_hr_holidays,group_rh_absence,1,1,1,1
 access_hr_job,access.hr.job,model_hr_job,group_rh_absence,1,1,1,1
 access_rh_loi,access.rh.loi,model_rh_loi,group_rh_absence,1,1,1,1
 access_rh_niveau_hierarchique,access.rh.niveau.hierarchique,model_rh_niveau_hierarchique,group_rh_absence,1,1,1,1
+access_rh_niveau_hierarchique_chef_bureau,access.rh.niveau.hierarchique.chef.bureau,model_rh_niveau_hierarchique_chef_bureau,group_rh_absence,1,1,1,1
 access_rh_organisme,access.rh.organisme,model_rh_organisme,group_rh_absence,1,1,1,1
 
 access_rh_promotion,access.rh.promotion,model_rh_promotion,group_rh_absence,1,1,1,1

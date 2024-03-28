@@ -11,13 +11,13 @@
                 <field name="job_id" readonly="1"/>
                 <field name="echelon_old_id" readonly="1"/>
                 <field name="date_old_avancement" readonly="1"/>
-                <field name="grille_new_id"/>
-                <field name="groupe_new_id" attrs="{'readonly': [('code_type_fonction', '=', 'fonctionsuperieure')]}"/>
-                <field name="categorie_new_id"/>
-                <field name="section_new_id" attrs="{'readonly': [('code_type_fonction', '=', 'fonction')]}"/>
-                <field name="echelon_new_id"/>
-                <field name="duree"/>
-                <field name="duree_lettre"/>
+                <field name="grille_new_id" required="1" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                <field name="groupe_new_id" attrs="{'readonly': [('code_type_fonction', '=', 'fonctionsuperieure')],'required': ['|', ('code_type_fonction', '=', 'fonction'), ('code_type_fonction', '=', 'postesuperieure')]}" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                <field name="categorie_new_id" required="1" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                <field name="section_new_id" attrs="{'readonly': [('code_type_fonction', '=', 'fonction')], 'required': [('code_type_fonction', '=', 'fonctionsuperieure')]}" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                <field name="echelon_new_id" required="1" options="{'no_create_edit': True,'no_quick_create': True,'no_create': True,'no_open': True}"/>
+                <field name="duree" required="1"/>
+                <field name="duree_lettre" required="1"/>
                 <field name="date_new_avancement" readonly="1"/>
                 <field name="time_difference" readonly="1"/>
                 <field name="date_avancement" readonly="1"/>

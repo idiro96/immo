@@ -36,7 +36,7 @@ class RHFinRelation(models.Model):
             for rec1 in promotion_line:
                 promotion = self.env['rh.promotion'].search(
                 [('id', '<=', rec1.promotion_id.id)],
-                order='date_new_grade DESC')
+                order='date_new_grade DESC', limit=1)
                 if promotion:
                     rec.code_promotion = promotion.code
                     rec.date_promotion = promotion.date_promotion
@@ -74,3 +74,13 @@ class RHFinRelation(models.Model):
             'date_fin_relation': vals['date_fin_relation'],
         })
         return fin_relation
+
+    def action_arret_de_salaire(self):
+        print()
+        return {
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'name': 'decision arret salaire',
+            'view_mode': 'form',
+            'res_model': 'arret.salaire',
+        }

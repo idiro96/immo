@@ -25,14 +25,23 @@ class RHGrade(models.Model):
     max_employee = fields.Integer(default=10, store=True)
     nombre_de_postes_vacants = fields.Integer(compute='_compute_nombre_de_postes_vacants', store=True)
 
-    @api.depends('employee_ids.grade_id', 'employee_ids.active')
+    @api.depends('employee_ids.grade_id', 'employee_ids.active', 'employee_ids.nature_travail_id', 'employee_ids.methode_embauche')
     def _compute_employees(self):
-        employee_data = self.env['hr.employee'].read_group([('grade_id', 'in', self.ids)], ['grade_id'], ['grade_id'])
+        employee_data = self.env['hr.employee'].read_group(
+            [
+                ('grade_id', 'in', self.ids),
+                ('nature_travail_id.code_type_fonction', '!=', 'postesuperieure'),
+                ('nature_travail_id.code_type_fonction', '!=', 'fonctionsuperieure'),
+            ],
+            ['grade_id'],
+            ['grade_id']
+        )
         result = dict((data['grade_id'][0], data['grade_id_count']) for data in employee_data)
         for grade in self:
             grade.no_of_employee = result.get(grade.id, 0)
 
-    @api.depends('employee_ids.grade_id', 'employee_ids.active', 'employee_ids.type_id.code_type_contract')
+    @api.depends('employee_ids.grade_id', 'employee_ids.active', 'employee_ids.type_id.code_type_contract',
+                 'employee_ids.methode_embauche')
     def _compute_employees_contract(self):
         contract_types = {
             'pleintemps_indeterminee': 'no_of_employee_cdi_plein',
@@ -45,7 +54,8 @@ class RHGrade(models.Model):
             employee_data = self.env['hr.employee'].read_group(
                 [
                     ('grade_id', 'in', self.ids),
-                    ('type_id.code_type_contract', '=', contract_type)
+                    ('type_id.code_type_contract', '=', contract_type),
+                    ('methode_embauche', '=', 'recrutement')
                 ],
                 ['grade_id'], ['grade_id']
             )

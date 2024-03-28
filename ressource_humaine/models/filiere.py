@@ -10,7 +10,7 @@ class RHFiliere(models.Model):
 
     code = fields.Char(readonly=True, default=lambda self: _('New'))
     code_group = fields.Char()
-    date_code = fields.Datetime()
+    date_code = fields.Date()
     intitule_filiere = fields.Char()
     loi_id = fields.Many2one(comodel_name='rh.loi')
 

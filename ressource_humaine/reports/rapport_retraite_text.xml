@@ -99,10 +99,11 @@
                     <div style="font-size: 20px;text-align: right;">
                         <span>ـ و بناء على مقرر جماعي رقم</span>
                         <span style="display: inline-block;">
-                            <t t-esc="nom_employee.code_promotion"/>
+                            <t t-esc="nom_employee.employee_id.corps_id.filiere_id.code_group"/>
                         </span>
                         <span>مؤرخ في</span>
                         <span style="display: inline-block;">
+                            <t t-esc="nom_employee.employee_id.corps_id.filiere_id.date_code"/>
                             <t t-esc="promo.date_creation"/>
                         </span>
                         <t t-if="nom_employee.employee_id.gender== 'male' ">
@@ -126,11 +127,11 @@
                         </span>
                         <span>الرقم الاستدلالي</span>
                         <span style="display: inline-block;">
-                            <t t-esc="nom_employee.employee_id.point_indiciare"/>
+                            <t t-esc="nom_employee.employee_id.point_indiciare+nom_employee.employee_id.categorie_id.Indice_minimal"/>
                         </span>
                         <span>إبتداء من تاريخ</span>
                         <span style="display: inline;">
-                            <t t-esc="nom_employee.date_promotion"/>
+                            <t t-esc="nom_employee.employee_id.date_avancement"/>
                         </span>
                     </div>
                     <div style="font-size: 20px;text-align: right;">
@@ -145,7 +146,7 @@
                             <!-- disctionnaire.field_dictionnaire.field_relation -->
                         </span>
                         <span>المؤرخة في</span>
-                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>
+<!--                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/>-->
                         <span>
                             <t t-esc="nom_employee.date_cnas"/>
                         </span>

@@ -9,7 +9,7 @@ class RHPromotionLine(models.Model):
 
     date_examin_professionnel = fields.Date()
     date_promotion = fields.Date()
-    promotion_id = fields.Many2one('hr.promotion')
+    promotion_id = fields.Many2one('rh.promotion')
     employee_id = fields.Many2one('hr.employee')
     birthday = fields.Date(related='employee_id.birthday')
     marital = fields.Selection(related='employee_id.marital')
@@ -25,6 +25,8 @@ class RHPromotionLine(models.Model):
     imprimer = fields.Boolean(Default=False)
     code_line = fields.Char()
     date_creation = fields.Char(compute="_compute_date", store=True)
+    ref_promotion = fields.Char()
+    date_ref_promotion = fields.Date()
 
     @api.depends('code_line')
     def _compute_date(self):

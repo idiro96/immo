@@ -152,49 +152,25 @@
                                 </t>
                             </div>
                             <div style="text-align: center; font-size: 15px;">
-                                <t t-if="employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                    <t t-if="employee.grade_id.intitule_grade_fr">
-                                        <span style="margin-right: 130px;">
-                                            <t t-esc="employee.grade_id.intitule_grade_fr"/>
-                                        </span>
-                                    </t>
-                                    <t t-if="not employee.grade_id.intitule_grade_fr">
-                                        <span style="margin-right: 130px;">
-                                            &#160;
-                                        </span>
-                                    </t>
-                                    <t t-if="employee.job_id.name">
-                                        <span>
-                                            <t t-esc="employee.job_id.name"/>
-                                        </span>
-                                    </t>
-                                    <t t-if="not employee.job_id.name">
-                                        <span>
-                                            &#160;
-                                        </span>
-                                    </t>
+                                <t t-if="employee.grade_id.intitule_grade_fr">
+                                    <span style="margin-right: 130px;">
+                                        <t t-esc="employee.grade_id.intitule_grade_fr"/>
+                                    </span>
                                 </t>
-                                <t t-if="not employee.nature_travail_id.code_type_fonction == 'contractuel'">
-                                    <t t-if="employee.grade_id.intitule_grade_fr">
-                                        <span style="margin-right: 130px;">
-                                            <t t-esc="employee.grade_id.intitule_grade_fr"/>
-                                        </span>
-                                    </t>
-                                    <t t-if="not employee.grade_id.intitule_grade_fr">
-                                        <span>
-                                            &#160;
-                                        </span>
-                                    </t>
-                                    <t t-if="employee.grade_id.intitule_grade">
-                                        <span>
-                                            <t t-esc="employee.grade_id.intitule_grade"/>
-                                        </span>
-                                    </t>
-                                    <t t-if="not employee.grade_id.intitule_grade">
-                                        <span>
-                                            &#160;
-                                        </span>
-                                    </t>
+                                <t t-if="not employee.grade_id.intitule_grade_fr">
+                                    <span style="margin-right: 130px;">
+                                        &#160;
+                                    </span>
+                                </t>
+                                <t t-if="employee.grade_id.intitule_grade">
+                                    <span>
+                                        <t t-esc="employee.grade_id.intitule_grade"/>
+                                    </span>
+                                </t>
+                                <t t-if="not employee.grade_id.intitule_grade">
+                                    <span>
+                                        &#160;
+                                    </span>
                                 </t>
                             </div>
                             <br/>

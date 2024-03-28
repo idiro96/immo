@@ -26,6 +26,9 @@
                 <xpath expr="//tree//field[@name='no_of_employee']" position="after">
                     <field name="max_employee"/>
                 </xpath>
+                <xpath expr="//tree//field[@name='no_of_employee']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
         <record model="ir.ui.view" id="job_form">

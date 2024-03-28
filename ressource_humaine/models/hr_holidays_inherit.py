@@ -150,6 +150,8 @@ class HrHolidaysInherited(models.Model):
             self.number_of_days_temp = difference.days + 1
         else:
             self.number_of_days_temp = 0
+
+
 class NoteCongeReport(models.AbstractModel):
     _name = 'report.ressource_humaine.note_conge'
 

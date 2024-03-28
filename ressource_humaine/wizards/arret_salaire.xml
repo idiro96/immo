@@ -1,0 +1,48 @@
+<odoo>
+
+    <record id="arret_salaire_form" model="ir.ui.view">
+        <field name="name">arret salaire form</field>
+        <field name="model">arret.salaire</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" string="الموظف"/>
+                            <field name="numero_decision_arret" string="رقم مقرر توقيف الراتب"/>
+                            <field name="date_arret_salaire" string="تاريخ توقيف الراتب"/>
+                        </group>
+                        <group>
+                            <field name="numero_decision_titularisation" string='رقم مقرر الترسيم'/>
+                            <field name="date_decision_titularisation" string='تاريخ  مقرر الترسيم'/>
+                            <field name="date_titularisation" string='تاريخ الترسيم'/>
+                        </group>
+                        <group>
+                            <field name="motif" string="سبب توقيف الراتب"/>
+                            <field name="date_motif" string="تاريخ طلب التوقيف"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="تجاهل" class="oe_link" special="cancel"/>
+                    <button name="print_report" string="طباعة" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="arret_salaire_action" model="ir.actions.act_window">
+        <field name="name">معلومات  المقرر</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">arret.salaire</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="arret_salaire_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="مقرر توقيف الراتب الشهري" id="arret_salaire_menu"
+              parent="ressource_humaine.reporting_id"
+              action="arret_salaire_action"/>
+
+</odoo>

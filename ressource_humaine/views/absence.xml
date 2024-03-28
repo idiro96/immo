@@ -3,8 +3,6 @@
         <field name="name">rh.absence.tree</field>
         <field name="model">rh.absence</field>
         <field name="arch" type="xml">
-
-
             <tree>
                 <field name="num_reference_absence"/>
                 <field name="employee_id"/>

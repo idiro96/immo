@@ -81,16 +81,35 @@ class RHAvencementDroit(models.Model):
 
     @api.onchange('grille_new_id')
     def _onchange_grille_new_id(self):
-        if self.grille_new_id:
-            self.groupe_new_id = False
-            self.categorie_new_id = False
-            self.section_new_id = False
-            self.echelon_new_id = False
-        if self.groupe_new_id:
-            return {'domain': {'groupe_new_id': [('grille_id', '=', self.grille_new_id.id)]}}
-        else:
-            return {'domain': {'categorie_new_id': [('grille_id', '=', self.grille_new_id.id)]}}
-
+        # if self.grille_new_id:
+        #     self.groupe_new_id = False
+        #     self.categorie_new_id = False
+        #     self.section_new_id = False
+        #     self.echelon_new_id = False
+        # if self.groupe_new_id:
+        #     return {'domain': {'groupe_new_id': [('grille_id', '=', self.grille_new_id.id)]}}
+        # else:
+        #     return {'domain': {'categorie_new_id': [('grille_id', '=', self.grille_new_id.id)]}}
+        for rec in self:
+            domain = []
+            if self.grille_new_id:
+                self.groupe_new_id = False
+                self.categorie_new_id = False
+                self.section_new_id = False
+                self.echelon_new_id = False
+            # if self.groupe_id:
+            type_fonction = self.env['rh.type.fonction'].search([('id', '=', rec.employee_id.nature_travail_id.id)])
+            print(type_fonction.code_type_fonction)
+            if type_fonction.code_type_fonction != 'fonctionsuperieure':
+                if type_fonction.code_type_fonction == 'contractuel':
+                    return {'domain': {'categorie_new_id': [('grille_id', '=', rec.grille_new_id.id),
+                                                        (('type_fonction_id', '=', rec.employee_id.nature_travail_id.id))]}}
+                elif type_fonction.code_type_fonction != 'contractuel':
+                    return {'domain': {'groupe_new_id': [('grille_id', '=', rec.grille_new_id.id)]}}
+            elif type_fonction.code_type_fonction == 'fonctionsuperieure':
+                print('dfs2')
+                return {'domain': {'categorie_new_id': [('grille_id', '=', rec.grille_new_id.id),
+                                                    (('type_fonction_id', '=', rec.employee_id.nature_travail_id.id))]}}
 
     @api.multi
     def write(self, vals):
@@ -145,25 +164,63 @@ class RHAvencementDroit(models.Model):
 
     @api.onchange('groupe_new_id')
     def _onchange_groupe_new_id(self):
-        if self.groupe_new_id:
-            self.categorie_new_id = False
-            self.section_new_id = False
-            self.echelon_new_id = False
-            return {'domain': {'categorie_new_id': [('groupe_id', '=', self.groupe_new_id.id)]}}
-        else:
-            return {'domain': {'categorie_new_id': []}}
+        # if self.groupe_new_id:
+        #     self.categorie_new_id = False
+        #     self.section_new_id = False
+        #     self.echelon_new_id = False
+        #     return {'domain': {'categorie_new_id': [('groupe_id', '=', self.groupe_new_id.id)]}}
+        # else:
+        #     return {'domain': {'categorie_new_id': []}}
+        for rec in self:
+            domain = []
+            rec.categorie_new_id = None
+            if rec.groupe_new_id:
+                categorie = self.env['rh.categorie'].search([('groupe_id', '=', rec.groupe_new_id.id)])
+                domain.append(('id', 'in', categorie.ids))
+            else:
+                categorie = self.env['rh.categorie'].search([('groupe_id', '=', None)])
+                domain.append(('id', 'in', categorie.ids))
 
+        res = {'domain': {'categorie_new_id': domain}}
+        print(res)
+        return res
 
     @api.onchange('categorie_new_id')
     def _onchange_categorie_new_id(self):
+        # if self.categorie_new_id:
+        #     self.section_new_id = False
+        #     self.echelon_new_id = False
+        # if self.section_new_id :
+        #     return {'domain': {'section_new_id': [('categorie_id', '=', self.categorie_new_id.id)]}}
+        # else:
+        #     return {'domain': {'echelon_new_id': [('categorie_id', '=', self.categorie_new_id.id)]}}
+        res = None
         if self.categorie_new_id:
             self.section_new_id = False
             self.echelon_new_id = False
-        if self.section_new_id :
-            return {'domain': {'section_new_id': [('categorie_id', '=', self.categorie_new_id.id)]}}
-        else:
-            return {'domain': {'echelon_new_id': [('categorie_id', '=', self.categorie_new_id.id)]}}
+        for rec in self:
+            domain = []
+            if rec.categorie_new_id:
+                echelon = self.env['rh.echelon'].search([('categorie_id', '=', rec.categorie_new_id.id)])
+                section = self.env['rh.section'].search([('categorie_id', '=', rec.categorie_new_id.id)])
+                type_fonction = self.env['rh.type.fonction'].search([('id', '=', rec.employee_id.nature_travail_id.id)])
+                if type_fonction.code_type_fonction == 'contractuel':
+                    print('teste')
+                    # rec.indice_minimal = rec.categorie_id.Indice_minimal
+                    # rec.wage = rec.indice_minimal * 45
+                elif type_fonction.code_type_fonction == 'fonction':
+                    domain.append(('id', 'in', echelon.ids))
+                    # rec.indice_minimal = rec.categorie_id.Indice_minimal
+                    res = {'domain': {'echelon_id': domain}}
+                elif type_fonction.code_type_fonction == 'postesuperieure':
+                    domain.append(('id', 'in', echelon.ids))
+                    # rec.indice_minimal = rec.categorie_id.Indice_minimal
+                    res = {'domain': {'echelon_new_id': domain}}
+                else:
+                    domain.append(('id', 'in', section.ids))
+                    res = {'domain': {'section_new_id': domain}}
 
+        return res
     @api.onchange('section_new_id')
     def _onchange_section_new_id(self):
         if self.section_new_id:

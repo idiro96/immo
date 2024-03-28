@@ -1,197 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <template id="header_assets_common_ar" name="header_arabic_font" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/ressource_humaine/static/src/css/arabic_font.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+        <template id="header_assets_common_fr" name="header_latin_font" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/ressource_humaine/static/src/css/latin_font.css" rel="stylesheet"/>
+            </xpath>
+        </template>
         <template id="droit_avancement_report">
             <t t-call="web.basic_layout">
+                <t t-call="ressource_humaine.report_header_custom"/>
                 <t t-foreach="avancement_lines" t-as="line">
-                    <t t-call="ressource_humaine.report_header_custom"/>
                     <div class="page">
                         <strong>
-                            <div style="font-size: 20px;text-align: left;">
-                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
-                                <span style="display: inline-block;">
+                            <div class="Diwani_Letter" style="font-size: 30px;text-align: right;">
+                                <span style="word-spacing: 9px;">
+                                    المدرسة الوطنية للإدارة '' مولاي أحمد مدغري''
+                                </span>
+                                <span style="margin-right:220px">
                                     الجزائر في
                                 </span>
                             </div>
-                            <div style="font-size: 20px;text-align: right;">
-                                <span>
-                                    المدرسة الوطنية للإدارة
-                                </span>
-                            </div>
                             <br/>
-                            <br/>
-                            <div style="font-size: 20px;text-align: right;">
+                            <div class="Diwani_Letter"
+                                 style="font-size: 30px;text-align: right;word-spacing: 9px;">
                                 <span>
                                     المدير العام
                                 </span>
                             </div>
                             <br/>
-                            <br/>
-                            <div style="font-size: 20px;text-align: right;">
+                            <div class="Diwani_Letter"
+                                 style="font-size: 30px;text-align: right;word-spacing: 9px;">
                                 <span>
                                     <t t-esc="line.code"/>
                                     الرقم
                                 </span>
                             </div>
-                            <br/>
-                            <br/>
                         </strong>
                         <br/>
                         <br/>
-                        <div style="font-size: 30px;text-align: center;">
+                        <div class="texte-en-gras" style="font-size: 30px;text-align: center;word-spacing: 5px;">
                             <strong>
                                 <span>
-                                    مستخرج من مقر المصادقة على جدول الترقية في الدرجات
+                                    مستخرج من مقرر المصادقة على جدول الترقية في الدرجات
                                 </span>
                             </strong>
                         </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px; text-align: right;">
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
                             ـ بمقتضى المرسوم الرئاسي رقم 07ـ304 المؤرخ في 17 رمضان عام 1428 الموافق 29 سبتمبر سنة 2007
-                            الذي
-                            يحدد الشبكة الإستدلالية لمرتبات الموظفين و نظام دفع رواتبهم المعدل، لا سيما المواد 11،10 و
-                            12
+                            الذي يحدد الشبكة الإستدلالية لمرتبات الموظفين و نظام دفع رواتبهم المعدل، لا سيما المواد
+                            11،10 و 12.
+                            <span style="color: white;">
+                                كلمة
+                            </span>
                         </div>
-                        <br/>
-                        <div style="font-size: 20px; text-align: right;">
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
                             <span>
-                                ـ وبناء على المقرر الجماعي رقم ..... المؤرخ في ................. المتعلق بإعادة
+                                <t t-if="not avancement.code_decision_groupe">
+                                    ـ وبناء على المقرر الجماعي رقم.....
+                                </t>
+                                <t t-if="avancement.code_decision_groupe">
+                                    ـ وبناء على المقرر الجماعي رقم
+                                    <span class="texte-en-gras">
+                                        <t t-esc="avancement.code_decision_groupe"/>
+                                    </span>
+                                </t>
+                                <t t-if="not avancement.date_decision_groupe">
+                                    المؤرخ في .................
+                                </t>
+                                <t t-if="avancement.date_decision_groupe">
+                                    المؤرخ في
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line_date_decision_groupe.get(avancement.id, '')"/>
+                                    </span>
+                                </t>
+                                المتعلق بإعادة
                                 ترتيب
                                 الموظفين، و المتضمن ترتيب
                             </span>
                             <t t-if="line.employee_id.gender == 'male'">
-                                السيد
+                                السيد/
                             </t>
                             <t t-if="line.employee_id.gender == 'female'">
-                                السيدة
+                                السيدة/
                             </t>
-                            <span>
-                                <t t-esc="line.employee_id.name"/>
-                                في رتبة
-                                <t t-esc="line.grade_id.intitule_grade"/>
-                                الصنف
-                                <t t-esc="line.categorie_old_id.intitule"/>
-                                الدرجة
-                                <t t-esc="line.echelon_old_id.intitule"/>
-                                الموافقة للرقم الاستدلالي
-                                <t t-esc="line.employee_id.point_indiciare"/>
-                                ابتداء من تاريخ
-                                <t t-esc="line_date_old_avancement.get(line.id, '')"/>
-                            </span>
+                            <spans>
+                                <t t-foreach="grille_old" t-as="grille_precedent">
+                                    <t t-if="line.employee_id.id == grille_precedent.employee_id.id">
+                                        <span class="texte-en-gras">
+                                            <t t-esc="grille_precedent.employee_id.name"/>
+                                        </span>
+                                        في رتبة
+                                        <span class="texte-en-gras">
+                                            <t t-esc="grille_precedent.grade_id.intitule_grade"/>
+                                        </span>
+                                        الصنف
+
+                                        <span class="texte-en-gras">
+                                            <t t-esc="grille_precedent.categorie_old_id[0].intitule"/>
+                                        </span>
+                                        الدرجة
+                                        <span class="texte-en-gras">
+                                            <t t-esc="grille_precedent.echelon_old_id[0].intitule"/>
+                                        </span>
+                                        الموافقة للرقم الاستدلالي
+                                        <span class="texte-en-gras">
+                                            <t t-esc="grille_precedent.echelon_old_id.indice_echelon+grille_precedent.categorie_old_id.Indice_minimal"/>
+                                        </span>
+                                        ابتداء من تاريخ
+                                        <span class="texte-en-gras" style="white-space: nowrap;">
+                                            <t t-esc="line_date_effet_decision_groupe.get(avancement.id, '')"/>
+                                        </span>
+                                    </t>
+                                </t>
+
+                                ،
+                                <span style="color: white;">
+                                    كلمة
+                                </span>
+                            </spans>
                         </div>
-                        <br/>
-                        <div style="font-size: 20px; text-align: right;">
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
                             <t t-if="line.employee_id.gender == 'male'">
-                                <span>
-                                    <t t-esc="line.ref"/>
+                                <spans>
                                     ـ بناء على مقرر الترقية رقم
-                                    <br/>
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line.ref"/>
+                                    </span>
                                     المؤرخ في
-                                    <t t-esc="line_date_ref.get(line.id, '')"/>
-                                    المتضمن ترقية السيد
-                                </span>
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line_date_ref.get(line.id, '')"/>
+                                    </span>
+                                    المتضمن ترقية السيد/
+                                </spans>
                             </t>
                             <t t-if="line.employee_id.gender == 'female'">
-                                <span>
-                                    <t t-esc="line.ref"/>
+                                <spans>
                                     ـ بناء على مقرر الترقية رقم
-                                    <br/>
-                                    المؤرخ في
-                                    <t t-esc="line_date_ref.get(line.id, '')"/>
-                                    المتضمن ترقية السيدة
-                                </span>
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line.ref"/>
+                                    </span>
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line_date_ref.get(line.id, '')"/>
+                                    </span>
+                                    المتضمن ترقية السيدة/
+                                </spans>
                             </t>
-                            <span>
-                                <t t-esc="line.employee_id.name"/>
+                            <spans>
+                                <span class="texte-en-gras">
+                                    <t t-esc="line.employee_id.name"/>
+                                </span>
                                 في رتبة
-                                <t t-esc="line.grade_id.intitule_grade"/>
-                                إلى الدرجة
-                                <t t-esc="line.echelon_old_id.intitule"/>
-                                الرقم الاستدلالي
-                                <t t-esc="line.employee_id.point_indiciare"/>
+                                <t t-foreach="avancement_old" t-as="av_precedent">
+                                    <t t-if="line.employee_id.id == av_precedent.employee_id.id">
+                                        <t t-foreach="avance_first" t-as="avance_first_preced">
+                                                <t t-if="av_precedent.employee_id.id == avance_first_preced.employee_id.id">
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.grade_id.intitule_grade"/>
+                                                </span>
+                                                إلى الدرجة
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.echelon_old_id.intitule"/>
+                                                </span>
+                                                الرقم الاستدلالي
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.echelon_old_id.indice_echelon + av_precedent.categorie_old_id.Indice_minimal"/>
+                                                </span>
+                                            </t>
+                                        </t>
+                                         <t t-foreach="avance_next" t-as="avance_first_next">
+                                             <t t-if="av_precedent.employee_id.id == avance_first_next.employee_id.id">
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.grade_id.intitule_grade"/>
+                                                </span>
+                                                إلى الدرجة
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.echelon_new_id.intitule"/>
+                                                </span>
+                                                الرقم الاستدلالي
+                                                <span class="texte-en-gras">
+                                                    <t t-esc="av_precedent.echelon_new_id.indice_echelon + av_precedent.categorie_new_id.Indice_minimal"/>
+                                                </span>
+                                             </t>
+
+                                    </t>
+                                </t>
+                            </t>
                                 ابتداء من
-                                <t t-esc="line_date_old_avancement.get(line.id, '')"/>
-                            </span>
+                                <span class="texte-en-gras" style="white-space: nowrap;">
+                                    <t t-esc="line_date_old_avancement.get(line.id, '')"/>
+                                </span>
+                            </spans>
                         </div>
-                        <br/>
-                        <div style="font-size: 20px; text-align: right;">
-                            <span>
-                                <t t-esc="avancement.code"/>
-                                ـ بناء على المقرر رقم
-                                <br/>
-                                المؤرخ في
-                                <t t-esc="line_date_comission.get(avancement.id, '')"/>
-                                المتضمن المصادقة على جداول
-                                الترقية
-                                في
-                                الدرجات بعنوان سنة
-                            </span>
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
+                            <spans>
+                                <t t-if="avancement.code">
+                                    ـ بناء على المقرر رقم
+                                    <span class="texte-en-gras">
+                                        <t t-esc="avancement.code"/>
+                                    </span>
+                                </t>
+                                <t t-if="not avancement.code">
+                                    ـ بناء على المقرر رقم.....
+                                    <span style="color: white;">
+                                        كلمة
+                                    </span>
+                                </t>
+                                <t t-if="line_date_signature.get(avancement.id, '')">
+                                    المؤرخ في
+                                    <span class="texte-en-gras">
+                                        <t t-esc="line_date_signature.get(avancement.id, '')"/>
+                                    </span>
+                                </t>
+                                <t t-if="not line_date_signature.get(avancement.id, '')">
+                                    المؤرخ في..................
+                                </t>
+                                المتضمن المصادقة على جداول الترقية في الدرجات بعنوان سنة.................،
+                                <span style="color: white;">
+                                    كلمة
+                                </span>
+                            </spans>
                         </div>
-                        <br/>
-                        <div style="font-size: 20px; text-align: right;">
-                            <span>
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
+                            <spans>
                                 <t t-if="line.employee_id.gender == 'male'">
-                                    ـ ترقى السيد :
+                                    ـ يرقى السيد :
                                 </t>
                                 <t t-if="line.employee_id.gender == 'female'">
                                     ـ ترقى السيدة :
                                 </t>
-                                <t t-esc="line.employee_id.name"/>
-                            </span>
-                        </div>
-                        <div style="font-size: 20px; text-align: right;">
-                            <span>
-                                ـ إلى الدرجة :
-                                <t t-esc="line.echelon_new_id.intitule"/>
-                            </span>
-                        </div>
-                        <div style="font-size: 20px; text-align: right;">
-                            <t t-if="line.duree_lettre=='inferieure'">
-                                <span>
-                                    ـ وفقا للمدة: الدنيا
+                                <span class="texte-en-gras">
+                                    <t t-esc="line.employee_id.name"/>
                                 </span>
+                            </spans>
+                        </div>
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
+                            <spans>
+                                ـ إلى الدرجة :
+                                <span class="texte-en-gras">
+                                    <t t-esc="line.echelon_new_id.intitule"/>
+                                </span>
+                            </spans>
+                        </div>
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
+                            <t t-if="line.duree_lettre=='inferieure'">
+                                <spans>
+                                    ـ وفقا للمدة:
+                                    <span class="texte-en-gras">
+                                        الدنيا
+                                    </span>
+                                </spans>
                             </t>
                             <t t-if="line.duree_lettre=='moyen'">
                                 <span>
-                                    ـ وفقا للمدة: المتوسطة
+                                    ـ وفقا للمدة:
+                                    <span class="texte-en-gras">
+                                        المتوسطة
+                                    </span>
                                 </span>
                             </t>
                             <t t-if="line.duree_lettre=='superieure'">
                                 <span>
-                                    ـ وفقا للمدة: القصوى
+                                    ـ وفقا للمدة:
+                                    <span class="texte-en-gras">
+                                        القصوى
+                                    </span>
                                 </span>
                             </t>
                         </div>
-                        <div style="font-size: 20px; text-align: right;">
-                            <span>
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
+                            <spans>
                                 ـ تاريخ الاستفادة :
-                                <t t-esc="line_date_new_avancement.get(line.id, '')"/>
-                            </span>
+                                <span class="texte-en-gras">
+                                    <t t-esc="line_date_new_avancement.get(line.id, '')"/>
+                                </span>
+                            </spans>
                         </div>
-                        <div style="font-size: 20px; text-align: right;">
+                        <div class="arabic_typesetting" style="font-size: 30px; text-align: right;">
                             <spans>
                                 و يحتفظ إلى تاريخ
-                                <strong>
+                                <strong class="texte-en-gras">
                                     <t t-esc="line_date_avancement.get(avancement.id, '')"/>
                                 </strong>
                                 بأقدمية قدرها
-                                <strong>
+                                <strong class="texte-en-gras">
                                     <t t-esc="line.time_years"/>
                                     سنة /
                                     <t t-esc="line.time_months"/>
                                     شهر /
                                     <t t-esc="line.time_days"/>
-                                    يوم
+                                    يوم.
                                 </strong>
+                                <span style="color: white;">
+                                    كلمة
+                                </span>
                             </spans>
                         </div>
                         <br/>
-                        <div style="text-align:center;">
+                        <div class="texte-en-gras" style="font-size: 30px; text-align: center;">
                             <strong>
-                                <span style="border: 3px solid black; display: inline-block; padding: 5px; border-radius: 10px;font-size:14px">
+                                <span style="border: 3px solid black; display: inline-block; padding: 5px; border-radius: 10px;">
                                     <t t-if="line.employee_id.gender == 'male'">
-                                        ترتب المعني في الصنف :
+                                        يرتب المعني في الصنف :
                                     </t>
                                     <t t-if="line.employee_id.gender == 'female'">
                                         ترتب المعنية في الصنف :
@@ -201,11 +316,12 @@
                                     الدرجة :
                                     <t t-esc="line.echelon_new_id.intitule"/>
                                     الرقم الاستدلالي :
-                                    <t t-esc="line.employee_id.point_indiciare"/>
+                                    <t t-esc="line.echelon_new_id.indice_echelon+line.categorie_new_id.Indice_minimal"/>
                                 </span>
                             </strong>
                         </div>
                     </div>
+                    <div style="page-break-before: always;"></div>
                 </t>
             </t>
         </template>

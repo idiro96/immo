@@ -4,11 +4,13 @@
         <field name="name">programme employee form</field>
         <field name="model">programme.employee</field>
         <field name="arch" type="xml">
-            <form string="un nom">
-                <groupe>
-                    <field name="employee_id"/>
-                    <field name="numero"/>
-                </groupe>
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="numero"/>
+                    </group>
+                </sheet>
                 <footer>
                     <button string="تجاهل" class="oe_link" special="cancel"/>
                     <button name="print_report" string="طباعة" type="object" class="oe_highlight"/>

@@ -10,7 +10,7 @@
         Long description of module's purpose
     """,
 
-    'author': "My Company",
+    'author': "CETIC",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -100,6 +100,8 @@
         'wizards/liste_nominative.xml',
         'wizards/attestation_travail_wizard.xml',
         'wizards/programme_surveillance_employee.xml',
+        'wizards/organization_chart.xml',
+        'wizards/arret_salaire.xml',
         'reports/paper_format.xml',
         'reports/hr_contract.xml',
         'reports/attestation_travail.xml',
@@ -114,6 +116,7 @@
         'reports/planning_conge.xml',
         'reports/contract_renew.xml',
         'reports/droit_avancement.xml',
+        'reports/droit_promotion.xml',
         'reports/tableau_promotion.xml',
         'reports/tableau_des_promotions.xml',
         'reports/liste_employee.xml',
@@ -124,7 +127,9 @@
         'reports/rapport_retraite_text.xml',
         'reports/attestation_de_cessation.xml',
         'reports/planning_notice.xml',
-
+        'reports/organization_chart.xml',
+        'reports/no_background_cnas.xml',
+        'reports/arret_salaire_rapport.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

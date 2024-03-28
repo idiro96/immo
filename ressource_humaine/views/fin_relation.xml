@@ -17,6 +17,9 @@
         <field name="model">rh.fin.relation</field>
         <field name="arch" type="xml">
             <form>
+<!--                <header>-->
+<!--                    <button name="action_arret_de_salaire" type="object" class="oe_highlight" string="decision_arret_de_salaire" attrs="{'invisible': [('type_fin_relation_id', '=', 'إحالة التقاعد'), ('type_fin_relation_id', '=', 'وفاة')]}"/>-->
+<!--                </header>-->
                 <sheet>
                     <group>
                         <group>

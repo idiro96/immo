@@ -3,16 +3,12 @@
         <field name="name">rh.promotion.tree</field>
         <field name="model">rh.promotion</field>
         <field name="arch" type="xml">
-
-
             <tree>
                 <field name="code"/>
                 <field name="date_promotion" required="1"/>
                 <field name="date_examin_professionnel"/>
-
             </tree>
         </field>
-
     </record>
     <record id="view_promotion_form" model="ir.ui.view">
         <field name="name">rh.promotion.form</field>
@@ -20,7 +16,7 @@
         <field name="arch" type="xml">
             <form>
                  <header>
-                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight" attrs="{'invisible': [('id', '=', False)]}"/>
+                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight" />
                 </header>
                 <sheet>
                     <group>
@@ -28,6 +24,11 @@
                             <field name="code"/>
                             <field name="date_promotion" required="1"/>
                             <field name="date_examin_professionnel"/>
+                            <field name="date_signature"/>
+                        </group>
+                         <group>
+                          <field name="ref_ouverture_examin"/>
+                            <field name="date_ref_ouverture_examin"/>
                         </group>
                     </group>
                     <notebook>
@@ -101,7 +102,6 @@
     </record>
 
     <menuitem name="Promotion De Grade" id="promotion_de_grade" parent="promotion_id" sequence="1"/>
-
 
     <menuitem name="promotion" id="ressource_humaine_promotion" parent="promotion_de_grade" sequence="3"
               action="action_rh_promotion"/>

@@ -68,3 +68,6 @@ class RHAvancementLine(models.Model):
     time_days = fields.Integer(compute="_compute_time", store=True)
 
 
+
+
+

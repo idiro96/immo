@@ -40,12 +40,12 @@
                         <br/>
                         <div style="font-size: 20px;text-align: right;margin-right:500px;">
                             <span>
-                                :الإسم و اللقب
+                                الإسم و اللقب:
                             </span>
                             <span t-field="employee.employee_id.name"/>
                             <br/>
                             <span>
-                                :الرتبة
+                                الرتبة:
                             </span>
                             <span t-field="employee.employee_id.grade_id"/>
                         </div>

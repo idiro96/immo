@@ -70,19 +70,19 @@
                                             <span>-</span>
                                         </t>
                                     </td>
-                                    <td
-                                            style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">
-                                        <span>
-                                            من
-                                        </span>
-                                        <span>
-                                            <t t-esc="' : '.join(planning.time_surveillance_start.split(' : ')[::-1])"/>
-                                        </span>
-                                        <span>
-                                            الى
-                                        </span>
-                                        <t t-esc="planning.time_surveillance_end"/>
-                                    </td>
+<!--                                    <td-->
+<!--                                            style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">-->
+<!--                                        <span>-->
+<!--                                            من-->
+<!--                                        </span>-->
+<!--                                        <span>-->
+<!--                                            <t t-esc="' : '.join(planning.time_surveillance_start.split(' : ')[::-1])"/>-->
+<!--                                        </span>-->
+<!--                                        <span>-->
+<!--                                            الى-->
+<!--                                        </span>-->
+<!--                                        <t t-esc="planning.time_surveillance_end"/>-->
+<!--                                    </td>-->
                                     <t t-if="compteur == 1">
                                         <td rowspan="1000"
                                             style="border:2px solid black;vertical-align:middle;text-align:center;font-size:18px;">

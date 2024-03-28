@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record id="view_attestation_travail" model="ir.ui.view">
             <field name="name">attestation.travail.form</field>
             <field name="model">attestation.travail</field>
@@ -15,6 +14,10 @@
                             </group>
                             <group>
                                 <field name="language" string="اللّغة"/>
+                                <field name="input"
+                                       attrs="{'invisible': [('signataire', '!=', 'rl')],
+                                       'required': [('signataire', '=', 'rl')]}"
+                                       string="الإسم"/>
                             </group>
                         </group>
                     </sheet>

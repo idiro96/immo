@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
-
+from odoo.exceptions import UserError
 
 
 class RHTypeFonction(models.Model):
@@ -13,6 +13,12 @@ class RHTypeFonction(models.Model):
 
     code_type_fonction = fields.Char()
     intitule_type_fonction = fields.Char()
+
+    def unlink(self):
+        for rec in self:
+            raise UserError(
+                    "Vous ne pouvez pas supprimer cet enregistrement")
+        return super(RHTypeFonction, self).unlink()
 
 
 
