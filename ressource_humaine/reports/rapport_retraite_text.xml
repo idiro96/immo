@@ -11,10 +11,12 @@
                         <!--                             <span style="display: inline-block;"> -->
                         <!--                                 الجزائر في -->
                         <!--                             </span> -->
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter"
+                             style="font-size: 32px;text-align: right;word-spacing: 9px;margin-right:15px">
                             <span>المدرسة الوطنية للإدارة</span>
                         </div>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter"
+                             style="font-size: 32px;text-align: right;word-spacing: 9px;margin-right:15px">
                             <span>المدير العام</span>
                         </div>
                         <br/>

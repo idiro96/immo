@@ -24,6 +24,7 @@ class RHGrade(models.Model):
     no_of_employee = fields.Integer(compute='_compute_employees', store=True)
     max_employee = fields.Integer(default=10, store=True)
     nombre_de_postes_vacants = fields.Integer(compute='_compute_nombre_de_postes_vacants', store=True)
+    description = fields.Char()
 
     @api.depends('employee_ids.grade_id', 'employee_ids.active', 'employee_ids.nature_travail_id', 'employee_ids.methode_embauche')
     def _compute_employees(self):

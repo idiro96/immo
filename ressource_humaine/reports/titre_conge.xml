@@ -5,97 +5,81 @@
             <t t-call="ressource_humaine.report_header_custom"/>
             <div class="page">
                 <div class="row">
-                    <div style="float:left;font-size : 20px;">
-                        <p>
-                            <strong>
-                                <!--                                <span t-field="docs.company_id.name"/>-->
-                            </strong>
-                        </p>
-                    </div>
-                    <br/>
                     <br/>
                     <strong>
-                        <div style="font-size: 20px;text-align: right;">
-                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
-                            <span style="display: inline-block;">
-                                الجزائر في
-                            </span>
-                            <span style="display: inline-block;margin-left: 400px;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;">
+                            <span style="margin-right:15px;word-spacing: 9px;">
                                 المدرسة الوطنية للإدارة
+                            </span>
+                            <span style="margin-right:370px">
+                                الجزائر في
                             </span>
                         </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;word-spacing: 9px;margin-right:15px">
                             <span>
                                 الأمانة العامة
                             </span>
                         </div>
                         <br/>
-                        <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;word-spacing: 9px;margin-right:15px">
                             <span>
                                 مصلحة تسيير الموارد البشرية
                             </span>
                         </div>
                         <br/>
                         <br/>
-                        <div style="font-size: 20px;text-align: right;">
+                        <div class="Diwani_Letter" style="font-size: 32px;text-align: right;word-spacing: 9px;margin-right:15px">
                             <span>
-                                رقم ................... /م.و.إ/أ.ع/م.ت.م.ب/
+                                رقم .........../م.و.إ/أ.ع/م.ت.م.ب/
                             <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
                             </span>
                         </div>
                     </strong>
                 </div>
                 <br/>
-                <br/>
-                <div style="text-align:center;font-size: 40px">
+                <div class="texte-en-gras" style="font-size: 50px; text-align: center;">
                     <strong>
                         سند عطلة
                     </strong>
                 </div>
-                <br/>
-                <br/>
-                <div class="text-right" style="text-align:center;font-size:23px;text-align: right;">
+                <div class="arabic_typesetting" style="text-align:right;font-size:32px;">
                     <p>
-                        <br/>
                         ـ يقتضى الأمر رقم 06-03 المؤرخ في 19 جمادى الثانية عام 1427 الموافق ل 15 يوليو سنة
-                        2006 المتضمن القانون الأساسي العام العمومية لاسيما المادتين 194 و 196
+                        2006 المتضمن القانون الأساسي العام العمومية لاسيما المادتين 194 و 196.
+                        <span style="color: white;">أ</span>
                         <br/>
                         ـ ويقتضى المرسوم التنفيذي رقم 08-315 المؤرخ في 11 شوال عام 1429 الموافق 11 اكتوبر سنة 2008
                         والمتضمن القانون
                         الأساسي الخاص بالموظفين المنتمين للأسلاك الخاص بالموظفين المنتمين للأسلاك الخاصة بالتربية
-                        الوطنية
+                        الوطنية.
+                        <span style="color: white;">أ</span>
                         <br/>
                         <br/>
-                        <br/>
-                        ،
-                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
                         ـ بناء على جدول العطلة السنوية لمستخدمي المدرسة الوطنية للإدارة بعنوان سنة
-                        <br/>
-                        <br/>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                        ،
+                        <span style="color: white;">أ</span>
                         <br/>
                     </p>
                 </div>
-                <div style="text-align:right;font-size:23px;">
-                    <strong>
-                        <u>:المادة الأولى</u>
-                    </strong>
-                </div>
                 <br/>
-                <div style="text-align: right;font-size:23px;">
+                <div class="texte-en-gras" style="text-align:right;font-size:32px;">
+                    <span style="border-bottom: 2px solid black;">:المادة الأولى</span>
+                </div>
+                <div class="arabic_typesetting" style="text-align: right;font-size:32px;">
                     <span>
                         تمنح مخلف عطلة سنوية بعنوان 2021 مدتها
                         <t t-esc="arabic_number_of_days_words"/>
                         (<t t-esc="conge.number_of_days_temp" t-options='{"widget": "float", "precision": 0}'/>)
                         <t t-if="not conge.employee_id.gender or conge.employee_id.gender == 'male'">
-                            يوما / للسيد
+                            يوما للسيد/
                         </t>
                         <t t-if="conge.employee_id.gender == 'female'">
-                            يوما / للسيدة
+                            يوما للسيدة/
                         </t>
                     </span>
+                    <span style="color: white;">أ</span>
                     <br/>
                     <span>
                         الاسم و اللقب :

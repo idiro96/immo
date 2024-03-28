@@ -27,6 +27,7 @@ class RHPromotionLine(models.Model):
     date_creation = fields.Char(compute="_compute_date", store=True)
     ref_promotion = fields.Char()
     date_ref_promotion = fields.Date()
+    ancien_index = fields.Integer()
 
     @api.depends('code_line')
     def _compute_date(self):

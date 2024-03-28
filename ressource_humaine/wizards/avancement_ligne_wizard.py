@@ -3,7 +3,6 @@
 from odoo import models, fields, api, _
 
 
-
 class RHAvancementLine(models.TransientModel):
     _name = 'rh.avancement.line.wizard'
 

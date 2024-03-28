@@ -15,8 +15,8 @@
         <field name="model">rh.promotion</field>
         <field name="arch" type="xml">
             <form>
-                 <header>
-                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight" />
+                <header>
+                    <button name="choisir_commission" type="object" string="إختيار اللجنة" class="oe_highlight"/>
                 </header>
                 <sheet>
                     <group>
@@ -26,9 +26,14 @@
                             <field name="date_examin_professionnel"/>
                             <field name="date_signature"/>
                         </group>
-                         <group>
-                          <field name="ref_ouverture_examin"/>
+                        <group>
+                            <field name="ref_ouverture_examin"/>
                             <field name="date_ref_ouverture_examin"/>
+                        </group>
+                        <group>
+                            <field name="code_decision_groupe"/>
+                            <field name="date_decision_groupe"/>
+                            <field name="date_effet_decision_groupe"/>
                         </group>
                     </group>
                     <notebook>
@@ -62,8 +67,9 @@
                                     <field name="duree" readonly="1"/>
                                     <field name="date_new_grade" readonly="1"/>
                                     <field name="code_line"/>
+                                    <field name="ancien_index"/>
                                     <field name="promotion_line_file_line"/>
-<!--                                    <field name="imprimer" widget="toggle_button"/>-->
+                                    <!--                                    <field name="imprimer" widget="toggle_button"/>-->
                                 </tree>
                             </field>
                         </page>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="header_assets_common_ar" name="header_arabic_font" inherit_id="web.report_assets_common">
+    <template id="arabic_font_id2" name="header_arabic_font2" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/ressource_humaine/static/src/css/arabic_font.css" rel="stylesheet"/>
         </xpath>
     </template>
-    <template id="header_assets_common_fr" name="header_latin_font" inherit_id="web.report_assets_common">
+    <template id="latin_font_id2" name="header_latin_font2" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/ressource_humaine/static/src/css/latin_font.css" rel="stylesheet"/>
         </xpath>
@@ -137,6 +137,7 @@
                                             <span>
                                                 <t t-if="line['employees'][0].categorie_superieure_id">
                                                     <span t-esc="line['employees'][0].categorie_superieure_id.intitule"/>
+                                                    <span t-esc="line['employees'][0].section_superieure_id.intitule"/>
                                                 </t>
                                                 <t t-if="not line['employees'][0].categorie_superieure_id">
                                                     <t t-set="found_employee" t-value="False"/>
@@ -144,19 +145,20 @@
                                                         <t t-if="not found_employee and employee.categorie_superieure_id">
                                                             <t t-set="found_employee" t-value="True"/>
                                                             <span t-esc="employee.categorie_superieure_id.intitule"/>
+                                                            <span t-esc="employee.section_superieure_id.intitule"/>
                                                         </t>
                                                     </t>
                                                 </t>
-                                                <t t-if="line['employees'][0].indice_minimal">
-                                                    <span t-esc="line['employees'][0].indice_minimal"/>
-                                                </t>
                                                 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                                <t t-if="not line['employees'][0].indice_minimal">
+                                                <t t-if="line['employees'][0].indice_base">
+                                                    <span t-esc="line['employees'][0].indice_base"/>
+                                                </t>
+                                                <t t-if="not line['employees'][0].indice_base">
                                                     <t t-set="found_employee" t-value="False"/>
                                                     <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.indice_minimal">
+                                                        <t t-if="not found_employee and employee.indice_base">
                                                             <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.indice_minimal"/>
+                                                            <span t-esc="employee.indice_base"/>
                                                         </t>
                                                     </t>
                                                 </t>
@@ -259,6 +261,7 @@
                                             <span>
                                                 <t t-if="line['employees'][0].categorie_id">
                                                     <span t-esc="line['employees'][0].categorie_id.intitule"/>
+                                                    <span t-esc="line['employees'][0].section_id.intitule"/>
                                                 </t>
                                                 <t t-if="not line['employees'][0].categorie_id">
                                                     <t t-set="found_employee" t-value="False"/>
@@ -266,19 +269,20 @@
                                                         <t t-if="not found_employee and employee.categorie_id">
                                                             <t t-set="found_employee" t-value="True"/>
                                                             <span t-esc="employee.categorie_id.intitule"/>
+                                                            <span t-esc="employee.section_id.intitule"/>
                                                         </t>
                                                     </t>
                                                 </t>
                                                 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                                <t t-if="line['employees'][0].indice_minimal">
-                                                    <span t-esc="line['employees'][0].indice_minimal"/>
+                                                <t t-if="line['employees'][0].indice_base">
+                                                    <span t-esc="line['employees'][0].indice_base"/>
                                                 </t>
-                                                <t t-if="not line['employees'][0].indice_minimal">
+                                                <t t-if="not line['employees'][0].indice_base">
                                                     <t t-set="found_employee" t-value="False"/>
                                                     <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.indice_minimal">
+                                                        <t t-if="not found_employee and employee.indice_base">
                                                             <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.indice_minimal"/>
+                                                            <span t-esc="employee.indice_base"/>
                                                         </t>
                                                     </t>
                                                 </t>
@@ -341,32 +345,23 @@
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
                                         <t t-if="line['employees']">
+                                            <span style="color: white;">أ</span>
                                             <span>
-                                                <t t-if="line['employees'][0].categorie_id">
-                                                    <span t-esc="line['employees'][0].categorie_id.intitule"/>
+                                                <t t-if="line['employees'][0].bonification_indiciaire">
+                                                    <span t-esc="line['employees'][0].bonification_indiciaire"/>
                                                 </t>
-                                                <t t-if="not line['employees'][0].categorie_id">
+                                                <t t-if="not line['employees'][0].bonification_indiciaire">
                                                     <t t-set="found_employee" t-value="False"/>
                                                     <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.categorie_id">
+                                                        <t t-if="not found_employee and employee.bonification_indiciaire">
                                                             <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.categorie_id.intitule"/>
+                                                            <span t-esc="employee.bonification_indiciaire"/>
                                                         </t>
                                                     </t>
                                                 </t>
-                                                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                                <t t-if="line['employees'][0].indice_minimal">
-                                                    <span t-esc="line['employees'][0].indice_minimal"/>
-                                                </t>
-                                                <t t-if="not line['employees'][0].indice_minimal">
-                                                    <t t-set="found_employee" t-value="False"/>
-                                                    <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.indice_minimal">
-                                                            <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.indice_minimal"/>
-                                                        </t>
-                                                    </t>
-                                                </t>
+                                            </span>
+                                            <span>
+                                                نقطة إستدلالية
                                             </span>
                                         </t>
                                     </td>
@@ -463,32 +458,23 @@
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
                                         <t t-if="line['employees']">
+                                            <span style="color: white;">أ</span>
                                             <span>
-                                                <t t-if="line['employees'][0].categorie_id">
-                                                    <span t-esc="line['employees'][0].categorie_id.intitule"/>
+                                                <t t-if="line['employees'][0].bonification_indiciaire">
+                                                    <span t-esc="line['employees'][0].bonification_indiciaire"/>
                                                 </t>
-                                                <t t-if="not line['employees'][0].categorie_id">
+                                                <t t-if="not line['employees'][0].bonification_indiciaire">
                                                     <t t-set="found_employee" t-value="False"/>
                                                     <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.categorie_id">
+                                                        <t t-if="not found_employee and employee.bonification_indiciaire">
                                                             <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.categorie_id.intitule"/>
+                                                            <span t-esc="employee.bonification_indiciaire"/>
                                                         </t>
                                                     </t>
                                                 </t>
-                                                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                                                <t t-if="line['employees'][0].indice_minimal">
-                                                    <span t-esc="line['employees'][0].indice_minimal"/>
-                                                </t>
-                                                <t t-if="not line['employees'][0].indice_minimal">
-                                                    <t t-set="found_employee" t-value="False"/>
-                                                    <t t-foreach="line['employees']" t-as="employee">
-                                                        <t t-if="not found_employee and employee.indice_minimal">
-                                                            <t t-set="found_employee" t-value="True"/>
-                                                            <span t-esc="employee.indice_minimal"/>
-                                                        </t>
-                                                    </t>
-                                                </t>
+                                            </span>
+                                            <span>
+                                                نقطة إستدلالية
                                             </span>
                                         </t>
                                     </td>
@@ -584,12 +570,12 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].intitule_grade"/>
+                                        <span t-esc="line['grade'].intitule_grade"/><span style="color: white;">أ</span>
                                     </td>
                                 </tr>
                             </t>
@@ -680,9 +666,9 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
                                         <span t-esc="line['grade'].intitule_grade"/>
@@ -776,9 +762,9 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
                                         <span t-esc="line['grade'].intitule_grade"/>
@@ -872,9 +858,9 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
                                         <span t-esc="line['grade'].intitule_grade"/>
@@ -976,9 +962,9 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
                                         <span t-esc="line['grade'].intitule_grade"/>
@@ -1072,9 +1058,9 @@
                                         <span t-esc="line['grade'].max_employee"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].categorie_id.intitule"/>
-                                        &#160;&#160;&#160;&#160;
                                         <span t-esc="line['grade'].categorie_id.Indice_minimal"/>
+                                        &#160;&#160;&#160;&#160;
+                                        <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
                                         <span t-esc="line['grade'].intitule_grade"/>
@@ -1177,29 +1163,16 @@
                         <tbody>
                             <t t-set="total_max11" t-value="0"/>
                             <t t-set="total_vrai11" t-value="0"/>
-                            <t t-set="total_diff11" t-value="0"/>
-                            <t t-foreach="grade_contract" t-as="line">
-                                <t t-set="employee_count" t-value="0"/>
-                                <t t-set="employee_count1" t-value="0"/>
-                                <t t-foreach="line['employees_contract']" t-as="employee">
-                                    <t t-set="employee_count" t-value="employee_count + 1"/>
-                                </t>
-                                <t t-foreach="line['employees_cdi_plein']" t-as="employee">
-                                    <t t-set="employee_count1" t-value="employee_count1 + 1"/>
-                                </t>
-                                <t t-set="total_max11" t-value="total_max11 + line['grade'].max_employee"/>
-                                <t t-set="total_vrai11" t-value="total_vrai11 + employee_count1"/>
-                                <t t-set="total_diff11"
-                                   t-value="total_diff11 + (line['grade'].max_employee - employee_count)"/>
+                            <t t-foreach="grade_cdi_plein" t-as="line">
                                 <tr class="arabic_typesetting">
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         &#160;
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="line['grade'].max_employee - employee_count"/>
+                                        <span t-esc="line['grade'].max_employee - len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="employee_count1"/>
+                                        <span t-esc="len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         <span t-esc="line['grade'].max_employee"/>
@@ -1211,9 +1184,11 @@
                                         <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].intitule_grade"/>
+                                        <span t-esc="line['grade'].description"/>
                                     </td>
                                 </tr>
+                                <t t-set="total_max11" t-value="total_max11 + line['grade'].max_employee"/>
+                                <t t-set="total_vrai11" t-value="total_vrai11 + len(line['employees'])"/>
                             </t>
                             <tr class="texte-en-gras">
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1221,7 +1196,7 @@
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_diff11"/>
+                                        <span t-esc="total_max11 - total_vrai11"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1247,29 +1222,16 @@
                             </tr>
                             <t t-set="total_max12" t-value="0"/>
                             <t t-set="total_vrai12" t-value="0"/>
-                            <t t-set="total_diff12" t-value="0"/>
-                            <t t-foreach="grade_contract" t-as="line">
-                                <t t-set="employee_count" t-value="0"/>
-                                <t t-set="employee_count2" t-value="0"/>
-                                <t t-foreach="line['employees_contract']" t-as="employee">
-                                    <t t-set="employee_count" t-value="employee_count + 1"/>
-                                </t>
-                                <t t-foreach="line['employees_cdd_plein']" t-as="employee">
-                                    <t t-set="employee_count2" t-value="employee_count2 + 1"/>
-                                </t>
-                                <t t-set="total_max12" t-value="total_max12 + line['grade'].max_employee"/>
-                                <t t-set="total_vrai12" t-value="total_vrai12 + employee_count2"/>
-                                <t t-set="total_diff12"
-                                   t-value="total_diff12 + (line['grade'].max_employee - employee_count)"/>
+                            <t t-foreach="grade_cdd_plein" t-as="line">
                                 <tr class="arabic_typesetting">
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         &#160;
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="line['grade'].max_employee - employee_count"/>
+                                        <span t-esc="line['grade'].max_employee - len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="employee_count2"/>
+                                        <span t-esc="len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         <span t-esc="line['grade'].max_employee"/>
@@ -1281,9 +1243,11 @@
                                         <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].intitule_grade"/>
+                                        <span t-esc="line['grade'].description"/>
                                     </td>
                                 </tr>
+                                <t t-set="total_max12" t-value="total_max12 + line['grade'].max_employee"/>
+                                <t t-set="total_vrai12" t-value="total_vrai12 + len(line['employees'])"/>
                             </t>
                             <tr class="texte-en-gras">
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1291,7 +1255,7 @@
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_diff12"/>
+                                        <span t-esc="total_max12 - total_vrai12"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1304,7 +1268,7 @@
                                         <span t-esc="total_max12"/>
                                     </strong>
                                 </td>
-                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;background-color:#D3D3D3;width:50%"
+                                <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;;background-color:#D3D3D3;width:50%"
                                     colspan="3">
                                     <strong>المجموع الجزئي</strong>
                                 </td>
@@ -1317,29 +1281,16 @@
                             </tr>
                             <t t-set="total_max13" t-value="0"/>
                             <t t-set="total_vrai13" t-value="0"/>
-                            <t t-set="total_diff13" t-value="0"/>
-                            <t t-foreach="grade_contract" t-as="line">
-                                <t t-set="employee_count" t-value="0"/>
-                                <t t-set="employee_count3" t-value="0"/>
-                                <t t-foreach="line['employees_contract']" t-as="employee">
-                                    <t t-set="employee_count" t-value="employee_count + 1"/>
-                                </t>
-                                <t t-foreach="line['employees_cdi_partiel']" t-as="employee">
-                                    <t t-set="employee_count3" t-value="employee_count3 + 1"/>
-                                </t>
-                                <t t-set="total_max13" t-value="total_max13 + line['grade'].max_employee"/>
-                                <t t-set="total_vrai13" t-value="total_vrai13 + employee_count3"/>
-                                <t t-set="total_diff13"
-                                   t-value="total_diff13 + (line['grade'].max_employee - employee_count)"/>
+                            <t t-foreach="grade_cdi_partiel" t-as="line">
                                 <tr class="arabic_typesetting">
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         &#160;
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="line['grade'].max_employee - employee_count"/>
+                                        <span t-esc="line['grade'].max_employee - len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="employee_count3"/>
+                                        <span t-esc="len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         <span t-esc="line['grade'].max_employee"/>
@@ -1351,9 +1302,11 @@
                                         <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].intitule_grade"/>
+                                        <span t-esc="line['grade'].description"/>
                                     </td>
                                 </tr>
+                                <t t-set="total_max13" t-value="total_max13 + line['grade'].max_employee"/>
+                                <t t-set="total_vrai13" t-value="total_vrai13 + len(line['employees'])"/>
                             </t>
                             <tr class="texte-en-gras">
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1361,7 +1314,7 @@
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_diff13"/>
+                                        <span t-esc="total_max13 - total_vrai13"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1387,29 +1340,16 @@
                             </tr>
                             <t t-set="total_max14" t-value="0"/>
                             <t t-set="total_vrai14" t-value="0"/>
-                            <t t-set="total_diff14" t-value="0"/>
-                            <t t-foreach="grade_contract" t-as="line">
-                                <t t-set="employee_count" t-value="0"/>
-                                <t t-set="employee_count4" t-value="0"/>
-                                <t t-foreach="line['employees_contract']" t-as="employee">
-                                    <t t-set="employee_count" t-value="employee_count + 1"/>
-                                </t>
-                                <t t-foreach="line['employees_cdd_partiel']" t-as="employee">
-                                    <t t-set="employee_count4" t-value="employee_count4 + 1"/>
-                                </t>
-                                <t t-set="total_max14" t-value="total_max14 + line['grade'].max_employee"/>
-                                <t t-set="total_vrai14" t-value="total_vrai14 + employee_count4"/>
-                                <t t-set="total_diff14"
-                                   t-value="total_diff14 + (line['grade'].max_employee - employee_count)"/>
+                            <t t-foreach="grade_cdd_partiel" t-as="line">
                                 <tr class="arabic_typesetting">
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         &#160;
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="line['grade'].max_employee - employee_count"/>
+                                        <span t-esc="line['grade'].max_employee - len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
-                                        <span t-esc="employee_count4"/>
+                                        <span t-esc="len(line['employees'])"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;width:12.5%">
                                         <span t-esc="line['grade'].max_employee"/>
@@ -1421,9 +1361,11 @@
                                         <span t-esc="line['grade'].categorie_id.intitule"/>
                                     </td>
                                     <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;width:25%">
-                                        <span t-esc="line['grade'].intitule_grade"/>
+                                        <span t-esc="line['grade'].description"/>
                                     </td>
                                 </tr>
+                                <t t-set="total_max14" t-value="total_max14 + line['grade'].max_employee"/>
+                                <t t-set="total_vrai14" t-value="total_vrai14 + len(line['employees'])"/>
                             </t>
                             <tr class="texte-en-gras">
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1431,7 +1373,7 @@
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_diff14"/>
+                                        <span t-esc="total_max14 - total_vrai14"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#D3D3D3;width:12.5%">
@@ -1455,17 +1397,17 @@
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#A9A9A9;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_diff11"/>
+                                        <span t-esc="(total_max11 + total_max12 + total_max13 + total_max14) - (total_vrai11 + total_vrai12 + total_vrai13 + total_vrai14)"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#A9A9A9;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_vrai11+total_vrai12+total_vrai13+total_vrai14"/>
+                                        <span t-esc="total_vrai11 + total_vrai12 + total_vrai13 + total_vrai14"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:center;font-size:23px;;background-color:#A9A9A9;width:12.5%">
                                     <strong>
-                                        <span t-esc="total_max11"/>
+                                        <span t-esc="total_max11 + total_max12 + total_max13 + total_max14"/>
                                     </strong>
                                 </td>
                                 <td style="border:2px solid black;vertical-align:middle;text-align:right;font-size:23px;;background-color:#A9A9A9;width:50%"

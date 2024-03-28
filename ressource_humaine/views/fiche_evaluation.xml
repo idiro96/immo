@@ -3,21 +3,18 @@
         <field name="name">rh.fiche.evaluation.tree</field>
         <field name="model">rh.fiche.evaluation</field>
         <field name="arch" type="xml">
-
-
             <tree>
                 <field name="date_evaluation"/>
                 <field name="employee_id"/>
                 <field name="grade_id" readonly="1"/>
                 <field name="job_id" readonly="1"/>
                 <field name="echelon_id" readonly="1"/>
-                <field name="note"/>
-                <field name="observation"/>
+                <field name="note" string="العلامة"/>
+                <field name="observation" string="ملاحظة"/>
                 <field name="exercice"/>
                 <field name="fiche_evaluation_file"/>
             </tree>
         </field>
-
     </record>
     <record id="view_rh_categorie_form" model="ir.ui.view">
         <field name="name">rh.fiche.evaluation.form</field>
@@ -32,8 +29,8 @@
                             <field name="grade_id" readonly="1"/>
                             <field name="job_id" readonly="1"/>
                             <field name="echelon_id" readonly="1"/>
-                            <field name="note"/>
-                            <field name="observation"/>
+                            <field name="note"  string="العلامة"/>
+                            <field name="observation" string="ملاحظة"/>
                             <field name="exercice" readonly="1"/>
                             <field name="fiche_evaluation_file"/>
                         </group>

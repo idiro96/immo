@@ -168,9 +168,16 @@
                                                     <t t-esc="av_precedent.echelon_old_id.intitule"/>
                                                 </span>
                                                 الرقم الاستدلالي
-                                                <span class="texte-en-gras">
-                                                    <t t-esc="av_precedent.echelon_old_id.indice_echelon + av_precedent.categorie_old_id.Indice_minimal"/>
-                                                </span>
+                                                    <t t-if="line.ancien_index == 0">
+                                                        <span class="texte-en-gras">
+                                                            <t t-esc="av_precedent.echelon_old_id.indice_echelon + av_precedent.categorie_old_id.Indice_minimal"/>
+                                                        </span>
+                                                    </t>
+                                                     <t t-if="line.ancien_index != 0">
+                                                        <span class="texte-en-gras">
+                                                            <t t-esc="line.ancien_index"/>
+                                                        </span>
+                                                    </t>
                                             </t>
                                         </t>
                                          <t t-foreach="avance_next" t-as="avance_first_next">
@@ -183,11 +190,17 @@
                                                     <t t-esc="av_precedent.echelon_new_id.intitule"/>
                                                 </span>
                                                 الرقم الاستدلالي
-                                                <span class="texte-en-gras">
-                                                    <t t-esc="av_precedent.echelon_new_id.indice_echelon + av_precedent.categorie_new_id.Indice_minimal"/>
-                                                </span>
+                                                 <t t-if="line.ancien_index == 0">
+                                                    <span class="texte-en-gras">
+                                                        <t t-esc="av_precedent.echelon_new_id.indice_echelon + av_precedent.categorie_new_id.Indice_minimal"/>
+                                                    </span>
+                                                 </t>
+                                                     <t t-if="line.ancien_index != 0">
+                                                    <span class="texte-en-gras">
+                                                        <t t-esc="line.ancien_index"/>
+                                                    </span>
+                                                 </t>
                                              </t>
-
                                     </t>
                                 </t>
                             </t>

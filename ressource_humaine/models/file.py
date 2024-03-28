@@ -3,7 +3,6 @@
 from odoo import models, fields, api, _
 
 
-
 class RHFile(models.Model):
     _name = 'rh.file'
 

@@ -183,7 +183,7 @@
                     <field name="nom_fr"/>
                 </xpath>
                 <xpath expr="//form//sheet//notebook//page//group//group//field[@name='nom_fr']" position="after">
-                    <field name="prenom_fr" required="True"/>
+                    <field name="prenom_fr"/>
                 </xpath>
                 <xpath expr="//form//sheet//notebook//page//group//group//field[@name='birthday']"
                        position="before">
@@ -292,6 +292,9 @@
                 </xpath>
                 <xpath expr="//form//sheet//notebook//page//group//group//field[@name='address_home_id']"
                        position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form//sheet//notebook//page//group//group[@name='work_permit']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
 

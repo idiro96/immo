@@ -36,16 +36,8 @@
             <field name="model">hr.job</field>
             <field name="inherit_id" ref="hr.view_hr_job_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//form//sheet//div[2]//field[@name='name']" position="after">
-                    <field name="nature_travail_id"
-                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" widget='selection'/>
-                </xpath>
-                <xpath expr="//form//sheet//div[2]//field[@name='nature_travail_id']" position="before">
+                <xpath expr="//form//field[@name='no_of_recruitment']" position="before">
                     <field name="code_type_fonction" invisible="1"/>
-                </xpath>
-                <xpath expr="//form//sheet//div[2]//field[@name='nature_travail_id']" position="after">
-                    <field name="poste_organique"
-                           attrs="{'invisible': [('code_type_fonction', '!=', 'fonctionsuperieure')]}"/>
                 </xpath>
                 <xpath expr="//form//field[@name='no_of_recruitment']" position="attributes">
                     <attribute name="invisible">True</attribute>
@@ -69,8 +61,12 @@
                 <xpath expr="//div[@name='button_box']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
-                <xpath expr="//form//sheet//group//group[@name='recruitment']" position="after">
-                    <group string="الموظفين">
+                <xpath expr="//form//sheet//group//group[@name='recruitment']" position="before">
+                    <group string="المنصب / الوظيفة">
+                        <field name="nature_travail_id"
+                           options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" widget='selection'/>
+                        <field name="poste_organique"
+                           attrs="{'invisible': [('code_type_fonction', '!=', 'fonctionsuperieure')]}"/>
                         <field name="max_employee" sting="العدد النظري"/>
                     </group>
                 </xpath>

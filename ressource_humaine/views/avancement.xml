@@ -66,6 +66,7 @@
                                     <field name="duree" readonly="1"/>
                                     <field name="date_new_avancement" readonly="1"/>
                                     <field name="code"/>
+                                    <field name="ancien_index"/>
                                     <field name="avancement_line_file_line"/>
                                 </tree>
                             </field>

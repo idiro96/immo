@@ -1,8 +1,6 @@
 from datetime import datetime
 
-# from mock.mock import self
 from odoo import models, fields, api, _
-from itertools import groupby
 
 
 class AttestationTravail(models.TransientModel):

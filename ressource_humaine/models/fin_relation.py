@@ -31,12 +31,13 @@ class RHFinRelation(models.Model):
         for rec in self:
             promotion_line = self.env['rh.promotion.line'].search(
                 [('employee_id', '<=', rec.employee_id.id)],
-
                 order='date_new_grade DESC', limit=1)
             for rec1 in promotion_line:
+
                 promotion = self.env['rh.promotion'].search(
                 [('id', '<=', rec1.promotion_id.id)],
                 order='date_new_grade DESC', limit=1)
+
                 if promotion:
                     rec.code_promotion = promotion.code
                     rec.date_promotion = promotion.date_promotion

@@ -39,7 +39,7 @@
         </field>
     </record>
 
-    <record id="employee_count_pie_chart" model="ir.ui.view">
+    <record id="employee_count_pie_chart_new" model="ir.ui.view">
         <field name="name">Nombre d'employés par tranche des salaire</field>
         <field name="model">hr.employee</field>
         <field name="arch" type="xml">
@@ -128,7 +128,7 @@
         <field name="name">Nobmbre d'employés par tranche des salaire</field>
         <field name="res_model">hr.employee</field>
         <field name="view_mode">graph</field>
-        <field name="view_id" ref="ressource_humaine.employee_count_pie_chart"/>
+        <field name="view_id" ref="ressource_humaine.employee_count_pie_chart_new"/>
     </record>
 
     <record id="act_employee_age_bar_chart" model="ir.actions.act_window">

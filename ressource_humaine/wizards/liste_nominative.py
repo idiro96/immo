@@ -63,6 +63,7 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             proff_employees.append({'grade': grade, 'employees': employees})
+        proff_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
         grade_a = self.env['rh.grade'].search([('categorie_id.groupe_id.name', 'ilike', 'المجموعة أ')])
         grade_a_excluded = grade_a - grade_proff
@@ -74,6 +75,7 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             grade_a_excluded_employees.append({'grade': grade, 'employees': employees})
+        grade_a_excluded_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
         grade_b = self.env['rh.grade'].search([('categorie_id.groupe_id.name', 'ilike', 'المجموعة ب')])
         grade_b_employees = []
@@ -84,6 +86,7 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             grade_b_employees.append({'grade': grade, 'employees': employees})
+        grade_b_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
         grade_c = self.env['rh.grade'].search([('categorie_id.groupe_id.name', 'ilike', 'المجموعة ج')])
         grade_c_employees = []
@@ -94,6 +97,7 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             grade_c_employees.append({'grade': grade, 'employees': employees})
+        grade_c_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
         grade_d = self.env['rh.grade'].search([('categorie_id.groupe_id.name', 'ilike', 'المجموعة د')])
         grade_d_2 = self.env['rh.grade'].search([('categorie_id.groupe_id.name', 'ilike', 'المجموعة د'),
@@ -106,40 +110,63 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             grade_d_2_employees.append({'grade': grade, 'employees': employees})
+        grade_d_2_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
-        grade_contract = self.env['rh.grade'].search(['|', ('corps_id.intitule_corps', 'ilike', 'متعاقد'), ('corps_id.intitule_corps', 'ilike', 'سيار')])
-        grade_contract_employees = []
-        for grade in grade_contract:
-            employees_contract = self.env['hr.employee'].search(
-                [('grade_id', '=', grade.id), ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
-                 ('position_statutaire', '=', 'activite'),
-                 ('fin_relation', '=', False)])
-            employees_cdi_plein = self.env['hr.employee'].search(
-                [('grade_id', '=', grade.id), ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
+        grade_cdi_plein = self.env['rh.grade'].search(['|', ('corps_id.intitule_corps', 'ilike', 'متعاقد'),
+                                                       ('corps_id.intitule_corps', 'ilike', 'سيار'),
+                                                       ('intitule_grade', 'ilike', '%غير محدد%كامل%')])
+        employees_cdi_plein = []
+        for grade in grade_cdi_plein:
+            employees = self.env['hr.employee'].search(
+                [('grade_id', '=', grade.id), ('position_statutaire', '=', 'activite'),
+                 ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
                  ('type_id.code_type_contract', '=', 'pleintemps_indeterminee'),
-                 ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
-            employees_cdd_plein = self.env['hr.employee'].search(
-                [('grade_id', '=', grade.id), ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
-                 ('type_id.code_type_contract', '=', 'pleintemps_determinee'), ('position_statutaire', '=', 'activite'),
-                 ('fin_relation', '=', False)])
-            employees_cdi_partiel = self.env['hr.employee'].search(
-                [('grade_id', '=', grade.id), ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
-                 ('type_id.code_type_contract', '=', 'partiel_indeterminee'), ('position_statutaire', '=', 'activite'),
-                 ('fin_relation', '=', False)])
-            employees_cdd_partiel = self.env['hr.employee'].search(
-                [('grade_id', '=', grade.id), ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
-                 ('type_id.code_type_contract', '=', 'partiel_determinee'), ('position_statutaire', '=', 'activite'),
-                 ('fin_relation', '=', False)])
-            grade_contract_employees.append(
-                {'grade': grade,
-                 'employees_contract': employees_contract,
-                 'employees_cdi_plein': employees_cdi_plein,
-                 'employees_cdd_plein': employees_cdd_plein,
-                 'employees_cdi_partiel': employees_cdi_partiel,
-                 'employees_cdd_partiel': employees_cdd_partiel})
+            employees_cdi_plein.append({'grade': grade, 'employees': employees})
+        employees_cdi_plein.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
-        grade_d_1 = grade_d - grade_d_2 - grade_contract
+        grade_cdd_plein = self.env['rh.grade'].search(['|', ('corps_id.intitule_corps', 'ilike', 'متعاقد'),
+                                                       ('corps_id.intitule_corps', 'ilike', 'سيار'),
+                                                       ('intitule_grade', 'ilike', '%محدد%كامل%'),
+                                                       ('intitule_grade', 'not ilike', '%غير%')])
+        employees_cdd_plein = []
+        for grade in grade_cdd_plein:
+            employees = self.env['hr.employee'].search(
+                [('grade_id', '=', grade.id), ('position_statutaire', '=', 'activite'),
+                 ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
+                 ('type_id.code_type_contract', '=', 'pleintemps_determinee'),
+                 ('fin_relation', '=', False)])
+            employees_cdd_plein.append({'grade': grade, 'employees': employees})
+        employees_cdd_plein.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
+
+        grade_cdi_partiel = self.env['rh.grade'].search(['|', ('corps_id.intitule_corps', 'ilike', 'متعاقد'),
+                                                         ('corps_id.intitule_corps', 'ilike', 'سيار'),
+                                                         ('intitule_grade', 'ilike', '%غير محدد%جزئي%')])
+        employees_cdi_partiel = []
+        for grade in grade_cdi_partiel:
+            employees = self.env['hr.employee'].search(
+                [('grade_id', '=', grade.id), ('position_statutaire', '=', 'activite'),
+                 ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
+                 ('type_id.code_type_contract', '=', 'partiel_indeterminee'),
+                 ('fin_relation', '=', False)])
+            employees_cdi_partiel.append({'grade': grade, 'employees': employees})
+        employees_cdi_partiel.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
+
+        grade_cdd_partiel = self.env['rh.grade'].search(['|', ('corps_id.intitule_corps', 'ilike', 'متعاقد'),
+                                                         ('corps_id.intitule_corps', 'ilike', 'سيار'),
+                                                         ('intitule_grade', 'ilike', '%محدد%جزئي%'),
+                                                         ('intitule_grade', 'not ilike', '%غير%')])
+        employees_cdd_partiel = []
+        for grade in grade_cdd_partiel:
+            employees = self.env['hr.employee'].search(
+                [('grade_id', '=', grade.id), ('position_statutaire', '=', 'activite'),
+                 ('nature_travail_id.code_type_fonction', '=', 'contractuel'),
+                 ('type_id.code_type_contract', '=', 'partiel_determinee'),
+                 ('fin_relation', '=', False)])
+            employees_cdd_partiel.append({'grade': grade, 'employees': employees})
+        employees_cdd_partiel.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
+
+        grade_d_1 = grade_d - grade_d_2
         grade_d_1_employees = []
         for grade in grade_d_1:
             employees = self.env['hr.employee'].search(
@@ -148,6 +175,7 @@ class ListeNominativeReport(models.AbstractModel):
                  ('position_statutaire', '=', 'activite'),
                  ('fin_relation', '=', False)])
             grade_d_1_employees.append({'grade': grade, 'employees': employees})
+        grade_d_1_employees.sort(key=lambda x: x['grade'].categorie_id.intitule, reverse=True)
 
         report_data = {
             'company': self.env.user.company_id,
@@ -161,7 +189,11 @@ class ListeNominativeReport(models.AbstractModel):
             'grade_c': grade_c_employees,
             'grade_d_1': grade_d_1_employees,
             'grade_d_2': grade_d_2_employees,
-            'grade_contract': grade_contract_employees,
+            'grade_cdi_plein': employees_cdi_plein,
+            'grade_cdd_plein': employees_cdd_plein,
+            'grade_cdi_partiel': employees_cdi_partiel,
+            'grade_cdd_partiel': employees_cdd_partiel,
+
         }
 
         return report_data

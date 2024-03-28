@@ -46,6 +46,7 @@ class RHAvancementLine(models.Model):
     date_new_grade = fields.Date()
 
     avancement_line_file_line = fields.Binary()
+    ancien_index = fields.Integer()
 
     @api.depends('date_new_avancement', 'avancement_id.date_avancement')
     def _compute_time(self):

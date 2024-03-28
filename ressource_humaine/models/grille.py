@@ -24,8 +24,8 @@ class RHGrille(models.Model):
     # specialite = fields.Char(string='specialite', required=True)
     # salaire = fields.Float(string='salaire', required=True)
 
-    specialite = fields.Char(required=True)
-    salaire = fields.Float(required=True)
+    # specialite = fields.Char(required=True)
+    # salaire = fields.Float(required=True)
 
 
     @api.model

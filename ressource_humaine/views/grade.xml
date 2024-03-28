@@ -26,6 +26,7 @@
                         <group>
                             <field name="code"/>
                             <field name="intitule_grade"/>
+                            <field name="description"/>
                             <field name="intitule_grade_fr" string="Intitule Grade FR"/>
                             <field name="categorie_id"/>
                         </group>

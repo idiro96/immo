@@ -52,7 +52,7 @@ class RHDroitPromotion(models.TransientModel):
             else:
                 dateDebut_object10 = fields.Date.from_string(self.date_promotion) - relativedelta(months=120)
                 promotion_line = self.env['hr.employee'].search(
-                    [('date_grade', '<=', dateDebut_object10),('fin_relation', '=', False)],
+                    [('date_grade', '<=', dateDebut_object10),('fin_relation', '=', False),('promotion_dix', '=', False)],
                     order='date_grade DESC')
                 print('+10')
 

@@ -6,7 +6,7 @@ class EmployeeXLS(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
 
     def generate_xlsx_report(self, workbook, data, lines):
-        employees = self.env['hr.employee'].search([])
+        employees = self.env['hr.employee'].search([('fin_relation', '=', False)])
 
         format1 = workbook.add_format({'font_size': 12, 'align': 'center', 'valign': 'vcenter', 'border': 2, 'bg_color': '#D3D3D3', 'bold': True})
         format1.set_text_wrap()
@@ -67,7 +67,7 @@ class EmployeeXLS(models.AbstractModel):
                 sheet.write(row, 6, employee.date_entrer or '', format4)
                 sheet.write(row, 7, employee.date_grade or '', format4)
                 sheet.write(row, 8, employee.date_job_id or '', format4)
-                sheet.write(row, 9, employee.nom_fr or '', format3)
+                sheet.write(row, 9, f"{employee.nom_fr or ''} {employee.prenom_fr or ''}", format3)
                 sheet.write(row, 10, '', format3)
                 sheet.write(row, 11, employee.numero_securite_social or '', format7)
             if employee.gender == 'female':
@@ -80,7 +80,7 @@ class EmployeeXLS(models.AbstractModel):
                 sheet.write(row, 6, employee.date_entrer or '', format6)
                 sheet.write(row, 7, employee.date_grade or '', format6)
                 sheet.write(row, 8, employee.date_job_id or '', format6)
-                sheet.write(row, 9, employee.nom_fr or '', format5)
+                sheet.write(row, 9, f"{employee.nom_fr or ''} {employee.prenom_fr or ''}", format3)
                 sheet.write(row, 10, '', format5)
                 sheet.write(row, 11, employee.numero_securite_social or '', format7)
             if not employee.gender:
@@ -93,7 +93,7 @@ class EmployeeXLS(models.AbstractModel):
                 sheet.write(row, 6, employee.date_entrer or '', format7)
                 sheet.write(row, 7, employee.date_grade or '', format7)
                 sheet.write(row, 8, employee.date_job_id or '', format7)
-                sheet.write(row, 9, employee.nom_fr or '', format7)
+                sheet.write(row, 9, f"{employee.nom_fr or ''} {employee.prenom_fr or ''}", format3)
                 sheet.write(row, 10, '', format7)
                 sheet.write(row, 11, employee.numero_securite_social or '', format7)
             row += 1

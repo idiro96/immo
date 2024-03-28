@@ -252,4 +252,12 @@
             file="ressource_humaine.employee_attestation_travail_fr_report"
             paperformat="ressource_humaine.paperformat_european_a4_portrait_bordered"/>
 
+
+    <report
+            id="action_fiche_evaluation"
+            model="rh.fiche.evaluation"
+            string="Fiche d'évaluation"
+            report_type="qweb-html"
+            name="ressource_humaine.fiche_evaluation_report"
+            file="ressource_humaine.fiche_evaluation_report"/>
 </odoo>

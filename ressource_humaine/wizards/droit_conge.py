@@ -123,7 +123,7 @@ class RHDroitConge(models.TransientModel):
 
 
                 conge_empl_total = self.env['rh.congedroit'].search(
-                    [('id_personnel', '=', empl.id)])
+                    [('id_personnel', '=', empl.id)], limit=3)
                 jour_reste = 0
                 for cong in conge_empl_total:
                     jour_reste = cong.nbr_jour_reste + jour_reste

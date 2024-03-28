@@ -3,11 +3,10 @@
     'name': "ressource_humaine",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        ملخص قصير (عبارة/سطر واحد) للغرض من الوحدة، يُستخدم كعنوان فرعي في قائمة الوحدات أو apps.openerp.com""",
 
     'description': """
-        Long description of module's purpose
+        وصف طويل للغرض من الوحدة
     """,
 
     'author': "CETIC",
@@ -130,6 +129,7 @@
         'reports/organization_chart.xml',
         'reports/no_background_cnas.xml',
         'reports/arret_salaire_rapport.xml',
+        'reports/fiche_evaluation.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

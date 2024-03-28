@@ -29486,7 +29486,7 @@ msgstr "تاريخ الموافقة"
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_line_wizard_date_avancement
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_avencement_droit_date_avancement
 msgid "Date Avancement"
-msgstr "تاريخ إستحقاق الترقية"
+msgstr "تاريخ الإستفادة"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_fin_relation_date_cnas
@@ -29494,9 +29494,10 @@ msgid "Date Cnas"
 msgstr "Date Cnas"
 
 #. module: ressource_humaine
-#: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_code_decision_groupe
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_date_decision_groupe
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_date_decision_groupe
 msgid "Date Decision Groupe"
-msgstr "رقم المقرر الجماعي"
+msgstr "تاريخ إمضاء المقرر"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_date_decision_groupe
@@ -29505,8 +29506,34 @@ msgstr "تاريخ امضاء المقرر"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_date_effet_decision_groupe
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_date_effet_decision_groupe
+msgid "Date Effet Decision Groupe"
+msgstr "تاريخ سريان المقرر الجماعي"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_code_decision_groupe
+msgid "Date Decision Groupe"
+msgstr "رقم المقرر الجماعي"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_date_decision_groupe
+msgid "Date Decision Groupe"
+msgstr "تاريخ امضاء المقرر"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_date_effet_decision_groupe
 msgid "Date Effet Decision Groupe"
 msgstr "   تاريخ سريان المقرر الجماعي"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_line_ancien_index
+msgid "َAncien Index"
+msgstr "رقم استدلالي للطباعة"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_line_ancien_index
+msgid "َAncien Index"
+msgstr " رقم استدلالي للطباعة"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_filiere_date_code
@@ -31082,6 +31109,7 @@ msgstr "اشرح لماذا قمت بأخد نقود من الماكينة:"
 #: model:ir.model.fields,field_description:website_mail.field_mail_compose_message_description
 #: model:ir.model.fields,field_description:website_mail.field_mail_mail_description
 #: model:ir.model.fields,field_description:website_mail.field_mail_message_description
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_grade_description
 #, python-format
 msgid "Description"
 msgstr "الوصف"
@@ -42902,7 +42930,7 @@ msgstr "موقع الوظيفة"
 #: model:ir.model,name:hr_recruitment.model_hr_job
 #: model:ir.model,name:ressource_humaine.model_hr_job
 msgid "Job Position"
-msgstr "المناصب الوظيفية"
+msgstr "المناصب العليا"
 
 #. module: hr_recruitment
 #: model:mail.message.subtype,name:hr_recruitment.mt_department_new
@@ -45496,7 +45524,7 @@ msgstr "الاسم"
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_hr_employee_prenom_fr
 msgid "prenom"
-msgstr "اللقب"
+msgstr "Prénom"
 
 #. module: hr_holidays
 #: selection:hr.holidays.status,color_name:0
@@ -50212,7 +50240,7 @@ msgstr "لقب الإبن"
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_hr_employee_nom_fr
 msgid "Nom Fr"
-msgstr "اللقب"
+msgstr "Nom"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_hr_employee_nom_mere
@@ -61008,7 +61036,7 @@ msgstr "Reduce the time and resources spent on support"
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_line_ref
 #, python-format
 msgid "Ref"
-msgstr "رقم التأشيرة"
+msgstr "رقم المقرر"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_sanction_ref_pv_sanction
@@ -79571,12 +79599,12 @@ msgstr "تعليقات"
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_commission_avancement
 msgid "commission.avancement"
-msgstr "commission.avancement"
+msgstr "لجنة التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_commission_promotion
 msgid "commission.promotion"
-msgstr "commission.promotion"
+msgstr "لجنة الترقية"
 
 #. module: stock
 #: model:ir.ui.view,arch_db:stock.inventory_planner
@@ -79736,7 +79764,7 @@ msgstr "droit.conge"
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_droit_promotion
 msgid "droit.promotion"
-msgstr "droit.promotion"
+msgstr "خط الترقية"
 
 #. module: invistissement
 #: model:ir.model,name:invistissement.model_duplication_asset
@@ -81704,32 +81732,32 @@ msgstr "rh.apromotion.droit"
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avancement
 msgid "rh.avancement"
-msgstr "rh.avancement"
+msgstr "التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avancement_commission_line
 msgid "rh.avancement.commission.line"
-msgstr "rh.avancement.commission.line"
+msgstr "خط لجنة التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avancement_droit
 msgid "rh.avancement.droit"
-msgstr "rh.avancement.droit"
+msgstr "حق التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avancement_line
 msgid "rh.avancement.line"
-msgstr "rh.avancement.line"
+msgstr "خط التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avancement_line_wizard
 msgid "rh.avancement.line.wizard"
-msgstr "rh.avancement.line.wizard"
+msgstr "نافذة خط التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_avencement_droit
 msgid "rh.avencement.droit"
-msgstr "rh.avencement.droit"
+msgstr "حق التقدم"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_cabinet_medical
@@ -81889,27 +81917,27 @@ msgstr "rh.planning.line"
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_promotion
 msgid "rh.promotion"
-msgstr "rh.promotion"
+msgstr "ترقية"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_promotion_commission_line
 msgid "rh.promotion.commission.line"
-msgstr "rh.promotion.commission.line"
+msgstr "خط لجنة الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_promotion_droit
 msgid "rh.promotion.droit"
-msgstr "rh.promotion.droit"
+msgstr "حق الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_promotion_line
 msgid "rh.promotion.line"
-msgstr "rh.promotion.line"
+msgstr "خط الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_promotion_line_wizard
 msgid "rh.promotion.line.wizard"
-msgstr "rh.promotion.line.wizard"
+msgstr "نافذة خط الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model,name:ressource_humaine.model_rh_sanction
@@ -83682,7 +83710,7 @@ msgstr "الإسم"
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_hr_employee_ref_promotion
 msgid "Ref Promotion"
-msgstr "رقم الترقية"
+msgstr "رقم مقرر الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_ref_ouverture_examin
@@ -83692,7 +83720,7 @@ msgstr "رقم فتح الامتحان"
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_hr_employee_date_ref_promotion
 msgid "date_promotion"
-msgstr "تاريخ رقم الترقية"
+msgstr "تاريخ مقرر الترقية"
 
 #. module: ressource_humaine
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_ref_ouverture_examin
@@ -83719,3 +83747,14 @@ msgstr "التاريخ المرجع بفتح الإمتحان"
 #: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_line_date_ref_promotion
 msgid "Date Ref Promotion"
 msgstr "التاريخ المرجع بالترقية"
+
+#. module: ressource_humaine
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_avancement_code_decision_groupe
+#: model:ir.model.fields,field_description:ressource_humaine.field_rh_promotion_code_decision_groupe
+msgid "Code Decision Groupe"
+msgstr "رقم المقرر الجماعي"
+
+#. module: ressource_humaine
+#: model:ir.actions.report,name:ressource_humaine.action_droit_promotion_report
+msgid "Extrait du siège approuvant le calendrier des promotions de grade par examains professionnel"
+msgstr "مقرر يتضمن الالتحاق برتبة أعلى عن طريق الامتحان المهني"

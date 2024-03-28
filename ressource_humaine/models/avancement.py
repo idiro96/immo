@@ -29,7 +29,6 @@ class RHAvancement(models.Model):
         if avancement.avancement_lines_wizard and avancement.avancement_lines_wizard.ids:
             for rec in avancement.avancement_lines_wizard:
                 if rec.employee_id.nature_travail_id.code_type_fonction == 'fonction':
-
                     avance_line = self.env['rh.avancement.line'].create({
                     'code': self.env['ir.sequence'].next_by_code('rh.avancement.line.sequence'),
                     'employee_id': rec.employee_id.id,
@@ -55,7 +54,7 @@ class RHAvancement(models.Model):
                     'date_new_avancement': rec.date_new_avancement
                     })
                     employee = self.env['hr.employee'].search(
-                    [('id', '=', rec.employee_id.id)])
+                        [('id', '=', rec.employee_id.id)])
                     employee.write({
                         'date_avancement': avance_line.date_new_avancement,
                     })
@@ -128,9 +127,6 @@ class RHAvancement(models.Model):
                         'date_avancement': avance_line.date_new_avancement,
                     })
                     employee.write({
-                        'section_new_id': rec.section_new_id.id,
-                    })
-                    employee.write({
                         'grille_id': rec.grille_new_id.id,
                     })
                     employee.write({
@@ -160,7 +156,6 @@ class RHAvancement(models.Model):
                     employee.write({
                         'total_indice': rec.employee_id.total_indice,
                     })
-
                     rec.employee_id.wage = rec.employee_id.indice_base * 45 + rec.employee_id.point_indiciare
                     employee.write({
                         'wage': rec.employee_id.wage,

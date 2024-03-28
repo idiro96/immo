@@ -18,6 +18,7 @@ class HrEmployeInherited(models.Model):
 
     # name = fields.Char(string="Employee Tag", required=True, compute='_compute_nom')
     handicape = fields.Boolean(default=False)
+    promotion_dix = fields.Boolean(default=False)
     chef_bureau = fields.Boolean(default=False)
     niveau_hirerachique_chef_Bureau = fields.Many2one('rh.niveau.hierarchique.chef.bureau')
     service_militaire = fields.Boolean(default=False)

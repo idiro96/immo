@@ -17,7 +17,7 @@ class RHTypeFonction(models.Model):
     def unlink(self):
         for rec in self:
             raise UserError(
-                    "Vous ne pouvez pas supprimer cet enregistrement")
+                    "لا يمكنك حذف هذا التسجيل")
         return super(RHTypeFonction, self).unlink()
 
 

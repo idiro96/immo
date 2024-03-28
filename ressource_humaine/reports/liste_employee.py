@@ -6,7 +6,7 @@ class ListeDesEmployes(models.AbstractModel):
 
     @api.model
     def get_report_values(self, docids, data=None):
-        employee = self.env['hr.employee'].search([])
+        employee = self.env['hr.employee'].search([('fin_relation', '=', False)])
 
         report_data = {
             'employee': employee,

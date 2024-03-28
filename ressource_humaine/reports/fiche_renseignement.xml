@@ -46,6 +46,14 @@
                         </div>
                         <br/>
                         <div style="font-size: 20px; text-align: center;">
+                            <span>
+                                <t t-if="employee.prenom_fr">
+                                    <t t-esc="employee.prenom_fr"/>
+                                </t>
+                                <t t-if="not employee.prenom_fr">
+                                    &#160;
+                                </t>
+                            </span>
                             <span style="margin-left: 300px;">
                                 <t t-if="employee.prenom_ar">
                                     <t t-esc="employee.prenom_ar"/>
